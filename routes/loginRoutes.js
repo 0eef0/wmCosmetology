@@ -12,9 +12,9 @@ app.use(express.json())
 // Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
-    const { username, name, password } = req.body;
+    const { username, name, password, confirmPassword } = req.body;
     console.log(req.body)
-    console.log(username, name, password)
+    console.log(username, name, password, confirmPassword)
     let errors = [];
     try {
         // const salt = await bcrypt.genSalt(10)
@@ -29,9 +29,13 @@ app.post('/', async (req, res) => { //create user
                 const newUser = new UserSchema({
                     username: username,
                     name: name,
-                    password: password
+                    password: password,
+                    confirmPassword: confirmPassword
                 })
-
+                if(password != confirmPassword) {
+                    console.log('passwords do not match')
+                    errors.push({ msg: 'passwords do not match' })
+                }
                 bcrypt.genSalt(10, (err, salt) =>
                     bcrypt.hash(newUser.password, salt,
                         (err, hash) => {
