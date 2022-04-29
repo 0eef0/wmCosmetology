@@ -1,4 +1,4 @@
-$backgroundColor: hsl(192, 15%, 94%);
+$backgroundColor: hsl(0, 0%, 85%);
 
 $light-background: #f9f9f9;
 $light-background-translucent: #f5f6faaa;
@@ -10,12 +10,12 @@ $font-color-light: #f1f2f6;
 $font-color-dark: #17161d;
 $font-color-darkblue: hsl(210, 29%, 25%);
 
-$clr-light-0: hsl(192, 15%, 94%);
-$clr-light-1: hsl(192, 15%, 89%);
-$clr-light-2: hsl(192, 15%, 84%);
-$clr-light-3: hsl(192, 15%, 79%);
-$clr-light-4: hsl(192, 15%, 74%);
-$clr-light-5: hsl(192, 15%, 69%);
+$clr-light-0: hsl(0, 0%, 90%);
+$clr-light-1: hsl(267, 36%, 80%);
+$clr-light-2: hsl(267, 7%, 76%);
+$clr-light-3: hsl(267, 36%, 70%);
+$clr-light-4: hsl(267, 36%, 65%);
+$clr-light-5: hsl(267, 36%, 60%);
 
 $clr-primary-0: hsl(266, 100%, 6%);
 $clr-primary-1: hsl(266, 100%, 11%);
@@ -54,3 +54,4 @@ $btn-light: #949494;
 $btn-dark: #303030;
 
 $dark-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+$dark-shadow-big: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;

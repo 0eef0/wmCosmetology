@@ -1,13 +1,14 @@
 .navbar {
 	position: fixed;
 	width: 100%;
-	background-color: $clr-primary-3;
+	max-width: 3440px;
+	background-color: $clr-light-transparent;
 	color: $clr-white;
 	z-index: 1;
 	top: 0;
 
-	box-shadow: $dark-shadow;
-	border-bottom: 0.05rem solid $dark-background;
+	// box-shadow: $dark-shadow;
+	// border-bottom: 0.05rem solid $dark-background;
 	.user-info {
 		position: absolute;
 		padding: 0.25rem 0.5rem;
@@ -42,22 +43,25 @@
 			.nav-item a,
 			.nav-item button {
 				display: block;
-				color: $font-light;
-				font-family: 'Roboto', sans-serif;
-				font-weight: 500;
+				color: $font-dark;
+				font-family: 'Poppins', sans-serif;
+				font-weight: 600;
 				text-decoration: none;
 				padding: 1rem 1.5rem;
-				background-color: transparent;
+				border-top: 4px solid;
+				border-color: transparent;
 				&.link:hover {
-					background-color: $clr-accent-1 !important;
+					border-color: $clr-accent-1 !important;
+					// color: $font-light;
 					filter: brightness(1.2);
 
-					transition: background-color 100ms linear;
+					transition: border-color 100ms linear;
 				}
 				&.active {
-					background-color: $clr-accent-0 !important;
+					border-color: $clr-accent-0 !important;
+					// color: $font-light;
 					&:hover {
-						background-color: $clr-accent-1 !important;
+						border-color: $clr-accent-1 !important;
 						filter: brightness(1.2);
 					}
 				}
