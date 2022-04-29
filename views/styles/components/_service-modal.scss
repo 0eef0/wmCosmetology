@@ -1,0 +1,88 @@
+.modal-container {
+  display: none;
+  visibility: hidden;
+
+
+  position: fixed;
+  inset: 0;
+  background-color: $clr-dark-transparent-2;
+
+  display: grid;
+  place-items: center;
+
+  z-index: 999;
+}
+.service-modal {
+  background-color: $backgroundColor;
+  width: clamp(33vw, 55rem, 95vw);
+  padding: 2rem 0;
+
+  position: relative;
+
+  border-radius: .33rem;
+  box-shadow: $dark-shadow-big;
+  .title {
+    text-align: center;
+    font-size: clamp(2rem, 2vw, 3rem);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    padding: .5rem;
+    cursor: pointer;
+    i {
+      font-size: 2rem;
+    }
+  }
+  .services {
+    display: flex;
+    flex-direction: column;
+    // gap: .5rem;
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: .25rem 2rem;
+
+      background-color: $clr-accent-transparent;
+      &:nth-child(2n) {
+        background-color: transparent;
+      }
+      &.info-spacer {
+        padding-bottom: 28px;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        font-size: clamp(1.15rem, 1.5vw, 1.5rem);
+        font-weight: 400;
+        position: relative;
+        gap: 1rem;
+        .additional-info {
+          position: absolute;
+          left: 2rem;
+          top: 100%;
+          width: max-content;
+          background-color: inherit;
+        }
+      }
+    }
+  }
+  .button-container {
+    display: grid;
+    place-items: center;
+    a {
+      background-color: $light-background;
+      padding: .25rem .5rem;
+      margin-top: .5rem;
+      border-radius: 5px;
+      font-size: 1.15rem;
+      color: $font-dark;
+      text-decoration: none;
+    }
+  }
+}

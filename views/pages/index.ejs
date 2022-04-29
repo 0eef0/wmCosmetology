@@ -6,6 +6,8 @@
   <script type="module" src="../scripts/main.js"></script>
 </head>
 <body class="container">
+<!-- modal comes first so other components can call showModal() and hideModal() -->
+<%- include('../partials/service-modal'); %>
 
 <%- include('../partials/navbar'); %>
 
@@ -26,5 +28,8 @@
 
 
 <%- include('../partials/footer'); %>
+
+
+
 </body>
 </html>
