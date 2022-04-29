@@ -2,7 +2,7 @@
 	position: fixed;
 	width: 100%;
 	max-width: 3440px;
-	background-color: $clr-light-transparent;
+	background-color: $clr-light-transparent-2;
 	color: $clr-white;
 	z-index: 1;
 	top: 0;
@@ -40,6 +40,32 @@
 				display: none;
 				visibility: hidden;
 			}
+			.nav-item {
+				display: flex;
+				position: relative;
+				&.dropdown:focus-within .dropdown, &.dropdown:hover .dropdown {
+					display: block;
+					visibility: visible;
+				}
+				.dropdown {
+					display: none;
+					visibility: hidden;
+					background-color: $clr-light-transparent;
+					position: absolute;
+					right: 0;
+					top: 100%;
+					width: 100%;
+					max-height: max-content;
+					display: flex;
+					flex-direction: column;
+					li a {
+						padding: .5rem;
+						&:hover {
+							background-color:$clr-light-transparent-0;
+						}
+					}
+				}
+			}
 			.nav-item a,
 			.nav-item button {
 				display: block;
@@ -47,9 +73,15 @@
 				font-family: 'Poppins', sans-serif;
 				font-weight: 600;
 				text-decoration: none;
-				padding: 1rem 1.5rem;
+				padding: 0 1.5rem;
+				height: 100%;
 				border-top: 4px solid;
 				border-color: transparent;
+
+				display: grid;
+				place-items: center;
+
+				text-shadow: 0px 0px 6px #ffffff44;
 				&.link:hover {
 					border-color: $clr-accent-1 !important;
 					// color: $font-light;

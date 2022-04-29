@@ -24,7 +24,7 @@ footer {
 				text-transform: uppercase;
 				font-family: 'Poppins', sans-serif;
 				font-weight: 400;
-				margin: 2rem 0;
+				margin: 1.5rem 0;
 			}
 			ul {
 				list-style: none;
@@ -39,13 +39,33 @@ footer {
 
 						transition: color 100ms linear;
 						&:hover {
-							color: $clr-accent-0;
+							color: $clr-accent-2;
 						}
 					}
 					i {
 						color: $clr-accent-1;
 						padding-right: 1rem;
 					}
+				}
+			}
+			.contact-form {
+				display: flex;
+				flex-direction: column;
+				gap: .5rem;
+				input, textarea {
+					padding: .25rem;
+					font-family: 'Roboto', sans-serif;
+					font-weight: 400;
+					resize: none;
+					border-radius: 2px;
+				}
+				button {
+					color: $font-dark;
+					background-color: $clr-white;
+					width: max-content;
+					margin-left: auto;
+					padding: .25rem .5rem;
+					border-radius: 2px;
 				}
 			}
 		}

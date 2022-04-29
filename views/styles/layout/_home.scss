@@ -2,16 +2,32 @@
     background-color: $dark-background;
     min-width: 100%;
     max-height: 34rem;
+    min-height: 24rem;
     display: flex;
-    filter: brightness(.7);
+    position: relative;
     img {
         display: block;
         min-width: 100%;
         object-fit: cover;
+        filter: brightness(.7);
+    }
+    .title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 95%;
+        transform: translate(-50%, -50%);
+        color: $clr-white;
+        text-align: center;
+        font-size: clamp(3rem, 3vw, 4rem);
+        // font-size: 4rem;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        text-shadow: 0px 0px 6px #00000077;
     }
 }
 .service-container {
-    .title {
+    .container-title {
         text-align: center;
         font-size: clamp(2rem, 2vw, 3rem);
         font-family: 'Poppins', sans-serif;
@@ -21,6 +37,8 @@
     .service-card-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        margin: 3rem;
+        grid-gap: 3rem;
         @media screen and (max-width: 1280px) {
             grid-template-columns: 1fr;;
         }
