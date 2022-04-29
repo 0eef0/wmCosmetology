@@ -19,7 +19,7 @@
         transform: translate(-50%, -50%);
         color: $clr-white;
         text-align: center;
-        font-size: clamp(3rem, 3vw, 4rem);
+        font-size: clamp(2.5rem, 3vw, 4rem);
         // font-size: 4rem;
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
@@ -40,7 +40,8 @@
         margin: 3rem;
         grid-gap: 3rem;
         @media screen and (max-width: 1280px) {
-            grid-template-columns: 1fr;;
+            grid-template-columns: 1fr;
+            margin-inline: auto;
         }
     }
 }
