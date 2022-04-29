@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+    <%- include('../../partials/navbar'); %>
+
+    <div class="schedule-filters">
+        <button>Today</button>
+        <button>Week</button>
+        <button>Month</button>
+        <button>Day</button>
+    </div>
+
+    <h1>Appointments</h1>
+
+    <!-- Full Appointment -->
+    <%- include('../../partials/admin/fullAppt'); %>
+    <!-- Partial Appointment -->
+    <%- include('../../partials/admin/partialAppt'); %>
+</body>
+</html>
