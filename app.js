@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
 
+////////////////////////////////
+//cloudinary
+app.use(require('./routes/cloudinary'));
+////////////////////////////////
+
 
 //middleware
 app.use(express.json())
@@ -36,12 +41,6 @@ const port = process.env.PORT || 5000;
 //navigation routing
 app.use('/', require('./routes/index'))
 //api routing
-
-//testing
-app.use('/cloudinaryTest', (req, res) => {
-    res.render('pages/cloudinarytest');
-})
-//
 
 const start = async () => {
     try {
