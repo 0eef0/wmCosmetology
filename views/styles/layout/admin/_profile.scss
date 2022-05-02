@@ -1,0 +1,40 @@
+$profile-picture-width: 5rem;
+
+.profile-info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile-picture {
+    width: $profile-picture-width;
+    height: $profile-picture-width;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info-col {
+    width: 45%;
+    flex-direction: column;
+    display: flex;
+    h2 {
+        font-size: 1.5rem;
+    }
+    .profile-info-row {
+        margin-left: 1rem;
+        display: flex;
+        justify-content: space-between;
+        * {
+            font-size: 1.25rem;
+        }
+    }
+    .profile-info-row-list {
+        margin-left: 1rem;
+        p:last-child {
+            margin-left: 1.5rem;
+        }
+        * {
+            font-size: 1.25rem;
+        }
+    }
+}

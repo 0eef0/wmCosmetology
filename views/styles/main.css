@@ -784,4 +784,44 @@ footer .payment-container .copyright {
 
 .page-title {
   font-size: 2.5rem;
+}
+
+.profile-info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profile-picture {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.profile-info-col {
+  width: 45%;
+  flex-direction: column;
+  display: flex;
+}
+.profile-info-col h2 {
+  font-size: 1.5rem;
+}
+.profile-info-col .profile-info-row {
+  margin-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.profile-info-col .profile-info-row * {
+  font-size: 1.25rem;
+}
+.profile-info-col .profile-info-row-list {
+  margin-left: 1rem;
+}
+.profile-info-col .profile-info-row-list p:last-child {
+  margin-left: 1.5rem;
+}
+.profile-info-col .profile-info-row-list * {
+  font-size: 1.25rem;
 }/*# sourceMappingURL=main.css.map */
