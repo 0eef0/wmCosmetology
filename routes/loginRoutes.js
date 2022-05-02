@@ -12,33 +12,123 @@ app.use(express.json())
 // Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
-    const { username, name, password } = req.body;
+    const { userName, userEmail, userAddress, userCity, userState, userZip, userPhone, userPassword, userBDay, userHairInfo, userLatestCut, userAppointments } = req.body;
     console.log(req.body)
-    console.log(username, name, password)
+    //console.log(username, name, password)
     let errors = [];
     try {
         // const salt = await bcrypt.genSalt(10)
         // console.log(`Salt ${salt}`);
 
-        UserSchema.findOne({ username: username }).exec((err, user) => {
-            console.log(username);
+        UserSchema.findOne({ userPhone: userPhone }).exec((err, user) => {
+            //console.log(username);
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
             } else {
                 const newUser = new UserSchema({
-                    username: username,
-                    name: name,
-                    password: password
-                })
+                    userName,
+                    userEmail,
+                    userAddress,
+                    userCity,
+                    userState,
+                    userZip,
+                    userPhone,
+                    userPassword,
+                    userBDay,
+                    userHairInfo,
+                    userLatestCut,
+                    userAppointments
+            })
 
                 bcrypt.genSalt(10, (err, salt) =>
-                    bcrypt.hash(newUser.password, salt,
+                    bcrypt.hash(newUser.userAddress, salt,
                         (err, hash) => {
                             if (err) throw err;
                             //same pass to hash
-                            newUser.password = hash;
-                            //save user
+                            newUser.userAddress = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(newUser.userCity, salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userCity = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(newUser.userState, salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userState = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(newUser.userZip, salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userZip = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(newUser.userPhone, salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userPhone = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(newUser.userPassword, salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userPassword = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(newUser.userBDay, salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userBDay = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(JSON.stringify(newUser.userHairInfo), salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userHairInfo = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(JSON.stringify(newUser.userLatestCut), salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userLatestCut = hash;
+                        }
+                    )
+                );
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(JSON.stringify(newUser.userAppointments), salt,
+                        (err, hash) => {
+                            if (err) throw err;
+                            //same pass to hash
+                            newUser.userAppointments = hash;
+                                                                    //save user
 
                             newUser.save()
                                 .then((value) => {
@@ -49,7 +139,7 @@ app.post('/', async (req, res) => { //create user
                                 .catch(value => console.log(value))
                         }
                     )
-                )
+                );
             }
         })
     } catch (error) {
