@@ -32,6 +32,10 @@ app.post('/', async (req, res) => { //create user
                     password: password,
                     confirmPassword: confirmPassword
                 })
+                if(password.length < 8){
+                    console.log('password too short, requires at least 8 characters')
+                    errors.push({ msg: 'password to short, requires at least 8 characters' })
+                }
                 if(password != confirmPassword) {
                     console.log('passwords do not match')
                     errors.push({ msg: 'passwords do not match' })
@@ -43,7 +47,6 @@ app.post('/', async (req, res) => { //create user
                             //same pass to hash
                             newUser.password = hash;
                             //save user
-
                             newUser.save()
                                 .then((value) => {
                                     console.log(value)

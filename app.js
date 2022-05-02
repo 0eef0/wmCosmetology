@@ -30,12 +30,19 @@ app.use("/styles",express.static(__dirname + "/views/styles"));
 app.use("/scripts",express.static(__dirname + "/views/scripts"));
 app.use("/assets",express.static(__dirname + "/views/assets"));
 
+// Login Routes
+const loginRoute = require('./routes/loginRoutes')
+const loginAPI = require('./routes/loginAPI')
 
 const port = process.env.PORT || 5000;
 
 //navigation routing
 app.use('/', require('./routes/index'))
 //api routing
+
+// Login
+app.use('/users',loginRoute); 
+app.use('/api/v1/user',loginAPI)
 
 const start = async () => {
     try {
