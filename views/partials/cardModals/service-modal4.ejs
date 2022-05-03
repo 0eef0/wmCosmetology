@@ -1,78 +1,46 @@
-<div class="modal-container">
+<div class="modal-container4">
   <div class="service-modal">
     <h1 class="title">Available Services</h1>
-    <button class="close-btn" onClick="hideModal()"><i class="material-icons">close</i></button>
+    <button class="close-btn" onClick="hideModal4()"><i class="material-icons">close</i></button>
     <ul class="services">
-      <li class="info-spacer">
-        <div class="left">
-          <label for="service">Haircut</label>
-          <p class="additional-info">(Shampoo, Conditioner, Simple Blow Dry)</p>
-        </div>
-        <div class="right">
-          <p>$9</p>
-        </div>
-      </li>
-
       <li>
         <div class="left">
-          <p>Bang Cut</p>
+          <p>Flat / Curling Iron</p>
         </div>
         <div class="right">
           <p>$5</p>
         </div>
       </li>
-
       <li>
         <div class="left">
-          <p>Special Occasion / Formal Style</p>
+          <p>Deep Condition</p>
         </div>
         <div class="right">
-          <p>$20 +</p>
+          <p>$5</p>
         </div>
       </li>
-
       <li>
         <div class="left">
-          <p>Braid / Twist / Full Style</p>
+          <p>Scalp Treatment</p>
         </div>
         <div class="right">
-          <p>$30</p>
+          <p>$5</p>
         </div>
       </li>
-      
       <li>
         <div class="left">
-          <p>Full Thermal Style</p>
+          <p>Individual braid</p>
         </div>
         <div class="right">
-          <p>$20</p>
+          <p>$5</p>
         </div>
       </li>
-      
       <li>
         <div class="left">
-          <p>Wet Style</p>
+          <p>High Frequency</p>
         </div>
         <div class="right">
-          <p>$10</p>
-        </div>
-      </li>
-      
-      <li>
-        <div class="left">
-          <p>Blowout Style</p>
-        </div>
-        <div class="right">
-          <p>$12</p>
-        </div>
-      </li>
-      
-      <li>
-        <div class="left">
-          <p>Shampoo</p>
-        </div>
-        <div class="right">
-          <p>$3</p>
+          <p>$5</p>
         </div>
       </li>
     </ul>
@@ -80,23 +48,23 @@
 </div>
 
 <script>
-  const modalDOM  = document.querySelector('.modal-container');
-  let isModalVisible = false;
+  const modalDOM4  = document.querySelector('.modal-container4');
+  let isModalVisible4 = false;
 
-  const showModal = () => {
-    modalDOM.style.display = 'grid';
-    modalDOM.style.visibility = 'visible';  
-    isModalVisible = true;  
+  const showModal4 = () => {
+    modalDOM4.style.display = 'grid';
+    modalDOM4.style.visibility = 'visible';  
+    isModalVisible4 = true;  
   }
-  const hideModal = () => {
-    modalDOM.style.display = 'none';
-    modalDOM.style.visibility = 'hidden';  
-    isModalVisible = false;  
+  const hideModal4 = () => {
+    modalDOM4.style.display = 'none';
+    modalDOM4.style.visibility = 'hidden';  
+    isModalVisible4 = false;  
   }
 
   document.addEventListener('keydown', (e) => {
-    if((e.key === "Escape" || e.key === "Esc") && isModalVisible){
-      hideModal();
+    if((e.key === "Escape" || e.key === "Esc") && isModalVisible4){
+      hideModal4();
 	  }
   })
 </script>

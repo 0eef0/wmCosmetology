@@ -12,6 +12,50 @@
 
   z-index: 999;
 }
+.modal-container2 {
+  display: none;
+  visibility: hidden;
+
+
+  position: fixed;
+  inset: 0;
+  background-color: $clr-dark-transparent-2;
+
+  display: grid;
+  place-items: center;
+
+  z-index: 999;
+}
+
+.modal-container3 {
+  display: none;
+  visibility: hidden;
+
+
+  position: fixed;
+  inset: 0;
+  background-color: $clr-dark-transparent-2;
+
+  display: grid;
+  place-items: center;
+
+  z-index: 999;
+}
+
+.modal-container4 {
+  display: none;
+  visibility: hidden;
+
+
+  position: fixed;
+  inset: 0;
+  background-color: $clr-dark-transparent-2;
+
+  display: grid;
+  place-items: center;
+
+  z-index: 999;
+}
 .service-modal {
   background-color: $backgroundColor;
   width: clamp(33vw, 55rem, 95vw);
@@ -86,3 +130,4 @@
     }
   }
 }
+

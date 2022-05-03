@@ -3,11 +3,14 @@
 <head>
   <%- include('../partials/head'); %>
 
-  <script type="module" src="../scripts/main.js"></script>
+  <!-- <script type="module" src="../scripts/main.js"></script> -->
 </head>
 <body class="container">
 <!-- modal comes first so other components can call showModal() and hideModal() -->
 <%- include('../partials/cardModals/service-modal'); %>
+<%- include('../partials/cardModals/service-modal2'); %>
+<%- include('../partials/cardModals/service-modal3'); %>
+<%- include('../partials/cardModals/service-modal4'); %>
 
 <%- include('../partials/navbar'); %>
 
@@ -24,6 +27,30 @@
     <%- include('../partials/serviceCards/service-card3'); %>
     <%- include('../partials/serviceCards/service-card4'); %>
   </div>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img class="slideimg" src="../assets/slide1.png">
+    </div>
+    
+    <div class="mySlides fade">
+      <img class="slideimg" src="../assets/slide2.png">
+    </div>
+    
+    <div class="mySlides fade">
+      <img class="slideimg" src="../assets/slide3.png">
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
   <div>
     <div class="homeTitle">West-MEC Cosmetology Program</div>
     <div class="homeAbout">
@@ -54,6 +81,6 @@
 <%- include('../partials/footer'); %>
 
 
-
+<script type="text/javascript" src="../scripts/slide.js"></script>
 </body>
 </html>
