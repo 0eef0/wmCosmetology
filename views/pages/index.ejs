@@ -7,7 +7,7 @@
 </head>
 <body class="container">
 <!-- modal comes first so other components can call showModal() and hideModal() -->
-<%- include('../partials/service-modal'); %>
+<%- include('../partials/cardModals/service-modal'); %>
 
 <%- include('../partials/navbar'); %>
 
@@ -19,7 +19,10 @@
 <div class="service-container">
   <h1 class="container-title">Available Services</h1>
   <div class="service-card-container">
-    <%- include('../partials/service-card'); %>
+    <%- include('../partials/serviceCards/service-card'); %>
+    <%- include('../partials/serviceCards/service-card2'); %>
+    <%- include('../partials/serviceCards/service-card3'); %>
+    <%- include('../partials/serviceCards/service-card4'); %>
   </div>
   <div>
     <div class="homeTitle">West-MEC Cosmetology Program</div>
