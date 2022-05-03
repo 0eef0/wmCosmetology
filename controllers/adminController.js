@@ -39,6 +39,18 @@ const updateAdminByID = async (req, res) => {
     } catch (error) { res.status(500).json({ msg: error }) }
 }
 
+const updateAdminCutsByID = async (req, res) => {
+    try {
+        let { serviceHistory } = await adminSchema.findById(req.params.id).exec();
+        const { id } = req.params;
+        const newAdmin = req.body;
+        await serviceHistory.push(newAdmin);
+        console.log(serviceHistory);
+        await adminSchema.findOneAndUpdate({ _id: id }, { serviceHistory });
+        res.status(201).json({ newAdmin });
+    } catch (error) { res.status(500).json({ msg: error }) }
+}
+
 const deleteAdminByID = async (req, res) => {
     try {
         await adminSchema.findByIdAndRemove(req.params.id);
@@ -46,5 +58,5 @@ const deleteAdminByID = async (req, res) => {
     } catch (error) { res.status(500).json({ msg: error || 'There has been an error, try again later' }) }
 }
 
-module.exports = { getAllAdmins, createAdmin, deleteAllAdmins, getAdminByID, updateAdminByID, deleteAdminByID };
+module.exports = { getAllAdmins, createAdmin, deleteAllAdmins, getAdminByID, updateAdminByID, updateAdminCutsByID, deleteAdminByID };
 

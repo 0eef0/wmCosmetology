@@ -6,51 +6,47 @@ const app = express.Router()
 const bcrypt = require('bcrypt')
 const passport = require('passport');
 
+const { updateAdminCutsByID } = require('../controllers/adminController');
+
 const UserSchema = require('../models/admin');
 
-app.use(express.json())
-// Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
+app.use(express.json());
+
+app.patch('/:id', updateAdminCutsByID);
 
 app.post('/', async (req, res) => { //create user
-    const { adminName, adminEmail, adminPassword, accountType, serviceHistory } = req.body;
+    const { name, email, password, accountType, serviceHistory } = req.body;
     console.log(req.body)
-    //console.log(username, name, password)
     let errors = [];
     try {
-        // const salt = await bcrypt.genSalt(10)
-        // console.log(`Salt ${salt}`);
-
-        UserSchema.findOne({ adminEmail: adminEmail }).exec((err, user) => {
+        UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
-            } else if (!/@west-mec.org\s*$/.test(adminEmail)) {
+            } else if (!/@west-mec.org\s*$/.test(email)) {
                 console.log('not a west-mec user')
                 errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
-                    adminName,
-                    adminEmail,
-                    adminPassword,
+                    name,
+                    email,
+                    password,
                     accountType,
                     serviceHistory
                 })
                 newUser.serviceHistory = [];
 
                 bcrypt.genSalt(10, (err, salt) =>
-                    bcrypt.hash(newUser.adminPassword, salt,
+                    bcrypt.hash(newUser.password, salt,
                         (err, hash) => {
                             if (err) throw err;
                             //same pass to hash
-                            newUser.adminPassword = hash;
-
-                                                        //save user
-
+                            newUser.password = hash;
+                            //save user
                             newUser.save()
                                 .then((value) => {
                                     console.log(value)
-                                    // req.flash('success_msg', 'You have now registered')
                                     res.sendStatus(200)
                                 })
                                 .catch(value => console.log(value))
