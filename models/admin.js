@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const adminSchema = new mongoose.Schema({
-    adminName: {
+    name: {
         type: String,
         required: [true, 'Must provide a name']
     },
-    adminEmail: {
+    email: {
         type: String,
         required: [true, 'Must provide a email']
     },
-    adminPassword: { // encrypt
+    password: { // encrypt
         type: String,
         required: [true, 'Must provide a password']
     },

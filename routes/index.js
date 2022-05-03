@@ -15,9 +15,10 @@ navigation.get('/account', (req, res) => {
 navigation.get('/login', (req, res) => {
   res.render('pages/login')
 })
-//sign up page
-navigation.get('/sign-up', (req, res) => {
-  res.render('pages/signUp')
+
+//admin schedule page
+navigation.get('/schedule', (req, res) => {
+  res.render('pages/admin/schedule')
 })
 
 // ALL ADMIN PAGES HERE
