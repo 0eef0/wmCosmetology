@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
 
+////////////////////////////////
+//cloudinary
+app.use(require('./routes/cloudinary'));
+////////////////////////////////
+
 
 //middleware
 app.use(express.json())
@@ -26,9 +31,9 @@ const connectDB = require('./db/connect.js');
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-app.use("/styles",express.static(__dirname + "/views/styles"));
-app.use("/scripts",express.static(__dirname + "/views/scripts"));
-app.use("/assets",express.static(__dirname + "/views/assets"));
+app.use("/styles", express.static(__dirname + "/views/styles"));
+app.use("/scripts", express.static(__dirname + "/views/scripts"));
+app.use("/assets", express.static(__dirname + "/views/assets"));
 
 
 const port = process.env.PORT || 5000;
