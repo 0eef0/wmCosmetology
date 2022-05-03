@@ -334,6 +334,10 @@ html {
           filter: brightness(1.2);
 }
 
+.navbar-spacer {
+  margin-top: 56px;
+}
+
 @media screen and (max-width: 1000px) {
   .navbar ul {
     -webkit-box-orient: vertical;
@@ -734,6 +738,61 @@ footer .payment-container .copyright {
   text-decoration: none;
 }
 
+.appointment-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90vw;
+  min-height: 10rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  font-size: clamp(1.15rem, 1.5vw, 1.5rem);
+  border-radius: 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.appointment-card .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.appointment-card .col.right {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.appointment-card .col.right .cancel-appointment {
+  margin-top: auto;
+}
+
+.appointment-card .col.right .cancel-warning {
+  font-size: 80%;
+}
+
+.appointment-card .col .date {
+  margin-top: auto;
+}
+
+.appointment-card .col h1 {
+  font-size: 115%;
+}
+
 .banner-container {
   background-color: #2d3436;
   min-width: 100%;
@@ -792,6 +851,90 @@ footer .payment-container .copyright {
         grid-template-columns: 1fr;
     margin-inline: auto;
   }
+}
+
+/* General button style */
+.btn {
+  border: none;
+  font-family: 'Poppins';
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 8px 28px;
+  display: inline-block;
+  margin: 4px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.btn:before {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Button 3 */
+.btn-3 {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.btn-3:hover {
+  background: #c0392b;
+}
+
+.btn-3:active {
+  background: #c0392b;
+  top: 2px;
+}
+
+.btn-3:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  line-height: 3;
+  font-size: 140%;
+  width: 60px;
+}
+
+.appointments-title {
+  font-size: clamp(2.5rem, 3vw, 4rem);
+  margin-block: 2rem;
+}
+
+.appointments-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem;
+  margin-top: 0;
 }
 
 #loginForm,

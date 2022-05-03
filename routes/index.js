@@ -7,6 +7,10 @@ const {ensureAuthenticated} = require('../middleware/auth.js')
 navigation.get('/', (req, res) => {
   res.render('pages/index')
 })
+//account page
+navigation.get('/account', (req, res) => {
+  res.render('pages/account')
+})
 //log in page
 navigation.get('/login', (req, res) => {
   res.render('pages/login')
