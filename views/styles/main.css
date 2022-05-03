@@ -946,6 +946,8 @@ footer .payment-container .copyright {
 #loginForm h1,
 #signUpForm h1 {
   text-align: center;
+  font-size: clamp(2.5rem, 3vw, 4rem);
+  margin-bottom: 2rem;
 }
 
 #loginForm .inputs,
@@ -979,7 +981,7 @@ footer .payment-container .copyright {
 #signUpForm .login,
 #signUpForm .signIn {
   color: currentColor;
-  background-color: #21004a;
+  background-color: #3b0086;
   border: none;
   width: 100%;
   padding: 0.75rem;
@@ -995,7 +997,8 @@ footer .payment-container .copyright {
 #signUpForm .login:focus-within,
 #signUpForm .signIn:hover,
 #signUpForm .signIn:focus-within {
-  background-color: #9473bd;
+  -webkit-filter: brightness(1.5);
+          filter: brightness(1.5);
 }
 
 #loginForm .form-error,
