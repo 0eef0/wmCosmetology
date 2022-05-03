@@ -35,7 +35,6 @@ const port = process.env.PORT || 5000;
 
 //navigation routing
 app.use('/', require('./routes/index'));
-app.use('/api/v1/users', require('./routes/loginRoutes'));
 app.use('/api/v1/admins', require('./routes/adminRoutes'));
 //api routing
 

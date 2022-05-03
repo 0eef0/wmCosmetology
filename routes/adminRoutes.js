@@ -12,7 +12,7 @@ app.use(express.json())
 // Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
-    const { adminEmail, adminPassword } = req.body;
+    const { adminName, adminEmail, adminPassword, accountType, serviceHistory } = req.body;
     console.log(req.body)
     //console.log(username, name, password)
     let errors = [];
@@ -30,9 +30,13 @@ app.post('/', async (req, res) => { //create user
                 errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
+                    adminName,
                     adminEmail,
                     adminPassword,
+                    accountType,
+                    serviceHistory
                 })
+                newUser.serviceHistory = [];
 
                 bcrypt.genSalt(10, (err, salt) =>
                     bcrypt.hash(newUser.adminPassword, salt,
@@ -40,7 +44,8 @@ app.post('/', async (req, res) => { //create user
                             if (err) throw err;
                             //same pass to hash
                             newUser.adminPassword = hash;
-                            //save user
+
+                                                        //save user
 
                             newUser.save()
                                 .then((value) => {
