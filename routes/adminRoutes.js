@@ -66,7 +66,7 @@ app.post('/', async (req, res) => { //create user
 
 app.post('/login', async (req, res, next) => { //login
     passport.authenticate('local', {
-        successRedirect: '/adminHome',
+        successRedirect: '/schedule',
         failureRedirect: '/login'
     })(req, res, next)
 })
