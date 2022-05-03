@@ -25,6 +25,9 @@ app.post('/', async (req, res) => { //create user
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
+            } else if (!/@west-mec.org\s*$/.test(adminEmail)) {
+                console.log('not a west-mec user')
+                errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
                     adminEmail,
