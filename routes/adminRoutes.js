@@ -6,39 +6,46 @@ const app = express.Router()
 const bcrypt = require('bcrypt')
 const passport = require('passport');
 
-const UserSchema = require('../models/users');
+const UserSchema = require('../models/admin');
 
 app.use(express.json())
 // Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
-    const { username, name, password } = req.body;
+    const { adminName, adminEmail, adminPassword, accountType, serviceHistory } = req.body;
     console.log(req.body)
-    console.log(username, name, password)
+    //console.log(username, name, password)
     let errors = [];
     try {
         // const salt = await bcrypt.genSalt(10)
         // console.log(`Salt ${salt}`);
 
-        UserSchema.findOne({ username: username }).exec((err, user) => {
-            console.log(username);
+        UserSchema.findOne({ adminEmail: adminEmail }).exec((err, user) => {
+            //console.log(username);
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
+            } else if (!/@west-mec.org\s*$/.test(adminEmail)) {
+                console.log('not a west-mec user')
+                errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
-                    username: username,
-                    name: name,
-                    password: password
+                    adminName,
+                    adminEmail,
+                    adminPassword,
+                    accountType,
+                    serviceHistory
                 })
+                newUser.serviceHistory = [];
 
                 bcrypt.genSalt(10, (err, salt) =>
-                    bcrypt.hash(newUser.password, salt,
+                    bcrypt.hash(newUser.adminPassword, salt,
                         (err, hash) => {
                             if (err) throw err;
                             //same pass to hash
-                            newUser.password = hash;
-                            //save user
+                            newUser.adminPassword = hash;
+
+                                                        //save user
 
                             newUser.save()
                                 .then((value) => {
