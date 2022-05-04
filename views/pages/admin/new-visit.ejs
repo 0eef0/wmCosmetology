@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head'); %>
+
+  <script type="module" src="../../scripts/main.js"></script>
+</head>
+<body class="container">
+<!-- modals go here -->
+
+<!-- navbar here -->
+<%- include('../../partials/admin-navbar'); %>
+<!-- use navbar spacer if you don't want things to go behind the navbar -->
+<%- include('../../partials/navbar-spacer'); %>
+
+<!-- page content here -->
+<div class="row">
+  <div class="col">
+    <h1>Client Information</h1>
+
+    <input type="text" name="name" id="name" placeholder="Name">
+    <label for="appointment-date">Appointment Date</label>
+    <input type="date" name="appointment-date" id="appointment-date">
+    <input type="text" name="address" id="address" placeholder="Address">
+    <input type="text" name="city" id="city" placeholder="City">
+    <input type="text" name="state" id="state" placeholder="State">
+    <input type="number" name="zip" id="zip" placeholder="Zip Code">
+    <input type="tel" name="phone" id="phone" placeholder="Phone Number">
+    <input type="email" name="email" id="email" placeholder="Email">
+    <label for="dob">Date of Birth</label>
+    <input type="date" name="dob" id="dob">
+
+    <input type="text" name="service-request" id="service-request" placeholder="request">
+  </div>
+
+  <div class="col">
+    <h1>Hair Consultation</h1>
+
+    
+    <% for(var i=0; i < hairDescriptions.length; i++) { %>
+      
+      <% const descriptionID = hairDescriptions[i].name.toLowerCase().split(' ').join('-'); %>
+      <% const descriptionLabel = hairDescriptions[i].name; %>
+
+      <label for="<%= descriptionID %>"><%= descriptionLabel %></label>
+      <select name="<%= descriptionID %>" id="<%= descriptionID %>">
+        
+        <% for(var j=0; j < hairDescriptions[i].options.length; j++) { %>
+
+          <% const optionID = hairDescriptions[i].options[j].toLowerCase().split(' ').join('-'); %>
+          <% const optionLabel = hairDescriptions[i].options[j]; %>
+
+          <option value="<%= optionID %>"><%= optionLabel %></option>
+        <% } %>
+
+      </select>
+    <% } %>
+  </div>
+</div>
+
+<%- include('../../partials/admin-footer'); %>
+</body>
+</html>

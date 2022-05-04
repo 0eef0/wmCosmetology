@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+  gap: 1rem;
+  .col {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: $title-font-size;
+      margin: 1.5rem 0;
+    }
+
+    input {
+      padding: .5rem 1rem;
+    }
+  }
+}
