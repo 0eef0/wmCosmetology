@@ -21,6 +21,11 @@ navigation.get('/schedule', (req, res) => {
   res.render('pages/admin/schedule')
 })
 
+//admin create user page
+navigation.get('/create-user', (req, res) => {
+  res.render('pages/admin/create-user')
+})
+
 // ALL ADMIN PAGES HERE
 
 //admin home page

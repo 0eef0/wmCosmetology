@@ -1058,5 +1058,62 @@ footer .payment-container .copyright {
           filter: brightness(0.6);
 }
 
+.container {
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+}
+
+#userCreateh1 {
+  font-size: clamp(2.5rem, 3vw, 4rem);
+  padding: 2rem 0 .5rem 0;
+}
+
+.createUserColumn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.createUserColumn input {
+  border: gray solid 1px;
+  border-radius: 5px;
+  margin: 5px 0 5px 0;
+  padding: 5px;
+}
+
+.createUserColumn div {
+  background-color: white;
+  color: gray;
+  border: gray solid 1px;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.createUserColumn div select {
+  float: right;
+}
+
+.createUserColumn button {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: 0;
+  width: 16%;
+  padding: 6px;
+  border: gray solid 1px;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.5vw, 1.5rem);
+}
+
 /* Other Colors used */
 /*# sourceMappingURL=main.css.map */
