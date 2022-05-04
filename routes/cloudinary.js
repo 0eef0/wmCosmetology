@@ -6,13 +6,13 @@ require('dotenv').config();
 const apiSecret = process.env.CLOUDINARY_SECRET;
 
 // Server-side function used to sign an Upload Widget upload.
-const signuploadwidget = () => {
+const signuploadwidget = (folder) => {
 	const timestamp = Math.round((new Date).getTime() / 1000);
 
 	const signature = cloudinary.utils.api_sign_request({
 		timestamp: timestamp,
 		source: 'uw',
-		folder: 'signed_upload_demo_uw'
+		folder
 	}, apiSecret);
 
 	return { timestamp, signature }
@@ -27,7 +27,7 @@ app.get('/cloudinaryTest', (req, res) => {
 
 // using this API should require authentication
 app.get('/api/signuploadwidget', (req, res, next) => {
-	const sig = signuploadwidget()
+	const sig = signuploadwidget(req.body.folder);
 	res.json({
 		signature: sig.signature,
 		timestamp: sig.timestamp,
