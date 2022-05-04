@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../../partials/head'); %>
+
+    <script type="module" src="../../scripts/main.js"></script>
+</head>
+
+<body class="container">
+    <!-- modals go here -->
+    <%- include('../../partials/accountModal') %>
+
+    <!-- navbar here -->
+    <%- include('../../partials/navbar'); %>
+    <!-- use navbar spacer if you don't want things to go behind the navbar -->
+    <%- include('../../partials/navbar-spacer'); %>
+
+    <!-- page content here -->
+    <h1 class="page-title">Accounts</h1>
+    <div id="allAccounts">
+        <% for(const user of allUsers) { %>
+            <div class="account">
+                <% const { _id: id, name, email, accountType, serviceHistory }=user %>
+                    <% const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined %>
+                        <h1 class="name">
+                            <%= name %>
+                        </h1>
+                        <h2 class="email">
+                            <%= email %>
+                        </h2>
+                        <h2 class="lastApptTxt">Last Appointment:</h2>
+                        <h2 class="lastAppt">
+                            <% if(date) { %>
+                            <%= `${date.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${date.getHours()> 12 ?
+                                date.getHours()-12 :
+                                date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? 'PM' : 'AM'}` %>
+                            <% } else { %>
+                                N/A
+                            <% } %>
+                        </h2>
+                        <h2 class="acctType">
+                            <%= accountType %>
+                        </h2>
+                        <button class="moreBtn">More...</button>
+            </div>
+        <% } %>
+    </div>
+
+    <%- include('../../partials/footer'); %>
+</body>
+
+</html>
