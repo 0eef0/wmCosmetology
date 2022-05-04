@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head'); %>
 
-  <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
 </head>
+
 <body class="container">
-<!-- modal comes first so other components can call showModal() and hideModal() -->
-<%- include('../partials/service-modal'); %>
+  <!-- modal comes first so other components can call showModal() and hideModal() -->
+  <%- include('../partials/service-modal'); %>
 
-<%- include('../partials/navbar'); %>
+    <%- include('../partials/navbar'); %>
 
-<div class="banner-container">
-  <img src="../assets/360_F_421546924_ier1so1zCu2uENgFzGUMilGo3LDqs6gQ.jpg" alt="Beauty Salon Banner">
-  <h1 class="title">West-MEC Cosmetology Program</h1>
-</div>
+      <div class="banner-container">
+        <img src="../assets/360_F_421546924_ier1so1zCu2uENgFzGUMilGo3LDqs6gQ.jpg" alt="Beauty Salon Banner">
+        <h1 class="title">West-MEC Cosmetology Program</h1>
+      </div>
 
-<div class="service-container">
-  <h1 class="container-title">Available Services</h1>
-  <div class="service-card-container">
-    <%- include('../partials/service-card'); %>
-    <%- include('../partials/service-card'); %>
-    <%- include('../partials/service-card'); %>
-    <%- include('../partials/service-card'); %>
-  </div>
-</div>
+      <div class="service-container">
+        <h1 class="container-title">Available Services</h1>
+        <div class="service-card-container">
+          <%- include('../partials/service-card'); %>
+            <%- include('../partials/service-card'); %>
+              <%- include('../partials/service-card'); %>
+                <%- include('../partials/service-card'); %>
+        </div>
+      </div>
 
 
-<%- include('../partials/footer'); %>
+      <%- include('../partials/footer'); %>
 
 
 
 </body>
+
 </html>
