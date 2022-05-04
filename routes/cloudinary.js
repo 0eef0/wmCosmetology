@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
 const cloudinary = require('cloudinary').v2;
+const { ensureAuthenticated } = require('../middleware/auth');
 require('dotenv').config();
 
+// Cloudinary account info
 const apiSecret = process.env.CLOUDINARY_SECRET;
+const cloudName = 'west-mec-coding';
+const apiKey = '416953374243466';
+//
 
 // Server-side function used to sign an Upload Widget upload.
 const signuploadwidget = (folder) => {
@@ -18,15 +23,13 @@ const signuploadwidget = (folder) => {
 	return { timestamp, signature }
 }
 
-const cloudName = 'west-mec-coding';
-const apiKey = '416953374243466';
-
 app.get('/cloudinaryTest', (req, res) => {
 	res.render('pages/cloudinarytest')
 })
 
 // using this API should require authentication
 app.get('/api/signuploadwidget', (req, res, next) => {
+	ensureAuthenticated(req, res, next)
 	const sig = signuploadwidget(req.body.folder);
 	res.json({
 		signature: sig.signature,
