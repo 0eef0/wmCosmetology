@@ -17,25 +17,25 @@ navigation.get('/sign-up', (req, res) => {
 })
 
 /* ALL ADMIN PAGES HERE */
-// Admin Accounts
+// Accounts
 navigation.get('/accounts', /* ensureAuthenticated, */ (req, res) => {
     res.render('pages/admin/accounts')
 })
-// Admin New Visit
+// Create User
+navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/createUser')
+})
+// New Appointment
+navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/newAppointment')
+})
+// New Visit
 navigation.get('/newVisit', /* ensureAuthenticated, */ (req, res) => {
     res.render('pages/admin/newVisit')
 })
-// Admin Profile
-navigation.get('/profile/:id', /* ensureAuthenticated, */ (req, res) => {
-    res.render('pages/admin/profile')
-})
-// Admin Schedule
+// Schedule
 navigation.get('/schedule', /* ensureAuthenticated, */ (req, res) => {
     res.render('pages/admin/schedule')
-})
-//admin home page
-navigation.get('/adminHome', /* ensureAuthenticated, */ (req, res) => {
-  res.render('pages/adminHome')
 })
 
 module.exports = navigation;

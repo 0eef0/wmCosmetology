@@ -187,6 +187,7 @@ html {
   align-items: center;
   max-width: 3440px;
   margin-inline: auto;
+  margin-top: 3.5rem;
 }
 
 .navbar {
@@ -756,7 +757,68 @@ footer .payment-container .copyright {
 }
 
 /* Other Colors used */
-/* Admin Pages */
+#new-appt-form {
+  display: flex;
+  row-gap: 0.5rem;
+  flex-direction: column;
+}
+#new-appt-form textarea {
+  margin-bottom: 3rem;
+  width: 100%;
+  min-height: 10rem;
+  resize: none;
+}
+#new-appt-form .dropdown-row {
+  display: flex;
+}
+#new-appt-form .dropdown-row p {
+  margin-left: auto;
+}
+
+#new-appt-form > input, div.dropdown-input, textarea {
+  border: 1px solid #2d3436;
+  max-width: 100vw;
+  border-radius: 0.3rem;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  background-color: #fff;
+}
+
+#price-calculator {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background-color: #2d3436;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  height: 3rem;
+}
+#price-calculator * {
+  color: #fff;
+}
+#price-calculator p:first-child {
+  margin-right: auto;
+  margin: auto 0;
+}
+#price-calculator .price-calc-right {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+#price-calculator input {
+  background-color: hsl(125deg, 67%, 44%);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+  transition: 0.3s ease color;
+}
+#price-calculator input:hover {
+  color: #d8d8d8;
+}
+
 .schedule-filters {
   background-color: #2d3436;
   display: flex;
