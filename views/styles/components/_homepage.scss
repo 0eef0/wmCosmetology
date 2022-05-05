@@ -4,12 +4,14 @@
     text-align: center;
     font-weight: bold;
     font-size:2rem; 
+    // color: white;
 }
 
 .homeAbout{
     width: 80%;
     margin-left: 10%;
     margin-bottom: 1rem;
+    padding:3rem 4rem 3rem 4rem;
     // border-radius: 1rem;
     // background-color:  hsl(0deg, 0%, 90%);
     // box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -17,9 +19,7 @@
 
 .homeAboutText{
     font-size: 1.3rem;
-    margin: 2rem 5rem 2rem 5rem;
     font-family: "Poppins", sans-serif;
-    color: white;
 }
 
 .block{
@@ -88,18 +88,18 @@
 }
 
   /* The dots/bullets/indicators */
-.dot {
+.slideBox {
     cursor: pointer;
-    height: 15px;
-    width: 15px;
+    height: 1.5rem;
+    width: 5rem;
     margin: 0 2px;
     background-color: #bbb;
-    border-radius: 50%;
+    border-radius:1rem;
     display: inline-block;
     transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active, .slideBox:hover {
     background-color: #717171;
 }
 
@@ -126,10 +126,39 @@
     height: 100%;
 }
 
-.container{
-  background-color: $clr-primary-1;
+.slideBoxs{
+  text-align:center;
 }
 
-.container-title{
-  color: white;
+.schedule{
+  max-width:100%;
+  height:15rem;
+  margin:2rem 0 2rem 0;
+  justify-content: center;
+  text-align: center;
+  background-color: #bbb;
+  padding:4rem 2rem 4rem 2rem ;
+  background-image: url(../../assets/360_F_421546924_ier1so1zCu2uENgFzGUMilGo3LDqs6gQ.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width:1000px){
+  .schedule{
+    background-image: url(../../assets/slide1.png);
+  }
+}
+
+.phonetext{
+  color:black;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.phonenumber{
+  font-size: 1.5rem;
+}
+
+.phonenumber:hover{
+  color: rgb(255, 0, 255);
 }
