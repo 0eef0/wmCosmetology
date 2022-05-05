@@ -4,14 +4,21 @@
 
 <script>
 	window.onload = async function () {
-		const data = await (await fetch('/api/signuploadwidget')).json();
+		const data = await (await fetch('/api/signuploadwidget', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ folder: 'asdf' })
+			//body folder takes current individual
+		})).json();
 
 		const options = {
 			cloudName: data.cloudname,
 			apiKey: data.apikey,
 			uploadSignatureTimestamp: data.timestamp,
 			uploadSignature: data.signature,
-			cropping: false,
+			cropping: true,
 			folder: 'signed_upload_demo_u'
 		}
 

@@ -28,8 +28,7 @@ app.get('/cloudinaryTest', (req, res) => {
 })
 
 // using this API should require authentication
-app.get('/api/signuploadwidget', (req, res, next) => {
-	ensureAuthenticated(req, res, next)
+app.post('/api/signuploadwidget', (req, res, next) => {
 	const sig = signuploadwidget(req.body.folder);
 	res.json({
 		signature: sig.signature,
