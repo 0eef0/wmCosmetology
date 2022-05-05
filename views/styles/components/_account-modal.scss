@@ -1,0 +1,23 @@
+div#prevAppt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color: $clr-primary-0, $alpha: 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div#prevApptModal {
+        background-color: $clr-white;
+        box-shadow: $dark-shadow;
+        width: 80%;
+        padding: 1rem;
+
+        h1{
+            font-size: $title-font-size;
+            text-align: center;
+        }
+    }
+}
