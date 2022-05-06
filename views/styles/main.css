@@ -1058,5 +1058,92 @@ footer .payment-container .copyright {
           filter: brightness(0.6);
 }
 
+.form-container {
+  width: clamp(33vw, 80rem, 95vw);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.form-container .form-submit-btn {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.75rem;
+  margin: .5rem;
+  margin-left: auto;
+  padding: .5rem 2.5rem;
+  border-radius: .25rem;
+  background-color: #4CAF50;
+  color: #222;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.row .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+}
+
+.row .col h1 {
+  font-size: clamp(2.5rem, 3vw, 4rem);
+  margin: 1.5rem 0;
+}
+
+.row .col label {
+  margin-top: .75rem;
+  font-size: 18px;
+}
+
+.row .col label:first-of-type {
+  margin-top: 0;
+}
+
+.row .col input, .row .col select {
+  padding: .5rem .25rem;
+}
+
+.row .col textarea {
+  resize: none;
+}
+
+.row .col .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.row .col .button-container button {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: .5rem;
+  padding: .5rem 2.5rem;
+  border-radius: .25rem;
+  background-color: #bdc3c7;
+  color: #222;
+  font-weight: bold;
+}
+
 /* Other Colors used */
 /*# sourceMappingURL=main.css.map */
