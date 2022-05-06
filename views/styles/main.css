@@ -285,7 +285,7 @@ html {
 }
 
 .navbar ul div .nav-item .dropdown li a, .navbar ul ul .nav-item .dropdown li a {
-  padding: .5rem;
+  padding: .4rem;
 }
 
 .navbar ul div .nav-item .dropdown li a:hover, .navbar ul ul .nav-item .dropdown li a:hover {
@@ -346,6 +346,10 @@ html {
             flex-direction: column;
     background-color: #f9f9f9;
     height: 7rem;
+  }
+  .navbar ul div .nav-item .space-dropdown, .navbar ul ul .nav-item .space-dropdown {
+    margin-top: 2rem;
+    font-size: 2.5rem;
   }
   .navbar ul .menu-button {
     display: -ms-grid !important;
