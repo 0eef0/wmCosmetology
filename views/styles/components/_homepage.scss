@@ -138,14 +138,11 @@
   text-align: center;
   background-color: #bbb;
   padding:4rem 2rem 4rem 2rem ;
-  background-image: url(../../assets/360_F_421546924_ier1so1zCu2uENgFzGUMilGo3LDqs6gQ.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 @media screen and (max-width:1000px){
   .schedule{
-    background-image: url(../../assets/slide1.png);
+    background-image: url(../../assets/blank.png);
   }
 }
 
@@ -161,4 +158,18 @@
 
 .phonenumber:hover{
   color: rgb(255, 0, 255);
+}
+
+.homeleft{
+  height: 15rem;
+  width: 100%;
+  background-image: url(../../assets/hair.svg);
+  background-repeat: no-repeat;
+}
+
+.homeright{
+  height: 15rem;
+  width: 100%;
+  background-image: url(../../assets/add.svg);
+  background-repeat: no-repeat;
 }
