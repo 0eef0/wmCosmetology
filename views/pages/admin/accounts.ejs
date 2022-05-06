@@ -9,7 +9,7 @@
 
 <body class="container">
     <!-- modals go here -->
-    <%- include('../../partials/accountModal') %>
+    <%- include('../../partials/accountModal'), { allUsers } %>
 
     <!-- navbar here -->
     <%- include('../../partials/navbar'); %>
@@ -22,30 +22,34 @@
         <% for(const user of allUsers) { %>
             <div class="account">
                 <% const { _id: id, name, email, accountType, serviceHistory }=user %>
-                    <% const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined %>
-                        <h1 class="name">
-                            <%= name %>
-                        </h1>
-                        <h2 class="email">
-                            <%= email %>
-                        </h2>
-                        <h2 class="lastApptTxt">Last Appointment:</h2>
-                        <h2 class="lastAppt">
-                            <% if(date) { %>
-                            <%= `${date.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${date.getHours()> 12 ?
-                                date.getHours()-12 :
-                                date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? 'PM' : 'AM'}` %>
-                            <% } else { %>
-                                N/A
-                            <% } %>
-                        </h2>
-                        <h2 class="acctType">
-                            <%= accountType %>
-                        </h2>
-                        <button class="moreBtn">More...</button>
+                <% const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined %>
+                    <h1 class="name">
+                        <%= name %>
+                    </h1>
+                    <h2 class="email">
+                        <%= email %>
+                    </h2>
+                    <h2 class="lastApptTxt">Last Appointment:</h2>
+                    <h2 class="lastAppt">
+                        <% if(date) { %>
+                        <%= `${date.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${date.getHours()> 12 ?
+                            date.getHours()-12 :
+                            date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? 'PM' : 'AM'}` %>
+                        <% } else { %>
+                            N/A
+                        <% } %>
+                    </h2>
+                    <h2 class="acctType">
+                        <%= accountType %>
+                    </h2>
+                    <% if(date) { %>
+                        <button class="moreBtn" onclick="getAppts('<%= id %>')">More...</button>
+                    <% } %>
             </div>
         <% } %>
     </div>
+
+    <script src="../../scripts/prevApptModal.js"></script>
 
     <%- include('../../partials/footer'); %>
 </body>
