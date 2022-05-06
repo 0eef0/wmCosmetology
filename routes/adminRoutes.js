@@ -6,31 +6,36 @@ const app = express.Router()
 const bcrypt = require('bcrypt')
 const passport = require('passport');
 
-const UserSchema = require('../models/users');
+const { updateAdminCutsByID } = require('../controllers/adminController');
 
-app.use(express.json())
-// Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
+const UserSchema = require('../models/admin');
+
+app.use(express.json());
+
+app.patch('/:id', updateAdminCutsByID);
 
 app.post('/', async (req, res) => { //create user
-    const { username, name, password } = req.body;
+    const { name, email, password, accountType, serviceHistory } = req.body;
     console.log(req.body)
-    console.log(username, name, password)
     let errors = [];
     try {
-        // const salt = await bcrypt.genSalt(10)
-        // console.log(`Salt ${salt}`);
-
-        UserSchema.findOne({ username: username }).exec((err, user) => {
-            console.log(username);
+        UserSchema.findOne({ email: email }).exec((err, user) => {
+            //console.log(username);
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
+            } else if (!/@west-mec.org\s*$/.test(email)) {
+                console.log('not a west-mec user')
+                errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
-                    username: username,
-                    name: name,
-                    password: password
+                    name,
+                    email,
+                    password,
+                    accountType,
+                    serviceHistory
                 })
+                newUser.serviceHistory = [];
 
                 bcrypt.genSalt(10, (err, salt) =>
                     bcrypt.hash(newUser.password, salt,
@@ -39,11 +44,9 @@ app.post('/', async (req, res) => { //create user
                             //same pass to hash
                             newUser.password = hash;
                             //save user
-
                             newUser.save()
                                 .then((value) => {
                                     console.log(value)
-                                    // req.flash('success_msg', 'You have now registered')
                                     res.sendStatus(200)
                                 })
                                 .catch(value => console.log(value))
@@ -59,7 +62,7 @@ app.post('/', async (req, res) => { //create user
 
 app.post('/login', async (req, res, next) => { //login
     passport.authenticate('local', {
-        successRedirect: '/adminHome',
+        successRedirect: '/schedule',
         failureRedirect: '/login'
     })(req, res, next)
 })
@@ -86,6 +89,16 @@ app.get('/', async (req, res) => {
       res.status(201).json({ allUsers });
   } catch (error) { res.status(500).json({ msg: error }) }
 })
+
+app.get('/:id', async (req, res) => {
+    try {
+        const user = await UserSchema.find({ _id: req.params.id });
+        res.status(201).json({ user });
+    } catch (err) {
+        res.status(500).json({ msg: error })
+    }
+})
+
 app.delete('/', async (req, res) => {
   try {
       await UserSchema.deleteMany({});
