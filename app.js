@@ -33,12 +33,15 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
 const port = process.env.PORT || 5000;
 
 //navigation routing
-app.use('/', [require('./routes/index'), require('./routes/cloudinary')])
+
+app.use('/', [require('./routes/index'), require('./routes/cloudinary')]);
+app.use('/api/v1/admins', require('./routes/adminRoutes'));
+
 //api routing
 
 const start = async () => {
     try {
-        // await connectDB(process.env.MONGO_URI);
+        await connectDB(process.env.MONGO_URI);
         // await populateProducts()
         app.listen(port, console.log(`server is listening on port ${port}, http://localhost:5000`));
     } catch (error) { console.log(error) }
