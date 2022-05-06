@@ -4,6 +4,8 @@ const axios = require('axios');
 //authentication middleware
 const {ensureAuthenticated} = require('../middleware/auth.js');
 
+const hairDescriptions = require('../hair-descriptions.json');
+
 //home page
 navigation.get('/', (req, res) => {
   res.render('pages/index')
@@ -34,9 +36,13 @@ navigation.get('/accounts', async (req, res) => {
 
 // ALL ADMIN PAGES HERE
 
-//admin home page
-navigation.get('/adminHome', ensureAuthenticated, (req, res) => {
-  res.render('pages/adminHome')
+//admin schedule page
+// navigation.get('/schedule', ensureAuthenticated, (req, res) => {
+//   res.render('pages/admin/schedule')
+// })
+//admin new visit
+navigation.get('/new-visit', ensureAuthenticated, (req, res) => {
+  res.render('pages/admin/new-visit', {hairDescriptions: hairDescriptions})
 })
 
 module.exports = navigation;
