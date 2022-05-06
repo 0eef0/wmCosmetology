@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../../partials/head'); %>
+
+  <script type="module" src="../../scripts/main.js"></script>
+</head>
+<body class="container">
+<!-- modals go here -->
+
+<!-- navbar here -->
+<%- include('../../partials/navbar'); %>
+<!-- use navbar spacer if you don't want things to go behind the navbar -->
+<%- include('../../partials/navbar-spacer'); %>
+
+<!-- page content here -->
+<h1 id="userCreateh1">Create User</h1>
+
+<div class="createUserColumn">
+  <input type="text" placeholder="Name"></input>
+  <input type="text" placeholder="Email"></input>
+  <input type="text" placeholder="Password"></input>
+  <input type="text" placeholder="Verify Password"></input>
+  <div>
+    <label for="account-type">Account Type</label>
+
+    <select name="Account-type">
+      <option value="admin">Admin</option>
+      <option value="teachers">Teachers</option>
+      <option value="students">Students</option>
+    </select>
+  </div>
+  
+  
+  <button type="submit">Submit</button>
+</div>
+
+</body>
+</html>
