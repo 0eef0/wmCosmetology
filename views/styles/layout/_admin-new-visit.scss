@@ -1,0 +1,59 @@
+.form-container {
+  width: clamp(33vw, 80rem, 95vw);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  .form-submit-btn {
+    width: max-content;
+    font-size: 1.75rem;
+    margin: .5rem;
+    margin-left: auto;
+    padding: .5rem 2.5rem;
+    border-radius: .25rem;
+    background-color: $clr-green-dark;
+    color: $clr-black;
+  }
+}
+.row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  .col {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    h1 {
+      font-size: $title-font-size;
+      margin: 1.5rem 0;
+    }
+
+    label {
+      margin-top: .75rem;
+      font-size: 18px;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    input, select {
+      padding: .5rem .25rem;
+    }
+    textarea {
+      resize: none;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      button {
+        width: max-content;
+        // font-size: 1.75rem;
+        margin: .5rem;
+        padding: .5rem 2.5rem;
+        border-radius: .25rem;
+        background-color: $light-gray-background;
+        color: $clr-black;
+        font-weight: bold;
+      }
+    }
+  }
+}
