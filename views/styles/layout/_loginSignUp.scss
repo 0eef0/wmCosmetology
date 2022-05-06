@@ -4,6 +4,8 @@
 	color: $font-color-light;
 	h1 {
 		text-align: center;
+		font-size: $title-font-size;
+		margin-bottom: 2rem;
 	}
 	.inputs {
 		display: flex;
@@ -23,7 +25,7 @@
 	.login,
 	.signIn {
 		color: currentColor;
-		background-color: $clr-accent-0;
+		background-color: $clr-accent-1;
 		border: none;
 		width: 100%;
 		padding: 0.75rem;
@@ -32,7 +34,7 @@
 		cursor: pointer;
 		&:hover,
 		&:focus-within {
-			background-color: $clr-accent-2;
+			filter: brightness(1.5);
 		}
 	}
 	.form-error {

@@ -1,0 +1,39 @@
+.appointment-card {
+  display: flex;
+  justify-content: space-between;
+
+  width: 90vw;
+  min-height: 10rem;
+
+  padding: 1rem;
+  background-color: $light-background;
+  font-size: $main-font-size;
+  border-radius: 6px;
+  
+  box-shadow: $dark-shadow-big;
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &.right {
+      align-items: flex-end;
+
+      .cancel-appointment {
+        margin-top: auto;
+        // background-color: red;
+      }
+      .cancel-warning {
+        font-size: 80%;
+      }
+    }
+
+    .date {
+      margin-top: auto;
+    }
+    h1 {
+      font-size: 115%;
+    }
+  }
+}
