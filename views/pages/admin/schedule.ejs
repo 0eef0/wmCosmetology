@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../../partials/head'); %>
+    <%- include('../../partials/head'); %>
+</head>
+<body class="container">
+    <%- include('../../partials/navbar'); %>
+
+    <div class="schedule-filters">
+        <button>Today</button>
+        <button>Week</button>
+        <button>Month</button>
+        <!-- <button>Day</button> -->
+        <input type="date" name="day" id="day-input">
+    </div>
+
+    <h1 class="page-title">Appointments</h1>
+
+    <!-- Full Appointment -->
+    <%- include('../../partials/admin/fullAppt'); %>
+    <!-- Partial Appointment -->
+    <%- include('../../partials/admin/partialAppt'); %>
+</body>
+</html>
+
+/*  <%- include('../../partials/head'); %>
 
   <script type="module" src="../../scripts/main.js"></script>
 </head>
@@ -18,4 +40,4 @@
 
 <%- include('../../partials/admin-footer'); %>
 </body>
-</html>
+</html> */

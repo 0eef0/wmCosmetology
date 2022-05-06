@@ -34,15 +34,27 @@ navigation.get('/accounts', async (req, res) => {
     }
 })
 
-// ALL ADMIN PAGES HERE
+/* ALL ADMIN PAGES HERE */
+// Accounts
+navigation.get('/accounts', /* ensureAuthenticated, */ (req, res) => {
+    res.render('pages/admin/accounts')
+})
+// Create User
+navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/createUser')
+})
+// New Appointment
+navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/newAppointment')
+})
+// New Visit
+navigation.get('/newVisit', /* ensureAuthenticated, */ (req, res) => {
+    res.render('pages/admin/newVisit')
+})
+// Schedule
+navigation.get('/schedule', /* ensureAuthenticated, */ (req, res) => {
+    res.render('pages/admin/schedule')
 
-//admin schedule page
-// navigation.get('/schedule', ensureAuthenticated, (req, res) => {
-//   res.render('pages/admin/schedule')
-// })
-//admin new visit
-navigation.get('/new-visit', ensureAuthenticated, (req, res) => {
-  res.render('pages/admin/new-visit', {hairDescriptions: hairDescriptions})
 })
 
 module.exports = navigation;
