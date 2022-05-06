@@ -1,7 +1,8 @@
 const express = require('express');
 const navigation = express.Router();
+const axios = require('axios');
 //authentication middleware
-const {ensureAuthenticated} = require('../middleware/auth.js')
+const {ensureAuthenticated} = require('../middleware/auth.js');
 
 const hairDescriptions = require('../hair-descriptions.json');
 
@@ -18,13 +19,27 @@ navigation.get('/login', (req, res) => {
   res.render('pages/login')
 })
 
+//admin schedule page
+navigation.get('/schedule', (req, res) => {
+  res.render('pages/admin/schedule')
+})
+navigation.get('/accounts', async (req, res) => {
+    try {
+        const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
+        await res.render('pages/admin/accounts', {
+            allUsers,
+        });
+    } catch (err) {
+        console.error(err);
+    }
+})
 
 // ALL ADMIN PAGES HERE
 
 //admin schedule page
-navigation.get('/schedule', ensureAuthenticated, (req, res) => {
-  res.render('pages/admin/schedule')
-})
+// navigation.get('/schedule', ensureAuthenticated, (req, res) => {
+//   res.render('pages/admin/schedule')
+// })
 //admin new visit
 navigation.get('/new-visit', ensureAuthenticated, (req, res) => {
   res.render('pages/admin/new-visit', {hairDescriptions: hairDescriptions})

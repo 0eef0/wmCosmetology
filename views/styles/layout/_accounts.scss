@@ -1,0 +1,10 @@
+.page-title {
+    font-size: $title-font-size;
+}
+
+div#allAccounts {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 70%;
+}

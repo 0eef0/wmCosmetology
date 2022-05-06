@@ -1,0 +1,60 @@
+div#prevAppt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color: $clr-primary-0, $alpha: 0.5);
+    display: none; //flex
+    justify-content: center;
+    align-items: center;
+
+    div#prevApptModal {
+        background-color: $clr-white;
+        width: 80%;
+        padding: 1rem;
+
+        h1{
+            font-size: $title-font-size;
+            text-align: center;
+        }
+        div#appts {
+            overflow-y: auto;
+            height: 50vh;
+        }
+        div.appt {
+            display: flex;
+            justify-content: space-between;
+            box-shadow: $dark-shadow;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            div {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: space-between;
+                h2, h3 {
+                    width: 100%;
+                }
+                h2 {
+                    font-size: 1.5rem;
+                }
+                h3 {
+                    font-size: 1rem;
+                }
+            }
+            div.rightHalf {
+                align-content: flex-start;
+                justify-content: flex-end;
+                h2, h3{
+                    text-align: right;
+                }
+                button {
+                    border-radius: $radius;
+                    background-color: $clr-accent-0;
+                    color: $clr-white;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+}
