@@ -89,6 +89,16 @@ app.get('/', async (req, res) => {
       res.status(201).json({ allUsers });
   } catch (error) { res.status(500).json({ msg: error }) }
 })
+
+app.get('/:id', async (req, res) => {
+    try {
+        const user = await UserSchema.find({ _id: req.params.id });
+        res.status(201).json({ user });
+    } catch (err) {
+        res.status(500).json({ msg: error })
+    }
+})
+
 app.delete('/', async (req, res) => {
   try {
       await UserSchema.deleteMany({});
