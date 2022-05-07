@@ -15,7 +15,6 @@ const getAppts = async (id) => {
             return temp;
         }
 
-        console.log(service);
         apptsDOM.innerHTML += `
             <div class="appt">
                 <div class="leftHalf">
