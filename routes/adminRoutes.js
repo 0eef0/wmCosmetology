@@ -23,10 +23,12 @@ cloudinary.config({
 });
 
 (async () => {
-    console.log((await cloudinary.api.resources({
-        type: 'upload',
-        prefix: 'test2' // add your folder
-    })).resources);
+    try {
+        console.log((await cloudinary.api.resources({
+            type: 'upload',
+            prefix: 'test2' // add your folder
+        })).resources);
+    } catch (error) { console.log(error) }
 })()
 //
 
@@ -85,20 +87,29 @@ app.post('/', async (req, res) => { //create user
 })
 
 app.post('/login', async (req, res, next) => { //login
-    passport.authenticate('local', {
-        successRedirect: '/schedule',
-        failureRedirect: '/login'
-    })(req, res, next)
+    try {
+        passport.authenticate('local', {
+            successRedirect: '/schedule',
+            failureRedirect: '/login'
+        })(req, res, next)
+    }
+    catch (error) {
+        console.error(error)
+    }
 })
 
 app.get('/current', async (req, res) => {
-    if (req.user === undefined) {
-        // The user is not logged in
-        res.json({});
-    } else {
-        res.json({
-            user: req.user
-        });
+    try {
+        if (req.user === undefined) {
+            // The user is not logged in
+            res.json({});
+        } else {
+            res.json({
+                user: req.user
+            });
+        }
+    } catch (error) {
+        console.error(error)
     }
 })
 
