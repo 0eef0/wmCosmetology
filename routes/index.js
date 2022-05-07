@@ -2,26 +2,26 @@ const express = require('express');
 const navigation = express.Router();
 const axios = require('axios');
 //authentication middleware
-const {ensureAuthenticated} = require('../middleware/auth.js');
+const { ensureAuthenticated } = require('../middleware/auth.js');
 
 const hairDescriptions = require('../hair-descriptions.json');
 
 //home page
 navigation.get('/', (req, res) => {
-  res.render('pages/index')
+    res.render('pages/index')
 })
 //account page
 navigation.get('/account', (req, res) => {
-  res.render('pages/account')
+    res.render('pages/account')
 })
 //log in page
 navigation.get('/login', (req, res) => {
-  res.render('pages/login')
+    res.render('pages/login')
 })
 
 //admin schedule page
 navigation.get('/schedule', (req, res) => {
-  res.render('pages/admin/schedule')
+    res.render('pages/admin/schedule')
 })
 navigation.get('/accounts', async (req, res) => {
     try {
@@ -38,7 +38,7 @@ navigation.get('/accounts', async (req, res) => {
 // ALL ADMIN PAGES HERE
 /* ALL ADMIN PAGES HERE */
 // Accounts
-navigation.get('/accounts', /* ensureAuthenticated, */ (req, res) => {
+navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/accounts')
 })
 // Create User
@@ -50,11 +50,11 @@ navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/newAppointment')
 })
 // New Visit
-navigation.get('/newVisit', /* ensureAuthenticated, */ (req, res) => {
-    res.render('pages/admin/newVisit')
+navigation.get('/new-visit', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/new-visit')
 })
 // Schedule
-navigation.get('/schedule', /* ensureAuthenticated, */ (req, res) => {
+navigation.get('/schedule', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/schedule')
 
 
