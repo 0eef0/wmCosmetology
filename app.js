@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
+const upload = require('express-fileupload');
 
 //middleware
+app.use(upload());
 app.use(express.json())
 require('dotenv').config()
 const session = require('express-session');

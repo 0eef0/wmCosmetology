@@ -51,7 +51,7 @@ navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
 })
 // New Visit
 navigation.get('/new-visit', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/new-visit')
+    res.render('pages/admin/new-visit', { hairDescriptions: hairDescriptions })
 })
 // Schedule
 navigation.get('/schedule', /* ensureAuthenticated, */(req, res) => {
