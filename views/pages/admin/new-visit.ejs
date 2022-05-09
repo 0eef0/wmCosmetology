@@ -24,7 +24,7 @@
             <label for="name">Name</label>
             <input type="text" name="name" id="name" required>
 
-            <label for="appointment-date">Appointment Date</label>
+            <label for="appointmentDate">Appointment Date</label>
             <input type="date" name="appointment-date" id="appointment-date" required>
 
             <label for="address">Address</label>
@@ -92,7 +92,7 @@
               <button type="button" onClick="addImage()">Add Image</button>
               <button type="button" onClick="removeImage()">Remove Image</button>
             </div>
-            <input type="file" name="images" id="images" className="image-input">
+            <input type="file" name="images" id="images" className="image-input" required>
           </div>
         </div>
 
@@ -108,6 +108,7 @@
             const input = document.createElement("input");
             input.type = "file";
             input.name = "images";
+            input.required = true;
             input.className = "image-input"; // set the CSS class
             const imageInputsLength = document.getElementsByClassName('image-input').length;
             return imageInputsLength < 3 ? imageUploadContainerDOM.appendChild(input) : null;
