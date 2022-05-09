@@ -54,7 +54,6 @@ navigation.get('/newVisit', /* ensureAuthenticated, */ (req, res) => {
 // Schedule
 navigation.get('/schedule', /* ensureAuthenticated, */ (req, res) => {
     res.render('pages/admin/schedule')
-
 })
 
 module.exports = navigation;
