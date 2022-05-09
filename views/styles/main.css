@@ -1372,6 +1372,10 @@ div#allAccounts {
   gap: 0.25rem;
 }
 
+.checkbox:hover {
+  cursor: pointer;
+}
+
 .schedule-filters {
   background-color: #2d3436;
   display: flex;
