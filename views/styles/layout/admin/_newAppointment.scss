@@ -50,7 +50,10 @@ $price-calc-height: 3rem;
         cursor: pointer;
     }
     i {
-        transform: 0;
+        transition: 0.25s transform ease;
+    }
+    &.accordionActive i {
+        transform: rotate(180deg);
     }
 }
 
@@ -64,11 +67,11 @@ $price-calc-height: 3rem;
     box-sizing: border-box;
     padding: .5rem;
     height: $price-calc-height;
+    z-index: 1;
     * {
         color: $clr-white;
     }
-    p:first-child {
-        margin-right: auto;
+    p {
         margin: auto 0;
     }
     .price-calc-right {
@@ -89,7 +92,7 @@ $price-calc-height: 3rem;
     }
 }
 
-.active + .panel {
+.accordionActive + .panel {
     transition: max-height 0.2s ease-out, opacity 0.4s linear;
     z-index: 1;
 }
@@ -99,4 +102,15 @@ $price-calc-height: 3rem;
     max-height: 0;
     transition: max-height 0.2s ease-out, opacity 0s linear;
     z-index: -1;
+}
+
+.appt-time {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.checkbox {
+    &:hover {
+        cursor: pointer;
+    }
 }
