@@ -9,7 +9,7 @@
     <div class="newApptContainer">
         <h1 class="page-title" id="newApptTitle">Schedule Appointment</h1>
         
-        <form action="" id="new-appt-form">
+        <form action="/newAppointment" onsubmit="handleSubmit(event)" id="new-appt-form">
             <input type="text" placeholder="Name" name="name" id="name-input">
             <input type="email" placeholder="Email" name="email" id="email-input">
             <input type="date" name="date" id="date-input">
@@ -214,7 +214,7 @@
             </div>
         
             <h2>Additional Information</h2>
-            <textarea name="add-notes" id="add-notes" placeholder="Notes" cols="30" rows="10"></textarea>
+            <textarea name="notes" id="add-notes" placeholder="Notes" cols="30" rows="10"></textarea>
         
             <div id="price-calculator">
                 <div class="appt-time">
@@ -231,5 +231,11 @@
     </div>
 
     <script src="../../scripts/admin/newAppointment.js"></script>
+    <script>
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            console.log(e)
+        }
+    </script>
 </body>
 </html>
