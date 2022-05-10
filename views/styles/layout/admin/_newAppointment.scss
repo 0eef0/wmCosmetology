@@ -1,15 +1,40 @@
 $price-calc-height: 3rem;
 
+#newApptPage {
+    justify-content: flex-start;
+    margin-top: 0;
+}
+
+.newApptContainer {
+    margin-top: 3.5rem;
+    max-width: 100vw;
+}
+
 #new-appt-form {
     display: flex;
     row-gap: .5rem;
     flex-direction: column;
-    width: 30rem;
+    width: clamp(30rem, 50vw, 40rem);
+    max-width: 100vw;
+    #date-input, #time-input, textarea {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    input {
+        font-size: clamp(1.5rem, 1.5vw, 2rem);
+    }
+    input:last-child {
+        font-size: clamp(1rem, 1vw, 1.5rem);
+    }
+    h2 {
+        font-size: clamp(1.5rem, 1.5vw, 2rem);
+        margin-top: 1.5rem;
+    }
     textarea {
-        margin-bottom: $price-calc-height;
         width: 100%;
         min-height: 10rem;
         resize: none;
+        margin-bottom: $price-calc-height+1;
+        font-size: clamp(1.5rem, 1.5vw, 2rem);
     }
     .dropdown-row {
         display: flex;
@@ -19,6 +44,8 @@ $price-calc-height: 3rem;
         }
         input {
             margin: auto 0;
+            width: 1.1rem;
+            height: 1.1rem;
         }
         label {
             margin-left: .25rem;
@@ -38,6 +65,9 @@ $price-calc-height: 3rem;
     display: flex;
     gap: .25rem;
     flex-direction: column;
+    * {
+        font-size: clamp(1.5rem, 1.5vw, 2rem);
+    }
 }
 
 .title-row {
@@ -50,7 +80,10 @@ $price-calc-height: 3rem;
         cursor: pointer;
     }
     i {
-        transform: 0;
+        transition: 0.25s transform ease;
+    }
+    &.accordionActive i {
+        transform: rotate(180deg);
     }
 }
 
@@ -64,11 +97,12 @@ $price-calc-height: 3rem;
     box-sizing: border-box;
     padding: .5rem;
     height: $price-calc-height;
+    z-index: 1;
+    max-width: 100vw;
     * {
         color: $clr-white;
     }
-    p:first-child {
-        margin-right: auto;
+    p {
         margin: auto 0;
     }
     .price-calc-right {
@@ -89,9 +123,9 @@ $price-calc-height: 3rem;
     }
 }
 
-.active + .panel {
+.accordionActive + .panel {
     transition: max-height 0.2s ease-out, opacity 0.4s linear;
-    z-index: 1;
+    z-index: 0;
 }
 
 .panel {
@@ -99,4 +133,56 @@ $price-calc-height: 3rem;
     max-height: 0;
     transition: max-height 0.2s ease-out, opacity 0s linear;
     z-index: -1;
+}
+
+.appt-time {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.checkbox {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#newApptTitle {
+    margin: 1.5rem 0;
+}
+
+@media screen and (max-width: 430px) {
+    #new-appt-form {
+        textarea {
+            margin-bottom: $price-calc-height*2.4;
+        }
+        .appt-time {
+            margin: 0 auto;
+        }
+        #estimated-price {
+            margin: 0 auto;
+        }
+        input:last-child {
+            font-size: clamp(1.25rem, 1.25vw, 1.5rem);
+        }
+    }
+
+    #price-calculator {
+        flex-direction: column;
+        height: max-content;
+        gap: .25rem;
+        *, input {
+            font-size: clamp(1.25rem, 1.25vw, 1.5rem);
+        }
+        .price-calc-right {
+            flex-direction: column;
+            margin: 0;
+            gap: 0;
+            gap: .25rem;
+            input {
+                width: 100%;
+                height: 2rem;
+                margin: 0 auto;
+            }
+        }
+    }
 }

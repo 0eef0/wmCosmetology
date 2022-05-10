@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
+const upload = require('express-fileupload');
 
 //middleware
+app.use(upload());
 app.use(express.json())
 require('dotenv').config()
 const session = require('express-session');
@@ -29,6 +31,9 @@ app.use("/styles", express.static(__dirname + "/views/styles"));
 app.use("/scripts", express.static(__dirname + "/views/scripts"));
 app.use("/assets", express.static(__dirname + "/views/assets"));
 
+// Login Routes
+const loginRoute = require('./routes/loginRoutes')
+const loginAPI = require('./routes/loginAPI')
 
 const port = process.env.PORT || 5000;
 
@@ -36,8 +41,12 @@ const port = process.env.PORT || 5000;
 
 app.use('/', [require('./routes/index'), require('./routes/cloudinary')]);
 app.use('/api/v1/admins', require('./routes/adminRoutes'));
-
+app.use('/api/v1/appointments', require('./routes/appointmentRoutes'));
 //api routing
+
+// Login
+app.use('/users',loginRoute); 
+app.use('/api/v1/user',loginAPI)
 
 const start = async () => {
     try {

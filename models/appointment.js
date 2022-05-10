@@ -5,86 +5,38 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Must provide a name']
     },
-    appointmentDate: {
-        type: Date,
-        required: [true, 'Must provide an appointment date']
-    },
-    address: {
-        type: String,
-        required: [true, 'Must provide an address']
-    },
-    city: {
-        type: String,
-        required: [true, 'Must provide a city']
-    },
-    state: {
-        type: String,
-        required: [true, 'Must provide a state']
-    },
-    zipCode: {
-        type: String,
-        required: [true, 'Must provide a zip code']
-    },
-    phone: {
-        type: String,
-        required: [true, 'Must provide a phone number']
-    },
     email: {
         type: String,
-        required: [true, 'Must provide an email']
+        required: [true, 'Must provide a email']
     },
-    dateOfBirth: {
-        type: Date,
-        required: [true, 'Must provide a date of birth']
+    date: {
+      type: String,
+      required: [false, 'Must provide a date']
     },
-    serviceRequest: {
-        type: String,
-        required: [true, 'Must provide a service request']
+    time: {
+      type: String,
+      required: [false, 'Must provide a time']
     },
-    hairCondition: {
-        type: String,
-        required: [true, 'Must provide a hair condition']
+    hairServices: {
+      type: Array,
+      required: [false, 'Must provide list of hair services']
     },
-    hairClassification: {
-        type: String,
-        required: [true, 'Must provide a hair classification']
+    colorServices: {
+      type: Array,
+      required: [false, 'Must provide list of color services']
     },
-    scalpCondition: {
-        type: String,
-        required: [true, 'Must provide a scalp condition']
+    chemicalServices: {
+      type: Array,
+      required: [false, 'Must provide list of chemical services']
     },
-    hairTexture: {
-        type: String,
-        required: [true, 'Must provide a hair texture']
+    addOnServices: {
+      type: Array,
+      required: [false, 'Must provide list of add-on services']
     },
-    growthPatterns: {
-        type: String,
-        required: [true, 'Must provide a growth pattern']
-    },
-    hairDensity: {
-        type: String,
-        required: [true, 'Must provide a hair density']
-    },
-    hairPorosity: {
-        type: String,
-        required: [true, 'Must provide a hair porosity']
-    },
-    hairElasticity: {
-        type: String,
-        required: [true, 'Must provide a hair elasticity']
-    },
-    hairLength: {
-        type: String,
-        required: [true, 'Must provide a hair length']
-    },
-    additionalInformation: {
-        type: String,
-        required: [false, '']
-    },
-    images: { //Maverick this is your job i don't know how to do this
-        type: String,
-        requires: [false, 'whats going on']
+    notes: {
+      type: String,
+      required: [false, '']
     }
 });
 
-module.exports = mongoose.model('admins', adminSchema);
+module.exports = mongoose.model('appointmentSchema', appointment);
