@@ -1,13 +1,9 @@
 const express = require('express');
 const app = express();
-
-////////////////////////////////
-//cloudinary
-app.use(require('./routes/cloudinary'));
-////////////////////////////////
-
+const upload = require('express-fileupload');
 
 //middleware
+app.use(upload());
 app.use(express.json())
 require('dotenv').config()
 const session = require('express-session');
@@ -21,8 +17,8 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.json({ limit: '16MB' }));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '16MB' }));
 
 //other imported functions
 const populateProducts = require('./populate')
@@ -39,7 +35,8 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
 const port = process.env.PORT || 5000;
 
 //navigation routing
-app.use('/', require('./routes/index'));
+
+app.use('/', [require('./routes/index'), require('./routes/cloudinary')]);
 app.use('/api/v1/admins', require('./routes/adminRoutes'));
 app.use('/api/v1/appointments', require('./routes/appointmentRoutes'));
 //api routing
