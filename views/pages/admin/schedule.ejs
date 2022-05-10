@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+
+<body class="container">
+    <%- include('../../partials/admin-navbar'); %>
+
+        <div class="schedule-filters">
+            <button>Today</button>
+            <button>Week</button>
+            <button>Month</button>
+            <!-- <button>Day</button> -->
+            <input type="date" name="day" id="day-input">
+        </div>
+
+        <h1 class="page-title">Appointments</h1>
+
+        <!-- Full Appointment -->
+        <%- include('../../partials/admin/fullAppt'); %>
+            <!-- Partial Appointment -->
+            <%- include('../../partials/admin/partialAppt'); %>
+                <%- include('../../partials/admin-footer'); %>
+</body>
+
+</html>
+
+
+<script type="module" src="../../scripts/main.js"></script>
