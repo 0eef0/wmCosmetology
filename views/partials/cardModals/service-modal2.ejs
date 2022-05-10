@@ -1,0 +1,112 @@
+<div class="modal-container2">
+  <div class="service-modal">
+    <h1 class="title">Available Services</h1>
+    <button class="close-btn" onClick="hideModal2()"><i class="material-icons">close</i></button>
+    <ul class="services">
+      <li>
+        <div class="left">
+          <p>Hair color</p>
+        </div>
+        <div class="right">
+          <p>$25+</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="left">
+          <p>Full Foil</p>
+        </div>
+        <div class="right">
+          <p>$40+</p>
+        </div>
+      </li>
+
+      <li class="info-spacer">
+        <div class="left">
+          <label for="service">Partial Foil</label>
+          <p class="additional-info">(No More Than 40 Foils)</p>
+        </div>
+        <div class="right">
+          <p>$30+</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="left">
+          <p>Individual Foils</p>
+        </div>
+        <div class="right">
+          <p>$3</p>
+        </div>
+      </li>
+      
+      <li>
+        <div class="left">
+          <p>Lighten and Tone</p>
+        </div>
+        <div class="right">
+          <p>$45+</p>
+        </div>
+      </li>
+      
+      <li>
+        <div class="left">
+          <p>Ombre/Balyage</p>
+        </div>
+        <div class="right">
+          <p>$50+</p>
+        </div>
+      </li>
+      
+      <li class="info-spacer">
+        <div class="left">
+          <label for="service">Extra Color</label>
+          <p class="additional-info">(Per Bowl)</p>
+        </div>
+        <div class="right">
+          <p>$10</p>
+        </div>
+      </li>
+      
+      <li class="info-spacer">
+        <div class="left">
+          <label for="service">Intensity Color</label>
+          <p class="additional-info">(Per Tube)</p>
+        </div>
+        <div class="right">
+          <p>$10</p>
+        </div>
+      </li>
+      <li>
+        <div class="left">
+          <p>Color Correction</p>
+        </div>
+        <div class="right">
+          <p>By consultation</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const modalDOM2  = document.querySelector('.modal-container2');
+  let isModalVisible2 = false;
+
+  const showModal2 = () => {
+    modalDOM2.style.display = 'grid';
+    modalDOM2.style.visibility = 'visible';  
+    isModalVisible2 = true;  
+  }
+  const hideModal2 = () => {
+    modalDOM2.style.display = 'none';
+    modalDOM2.style.visibility = 'hidden';  
+    isModalVisible2 = false;  
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if((e.key === "Escape" || e.key === "Esc") && isModalVisible2){
+      hideModal2();
+	  }
+  })
+</script>

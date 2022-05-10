@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../../partials/head'); %>
+
+    <script type="module" src="../../scripts/main.js"></script>
+</head>
+
+<body class="container">
+    <% let tempUsers=allUsers %> <!-- .filter((user) => user.accountType == 'student') -->
+
+    <!-- modals go here -->
+    <%- include('../../partials/accountModal'), { allUsers } %>
+
+    <!-- navbar here -->
+    <%- include('../../partials/navbar'); %>
+    <!-- use navbar spacer if you don't want things to go behind the navbar -->
+    <%- include('../../partials/navbar-spacer'); %>
+
+    <!-- page content here -->
+    <h1 class="page-title">Accounts</h1>
+
+    <br>
+
+    <div class="account-filters">
+        <input type="search" id="accountSearch" placeholder="Search...">
+        <div class="dropdown-menu">
+            <select name="acctType" id="acctType" onchange="filterByType(this.value)">
+                <option value="all">All</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select>
+            <select name="sort" id="sort">
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+            </select>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="allAccounts">
+        <% for(const user of tempUsers) { %>
+            <div class="account">
+                <% const { _id: id, name, email, accountType, serviceHistory }=user %>
+                <% const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined %>
+                    <h1 class="name">
+                        <%= name %>
+                    </h1>
+                    <h2 class="email">
+                        <%= email %>
+                    </h2>
+                    <h2 class="lastApptTxt">Last Appointment:</h2>
+                    <h2 class="lastAppt">
+                        <% if(date) { %>
+                        <%= `${date.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${date.getHours()> 12 ?
+                            date.getHours()-12 :
+                            date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? 'PM' : 'AM'}` %>
+                        <% } else { %>
+                            N/A
+                        <% } %>
+                    </h2>
+                    <h2 class="acctType">
+                        <%= accountType %>
+                    </h2>
+                    <% if(date) { %>
+                        <button class="moreBtn" onclick="getAppts('<%= id %>')">More...</button>
+                    <% } %>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        const allUsers = '<%= allUsers %>';
+    </script>
+    <script src="../../scripts/accountFilter.js"></script>
+    <script src="../../scripts/prevApptModal.js"></script>
+
+    <%- include('../../partials/footer'); %>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<div class="modal-container4">
+  <div class="service-modal">
+    <h1 class="title">Available Services</h1>
+    <button class="close-btn" onClick="hideModal4()"><i class="material-icons">close</i></button>
+    <ul class="services">
+      <li>
+        <div class="left">
+          <p>Flat / Curling Iron</p>
+        </div>
+        <div class="right">
+          <p>$5</p>
+        </div>
+      </li>
+      <li>
+        <div class="left">
+          <p>Deep Condition</p>
+        </div>
+        <div class="right">
+          <p>$5</p>
+        </div>
+      </li>
+      <li>
+        <div class="left">
+          <p>Scalp Treatment</p>
+        </div>
+        <div class="right">
+          <p>$5</p>
+        </div>
+      </li>
+      <li>
+        <div class="left">
+          <p>Individual braid</p>
+        </div>
+        <div class="right">
+          <p>$5</p>
+        </div>
+      </li>
+      <li>
+        <div class="left">
+          <p>High Frequency</p>
+        </div>
+        <div class="right">
+          <p>$5</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const modalDOM4  = document.querySelector('.modal-container4');
+  let isModalVisible4 = false;
+
+  const showModal4 = () => {
+    modalDOM4.style.display = 'grid';
+    modalDOM4.style.visibility = 'visible';  
+    isModalVisible4 = true;  
+  }
+  const hideModal4 = () => {
+    modalDOM4.style.display = 'none';
+    modalDOM4.style.visibility = 'hidden';  
+    isModalVisible4 = false;  
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if((e.key === "Escape" || e.key === "Esc") && isModalVisible4){
+      hideModal4();
+	  }
+  })
+</script>

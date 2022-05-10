@@ -1,0 +1,84 @@
+[
+  {
+    "name": "Hair Condition",
+    "options": [
+      "Dry",
+      "Greasy",
+      "Normal",
+      "Chemical Damage",
+      "Environmental Damage",
+      "Heat Damage",
+      "Product Build-up"
+    ]
+  },
+  {
+    "name": "Hair Classification",
+    "options": [
+      "Straight",
+      "Wavy",
+      "Curly",
+      "Very Curly"
+    ]
+  },
+  {
+    "name": "Scalp Condition",
+    "options": [
+      "Dry Oily",
+      "Dandruff Normal",
+      "Product Build-up"
+    ]
+  },
+  {
+    "name": "Hair Texture",
+    "options": [
+      "Very Fine",
+      "Fine",
+      "Medium",
+      "Coarse"
+    ]
+  },
+  {
+    "name": "Growth Pattens",
+    "options": [
+      "Nape Whorls",
+      "Widows Peak",
+      "Cowlick",
+      "Double Crown"
+    ]
+  },
+  {
+    "name": "Hair Density",
+    "options": [
+      "Very High",
+      "High",
+      "Medium",
+      "Low",
+      "Mix"
+    ]
+  },
+  {
+    "name": "Hair Porosity",
+    "options": [
+      "High",
+      "Average",
+      "Low"
+    ]
+  },
+  {
+    "name": "Hair Elasticity",
+    "options": [
+      "Good",
+      "Average",
+      "Poor",
+      "Mix"
+    ]
+  },
+  {
+    "name": "Hair Length",
+    "options": [
+      "Long",
+      "Medium",
+      "Short"
+    ]
+  }
+]

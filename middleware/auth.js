@@ -1,3 +1,5 @@
+const path = require('path');
+
 const ensureAuthenticated = (req,res,next) => {
   if (req.isAuthenticated()) {
     return next();
@@ -6,4 +8,12 @@ const ensureAuthenticated = (req,res,next) => {
   res.render('pages/login')
 }
 
-module.exports = {ensureAuthenticated};;
+const ensureAdminAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.accountType == 'admin') { return next()};
+  res.render('pages/login')
+}
+
+module.exports = {
+    ensureAuthenticated,
+    ensureAdminAuthenticated
+}
