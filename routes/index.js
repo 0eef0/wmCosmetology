@@ -35,15 +35,14 @@ navigation.get('/accounts', async (req, res) => {
 })
 
 
-// ALL ADMIN PAGES HERE
 /* ALL ADMIN PAGES HERE */
 // Accounts
 navigation.get('/accounts', /* ensureAuthenticated, */ (req, res) => {
     res.render('pages/admin/accounts')
 })
 // Create User
-navigation.get('/create-user', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/create-user')
+navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/createUser')
 })
 // New Appointment
 navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
