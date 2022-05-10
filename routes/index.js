@@ -23,9 +23,32 @@ navigation.get('/login', (req, res) => {
 navigation.get('/schedule', (req, res) => {
   res.render('pages/admin/schedule')
 })
-navigation.get('/accounts', async (req, res) => {
+
+
+// ALL ADMIN PAGES HERE
+/* ALL ADMIN PAGES HERE */
+// Accounts
+navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
     try {
         const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
+
+        // const filterByType = async (type) => {
+        //     console.log('hi')
+        //     switch (type) {
+        //         case 'student': 
+        //             allUsers = allUsers.filter((user) => {user.accountType === 'student'});
+        //             break;
+        //         case 'teacher': 
+        //             allUsers = allUsers.filter((user) => {user.accountType === 'teacher'});
+        //             break;
+        //         case 'admin': 
+        //             allUsers = allUsers.filter((user) => {user.accountType === 'admin'});
+        //             break;
+        //         default:
+        //             allUsers = allUsers;
+        //     }
+        // }
+
         await res.render('pages/admin/accounts', {
             allUsers,
         });
@@ -35,14 +58,21 @@ navigation.get('/accounts', async (req, res) => {
 })
 
 // ALL ADMIN PAGES HERE
-
-//admin schedule page
-// navigation.get('/schedule', ensureAuthenticated, (req, res) => {
-//   res.render('pages/admin/schedule')
-// })
-//admin new visit
-navigation.get('/new-visit', ensureAuthenticated, (req, res) => {
-  res.render('pages/admin/new-visit', {hairDescriptions: hairDescriptions})
+// Create User
+navigation.get('/create-user', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/create-user')
+})
+// New Appointment
+navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/newAppointment')
+})
+// New Visit
+navigation.get('/newVisit', /* ensureAuthenticated, */ (req, res) => {
+    res.render('pages/admin/newVisit')
+})
+// Schedule
+navigation.get('/schedule', /* ensureAuthenticated, */ (req, res) => {
+    res.render('pages/admin/schedule')
 })
 
 module.exports = navigation;
