@@ -6,7 +6,7 @@ const app = express.Router()
 const bcrypt = require('bcrypt')
 const passport = require('passport');
 
-const UserSchema = require('../models/users');
+const UserSchema = require('../models/admin');
 
 app.use(express.json())
 // Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));

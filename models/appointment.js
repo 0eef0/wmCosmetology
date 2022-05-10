@@ -39,4 +39,4 @@ const adminSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('appointmentSchema', appointment);
+module.exports = mongoose.model('appointmentSchema', adminSchema);

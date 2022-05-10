@@ -70,7 +70,7 @@ date.addEventListener('change', function () {
         newDate[2] = 1;
     }
     newDate = newDate.join('-');
-    displayDate.innerHTML = new Date(date.value).toLocaleString('en-US', { dateStyle: 'medium' });
+    displayDate.innerHTML = new Date(readableDate(date.value)).toLocaleString('en-US', { dateStyle: 'medium' });
     noDate.style.display = 'none';
 })
 
