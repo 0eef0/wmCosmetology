@@ -22,7 +22,8 @@ const adminSchema = new mongoose.Schema({
       required: [true, 'Must provide a time']
     },
     notes: {
-      type: String
+      type: String,
+      default: null
     }
 });
 
