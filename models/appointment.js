@@ -11,32 +11,19 @@ const adminSchema = new mongoose.Schema({
     },
     date: {
       type: String,
-      required: [false, 'Must provide a date']
+      required: [true, 'Must provide a date']
     },
     time: {
       type: String,
-      required: [false, 'Must provide a time']
+      required: [true, 'Must provide a time']
     },
-    hairServices: {
+    services: {
       type: Array,
-      required: [false, 'Must provide list of hair services']
-    },
-    colorServices: {
-      type: Array,
-      required: [false, 'Must provide list of color services']
-    },
-    chemicalServices: {
-      type: Array,
-      required: [false, 'Must provide list of chemical services']
-    },
-    addOnServices: {
-      type: Array,
-      required: [false, 'Must provide list of add-on services']
+      required: [true, 'Must provide a time']
     },
     notes: {
-      type: String,
-      required: [false, '']
+      type: String
     }
 });
 
-module.exports = mongoose.model('appointmentSchema', appointment);
+module.exports = mongoose.model('appointmentSchema', adminSchema);

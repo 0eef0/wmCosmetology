@@ -69,6 +69,7 @@ navigation.get('/create-user', /* ensureAuthenticated, */(req, res) => {
 navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/newAppointment')
 })
+// New Visit
 navigation.get('/newVisit', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/new-visit', { hairDescriptions: hairDescriptions })
 })
