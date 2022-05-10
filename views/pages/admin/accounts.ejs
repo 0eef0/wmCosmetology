@@ -8,6 +8,8 @@
 </head>
 
 <body class="container">
+    <% let tempUsers=allUsers %> <!-- .filter((user) => user.accountType == 'student') -->
+
     <!-- modals go here -->
     <%- include('../../partials/accountModal'), { allUsers } %>
 
@@ -18,8 +20,29 @@
 
     <!-- page content here -->
     <h1 class="page-title">Accounts</h1>
+
+    <br>
+
+    <div class="account-filters">
+        <input type="search" id="accountSearch" placeholder="Search...">
+        <div class="dropdown-menu">
+            <select name="acctType" id="acctType" onchange="filterByType(this.value)">
+                <option value="all">All</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select>
+            <select name="sort" id="sort">
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+            </select>
+        </div>
+    </div>
+
+    <br>
+
     <div id="allAccounts">
-        <% for(const user of allUsers) { %>
+        <% for(const user of tempUsers) { %>
             <div class="account">
                 <% const { _id: id, name, email, accountType, serviceHistory }=user %>
                 <% const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined %>
@@ -49,6 +72,10 @@
         <% } %>
     </div>
 
+    <script>
+        const allUsers = '<%= allUsers %>';
+    </script>
+    <script src="../../scripts/accountFilter.js"></script>
     <script src="../../scripts/prevApptModal.js"></script>
 
     <%- include('../../partials/footer'); %>
