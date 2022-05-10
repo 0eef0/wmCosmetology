@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const appointment = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Must provide a name']
