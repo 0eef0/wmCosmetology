@@ -22,6 +22,13 @@
     font-family: "Poppins", sans-serif;
 }
 
+@media screen and (max-width:370px){
+  .homeAbout{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 .block{
     margin-bottom: 2rem;
     margin-left: 2rem;
@@ -31,13 +38,19 @@
 
 .slideshow-container {
     max-width: 40rem;
-    height: 25rem;
+    min-height: 15rem;
     position: relative;
     margin: auto;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     border-radius: 1rem;
     overflow: hidden;
+}
+
+@media screen and (max-width:370px){
+  .slideshow-container{
+    height: 25rem;
+  }
 }
 
   /* Next & previous buttons */
