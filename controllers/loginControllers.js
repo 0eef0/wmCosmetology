@@ -1,4 +1,4 @@
-const accountModel = require('../models/users');
+const accountModel = require('../models/admin');
 
 const createNewAccount = async (req, res) => {
     try {
