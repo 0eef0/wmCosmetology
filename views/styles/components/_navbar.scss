@@ -1,7 +1,8 @@
 .navbar {
 	position: fixed;
 	width: 100%;
-	max-width: 3440px;
+	// max-width: 3440px;
+    max-width: 100vw;
 	background-color: $clr-light-transparent-2;
 	color: $clr-white;
 	z-index: 1;

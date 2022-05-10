@@ -57,6 +57,19 @@ function readableDate(time) {
 }
 
 date.addEventListener('change', function () {
+    let newDate = date.value.split('-');
+    newDate[2]++;
+    if (newDate[2] == 32) {
+        newDate[1]++;
+        newDate[2] = 1;
+    } else if ((newDate[1] == (4 || 6 || 9 || 11)) && (newDate[2] == 31)) {
+        newDate[1]++;
+        newDate[2] = 1;
+    } else if ((newDate[1] == 2) && (newDate[2] == 29)) {
+        newDate[1]++;
+        newDate[2] = 1;
+    }
+    newDate = newDate.join('-');
     displayDate.innerHTML = new Date(date.value).toLocaleString('en-US', { dateStyle: 'medium' });
     noDate.style.display = 'none';
 })
