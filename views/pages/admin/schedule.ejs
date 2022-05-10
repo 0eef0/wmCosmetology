@@ -3,29 +3,27 @@
 
 <head>
     <%- include('../../partials/head'); %>
+
+        <script type="module" src="../../scripts/main.js"></script>
 </head>
 
 <body class="container">
-    <%- include('../../partials/admin-navbar'); %>
+    <!-- modals go here -->
+    <!-- navbar here -->
+    <%- include('../../partials/navbar'); %>
+        <!-- use navbar spacer if you don't want things to go behind the navbar -->
+        <%- include('../../partials/navbar-spacer'); %>
 
-        <div class="schedule-filters">
-            <button>Today</button>
-            <button>Week</button>
-            <button>Month</button>
-            <!-- <button>Day</button> -->
-            <input type="date" name="day" id="day-input">
-        </div>
+            <!-- page content here -->
 
-        <h1 class="page-title">Appointments</h1>
+            <h1 class="page-title">Admin Schedule Page</h1>
+            <div class="schedule-filters">
+                <button>kj</button>
+                <button>kj</button>
+                <input type="date" />
+            </div>
 
-        <!-- Full Appointment -->
-        <%- include('../../partials/admin/fullAppt'); %>
-            <!-- Partial Appointment -->
-            <%- include('../../partials/admin/partialAppt'); %>
-                <%- include('../../partials/admin-footer'); %>
+            <%- include('../../partials/footer'); %>
 </body>
 
 </html>
-
-
-<script type="module" src="../../scripts/main.js"></script>

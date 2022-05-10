@@ -24,8 +24,6 @@ navigation.get('/schedule', (req, res) => {
     res.render('pages/admin/schedule')
 })
 
-
-// ALL ADMIN PAGES HERE
 /* ALL ADMIN PAGES HERE */
 // Accounts
 navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
