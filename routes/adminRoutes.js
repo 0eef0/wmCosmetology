@@ -50,6 +50,7 @@ app.post('/', async (req, res) => { //create user
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
+                res.sendStatus(403)
             } else if (!/@west-mec.org\s*$/.test(email)) {
                 console.log('not a west-mec user')
                 errors.push({ msg: 'user not from west-mec' })
