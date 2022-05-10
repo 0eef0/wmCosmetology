@@ -38,7 +38,7 @@ const port = process.env.PORT || 5000;
 
 app.use('/', [require('./routes/index'), require('./routes/cloudinary')]);
 app.use('/api/v1/admins', require('./routes/adminRoutes'));
-
+app.use('/api/v1/appointments', require('./routes/appointmentRoutes'));
 //api routing
 
 const start = async () => {
