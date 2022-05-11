@@ -46,7 +46,7 @@
     <br>
 
     <div class="account-filters">
-        <input type="search" id="accountSearch" placeholder="Search...">
+        <input type="search" id="accountSearch" placeholder="Search..." oninput="searchUsers(this.value)">
         <div class="dropdown-menu">
             <select name="acctType" id="acctType" onchange="filterByType(this.value)">
                 <option value="all">All</option>
@@ -54,7 +54,7 @@
                 <option value="teacher">Teacher</option>
                 <option value="admin">Admin</option>
             </select>
-            <select name="sort" id="sort">
+            <select name="sort" id="sort" onchange="sortByUser(this.value)">
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>
             </select>

@@ -4,8 +4,8 @@ let users = [];
 let tempUsers = [];
 (async () => {
     const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
-    users = allUsers;
-    tempUsers = allUsers;
+    users = allUsers.sort((a, b) => { return (a.name > b.name) ? 1 : -1; });
+    tempUsers = users;
     for(user of tempUsers) {
         const { _id: id, name, email, accountType, serviceHistory } = user;
         const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined;
@@ -74,5 +74,19 @@ const filterByType = (type) => {
         default:
             tempUsers = users;
     }
+    updateAccounts();
+}
+
+const sortByUser = (order) => {
+    if(order == 'a-z') {
+        tempUsers = users.sort((a, b) => { return (a.name > b.name) ? 1 : -1; });;
+    } else {
+        tempUsers = users.sort((a, b) => { return (a.name < b.name) ? 1 : -1; });;
+    }
+    updateAccounts();
+}
+
+const searchUsers = (str) => {
+    tempUsers = users.filter(user => JSON.stringify(user).toLowerCase().includes(str.toLowerCase()));
     updateAccounts();
 }

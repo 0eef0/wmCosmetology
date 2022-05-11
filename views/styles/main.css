@@ -535,7 +535,6 @@ footer .payment-container .copyright {
   height: 6rem;
 }
 
-<<<<<<< Updated upstream
 .modal-container {
   display: none;
   visibility: hidden;
@@ -656,9 +655,6 @@ footer .payment-container .copyright {
   color: #2d3436;
   text-decoration: none;
 }
-
-=======
->>>>>>> Stashed changes
 .homeTitle {
   width: 40%;
   margin-left: 30%;
@@ -985,7 +981,17 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#p
   color: #fff;
   padding: 0.5rem;
 }
-
+div.account-filters {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  background-color: #180038;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+div.account-filters input, div.account-filters select {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 .ack-modal-container {
   display: none;
   position: fixed;
