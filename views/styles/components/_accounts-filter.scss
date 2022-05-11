@@ -1,0 +1,13 @@
+div.account-filters {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    background-color: $clr-primary-1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    input, select {
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+    }
+}
