@@ -983,6 +983,19 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#p
   padding: 0.5rem;
 }
 
+div.account-filters {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  background-color: #180038;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+div.account-filters input, div.account-filters select {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
 .banner-container {
   background-color: #2d3436;
   min-width: 100%;
