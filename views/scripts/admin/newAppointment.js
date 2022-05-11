@@ -11,6 +11,9 @@ let displayDate = document.getElementById('display-date');
 let displayTime = document.getElementById('display-time');
 let noDate = document.getElementById('no-date');
 let formDOM = document.getElementById('new-appt-form');
+let modals = document.getElementsByClassName('ack-modal-container');
+let modalTitles = document.getElementsByClassName('modal-title');
+let modalBtns = document.getElementsByClassName('modal-close-btn');
 
 // Accordion Logic
 for (i = 0; i < acc.length; i++) {
@@ -74,7 +77,7 @@ time.addEventListener('change', function () {
     noDate.style.display = 'none';
 })
 
-// Submit to the API
+// Submits appointment to the API
 formDOM.addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -89,7 +92,21 @@ formDOM.addEventListener('submit', async function (e) {
 
     try {
         await axios.post('/api/v1/appointments', newAppt);
+        modals[0].style.display = "flex";
+        modalTitles[0].style.color = "green";
     } catch (error) {
         console.log(error.response.data);
+        modals[1].style.display = "flex";
+        modalTitles[1].style.color = "red";
     }
 })
+
+// Closes the Modal
+for (let i = 0; i < modals.length; i++) {
+    modals[i].addEventListener('click', function () {
+        modals[i].style.display = "none";
+        if (i == 0) {
+            location.reload();
+        }
+    });
+}

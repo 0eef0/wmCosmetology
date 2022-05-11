@@ -535,6 +535,7 @@ footer .payment-container .copyright {
   height: 6rem;
 }
 
+<<<<<<< Updated upstream
 .modal-container {
   display: none;
   visibility: hidden;
@@ -656,6 +657,8 @@ footer .payment-container .copyright {
   text-decoration: none;
 }
 
+=======
+>>>>>>> Stashed changes
 .homeTitle {
   width: 40%;
   margin-left: 30%;
@@ -981,6 +984,165 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#p
   background-color: #21004a;
   color: #fff;
   padding: 0.5rem;
+}
+
+.ack-modal-container {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.ack-modal {
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  max-width: 30rem;
+}
+.ack-modal .modal-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: black;
+}
+.ack-modal p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.modal-container {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.modal-container2 {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.modal-container3 {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.modal-container4 {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.service-modal {
+  background-color: #3b0086;
+  color: white;
+  width: clamp(33vw, 55rem, 95vw);
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.33rem;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.service-modal .title {
+  text-align: center;
+  font-size: clamp(2rem, 2vw, 3rem);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.service-modal .close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.service-modal .close-btn i {
+  font-size: 2rem;
+}
+.service-modal .close-btn:hover {
+  background-color: hsl(266deg, 100%, 16%);
+  color: white;
+}
+.service-modal .services {
+  display: flex;
+  flex-direction: column;
+}
+.service-modal .services li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 2rem;
+  background-color: rgba(148, 115, 189, 0.2666666667);
+}
+.service-modal .services li:nth-child(2n) {
+  background-color: transparent;
+}
+.service-modal .services li.info-spacer {
+  padding-bottom: 28px;
+}
+.service-modal .services li div {
+  display: flex;
+  align-items: center;
+  font-size: clamp(1.15rem, 1.5vw, 1.5rem);
+  font-weight: 400;
+  position: relative;
+  gap: 1rem;
+}
+.service-modal .services li div .additional-info {
+  position: absolute;
+  left: 2rem;
+  top: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: inherit;
+}
+.service-modal .button-container {
+  display: grid;
+  place-items: center;
+}
+.service-modal .button-container a {
+  background-color: #f9f9f9;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  font-size: 1.15rem;
+  color: #2d3436;
+  text-decoration: none;
 }
 
 .banner-container {

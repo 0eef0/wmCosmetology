@@ -4,12 +4,15 @@
     <%- include('../../partials/head'); %>
 </head>
 <body class="container" id="newApptPage">
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Success!", text: "You successfully submitted a new appointment" }); %>
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Error" ,text: "Not all parameters were filled" }); %>
+
     <%- include('../../partials/navbar'); %>
     
     <div class="newApptContainer">
         <h1 class="page-title" id="newApptTitle">Schedule Appointment</h1>
         
-        <form action="/newAppointment" onsubmit="handleSubmit(event)" id="new-appt-form">
+        <form id="new-appt-form">
             <input type="text" placeholder="Name" name="name" id="name-input">
             <input type="email" placeholder="Email" name="email" id="email-input">
             <input type="date" name="date" id="date-input">

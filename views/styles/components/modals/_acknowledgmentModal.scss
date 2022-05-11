@@ -1,0 +1,31 @@
+.ack-modal-container {
+    display: none;
+    position: fixed;
+    background-color: $clr-dark-transparent-2;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.ack-modal {
+    display: flex;
+    background-color: $clr-white;
+    flex-direction: column;
+    height: max-content;
+    width: max-content;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border-radius: $radius;
+    max-width: 30rem;
+    .modal-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: black;
+    }
+    p {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
