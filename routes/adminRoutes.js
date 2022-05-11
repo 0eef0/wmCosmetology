@@ -13,7 +13,7 @@ const upload = multer();
 require('dotenv').config();
 
 // Cloudinary account info
-const apiSecret = process.env.CLOUDINARY_SECRET;
+const apiSecret = process.env.CLOUDINARY_SECRET; //GET FROM CLOUDINARY ACCOUNT
 const cloudName = 'west-mec-coding';
 const apiKey = '416953374243466';
 
@@ -24,15 +24,13 @@ cloudinary.config({
     secure: true
 });
 
-(async () => {
-    console.log((await cloudinary.api.resources({
-        type: 'upload',
-        prefix: 'asdf' // add your folder
-    })).resources);
-})()
-//
+// (await cloudinary.api.resources({
+//     type: 'upload',
+//     prefix: 'asdf' // add your folder          /* <-----------USE FOR GETTING IMAGES FOR VISITS. REPLACE PREFIX WITH THE NAME OF THE PERSON */
+// })).resources
 
 const { updateAdminCutsByID } = require('../controllers/adminController');
+const { createVisit } = require('../controllers/visitController');
 
 const UserSchema = require('../models/admin');
 
@@ -133,13 +131,13 @@ app.delete('/', async (req, res) => {
 })
 
 app.post("/newVisit", upload.array('images'), (req, res) => {
-    console.log(req.body)
     req.files.forEach(img => {
-        // const cloudinaryStream = cloudinary.uploader.upload_stream({
-        //     folder: req.body.name
-        // });
-        // stream.Readable.from(img.data).pipe(cloudinaryStream);
+        const cloudinaryStream = cloudinary.uploader.upload_stream({
+            folder: req.body.name
+        });
+        stream.Readable.from(img.data).pipe(cloudinaryStream);
     })
+    createVisit();
     res.redirect('/newVisit');
 })
 

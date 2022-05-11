@@ -81,10 +81,6 @@ const adminSchema = new mongoose.Schema({
 		type: String,
 		required: [false, '']
 	},
-	images: {
-		type: String,
-		requires: [false, 'whats going on']
-	}
 });
 
 module.exports = mongoose.model('visit', adminSchema);
