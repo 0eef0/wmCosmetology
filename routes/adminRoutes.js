@@ -24,10 +24,12 @@ cloudinary.config({
     secure: true
 });
 
+
 // (await cloudinary.api.resources({
 //     type: 'upload',
 //     prefix: 'asdf' // add your folder          /* <-----------USE FOR GETTING IMAGES FOR VISITS. REPLACE PREFIX WITH THE NAME OF THE PERSON */
 // })).resources
+
 
 const { updateAdminCutsByID } = require('../controllers/adminController');
 const { createVisit } = require('../controllers/visitController');
@@ -48,6 +50,7 @@ app.post('/', async (req, res) => { //create user
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
+                res.sendStatus(403)
             } else if (!/@west-mec.org\s*$/.test(email)) {
                 console.log('not a west-mec user')
                 errors.push({ msg: 'user not from west-mec' })
@@ -85,20 +88,29 @@ app.post('/', async (req, res) => { //create user
 })
 
 app.post('/login', async (req, res, next) => { //login
-    passport.authenticate('local', {
-        successRedirect: '/schedule',
-        failureRedirect: '/login'
-    })(req, res, next)
+    try {
+        passport.authenticate('local', {
+            successRedirect: '/schedule',
+            failureRedirect: '/login'
+        })(req, res, next)
+    }
+    catch (error) {
+        console.error(error)
+    }
 })
 
 app.get('/current', async (req, res) => {
-    if (req.user === undefined) {
-        // The user is not logged in
-        res.json({});
-    } else {
-        res.json({
-            user: req.user
-        });
+    try {
+        if (req.user === undefined) {
+            // The user is not logged in
+            res.json({});
+        } else {
+            res.json({
+                user: req.user
+            });
+        }
+    } catch (error) {
+        console.error(error)
     }
 })
 
