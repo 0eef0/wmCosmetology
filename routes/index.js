@@ -24,8 +24,6 @@ navigation.get('/schedule', (req, res) => {
     res.render('pages/admin/schedule')
 })
 
-
-// ALL ADMIN PAGES HERE
 /* ALL ADMIN PAGES HERE */
 // Accounts
 navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
@@ -64,13 +62,14 @@ navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/accounts')
 })
 // Create User
-navigation.get('/create-user', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/create-user')
+navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
+    res.render('pages/admin/createUser')
 })
 // New Appointment
 navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/newAppointment')
 })
+// New Visit
 navigation.get('/newVisit', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/new-visit', { hairDescriptions: hairDescriptions })
 })
