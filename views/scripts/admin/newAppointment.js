@@ -87,6 +87,7 @@ formDOM.addEventListener('submit', async function (e) {
         date: document.getElementById('date-input').value,
         time: document.getElementById('time-input').value,
         services: serviceArr,
+        price: priceCounter,
         notes: document.getElementById('add-notes').value
     }
 

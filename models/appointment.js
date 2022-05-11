@@ -21,6 +21,10 @@ const adminSchema = new mongoose.Schema({
       type: Array,
       required: [true, 'Must provide a time']
     },
+    price: {
+        type: Number,
+        required: [true, 'Must provide an estimated price']
+    },
     notes: {
       type: String,
       default: null

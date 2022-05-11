@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include('../../partials/head'); %>
-
-        <script type="module" src="../../scripts/main.js"></script>
+    <script type="module" src="../../scripts/main.js"></script>
 </head>
 
 <body class="container">
     <!-- modals go here -->
     <!-- navbar here -->
     <%- include('../../partials/navbar'); %>
-        <!-- use navbar spacer if you don't want things to go behind the navbar -->
-        <%- include('../../partials/navbar-spacer'); %>
+    <!-- use navbar spacer if you don't want things to go behind the navbar -->
+    <%- include('../../partials/navbar-spacer'); %>
 
-            <!-- page content here -->
+    <!-- page content here -->
 
-            <h1 class="page-title">Admin Schedule Page</h1>
-            <div class="schedule-filters">
-                <button>kj</button>
-                <button>kj</button>
-                <input type="date" />
-            </div>
+    <h1 class="page-title">Admin Schedule Page</h1>
+    <div class="schedule-filters">
+        <button>kj</button>
+        <button>kj</button>
+        <input type="date" />
+    </div>
 
-            <%- include('../../partials/footer'); %>
+    <div id="appts-container"></div>
+
+    <script src="../../scripts/admin/schedule.js"></script>
 </body>
-
 </html>
