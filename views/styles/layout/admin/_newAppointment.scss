@@ -126,9 +126,11 @@ $price-calc-height: 3rem;
 .accordionActive + .panel {
     transition: max-height 0.2s ease-out, opacity 0.4s linear;
     z-index: 0;
+    display: block;
 }
 
 .panel {
+    display: none;
     opacity: 0;
     max-height: 0;
     transition: max-height 0.2s ease-out, opacity 0s linear;

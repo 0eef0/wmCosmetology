@@ -11,7 +11,7 @@ let displayDate = document.getElementById('display-date');
 let displayTime = document.getElementById('display-time');
 let noDate = document.getElementById('no-date');
 let formDOM = document.getElementById('new-appt-form');
-let modals = document.getElementsByClassName('ack-modal-container');
+let modals = document.getElementsByClassName('modal-container-brk');
 let modalTitles = document.getElementsByClassName('modal-title');
 let modalBtns = document.getElementsByClassName('modal-close-btn');
 

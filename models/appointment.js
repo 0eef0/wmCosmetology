@@ -27,6 +27,7 @@ const adminSchema = new mongoose.Schema({
     },
     notes: {
       type: String,
+      maxLength: 1000,
       default: null
     }
 });

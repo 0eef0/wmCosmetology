@@ -1,6 +1,8 @@
-.ack-modal-container {
+.modal-container-brk {
     display: none;
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: $clr-dark-transparent-2;
     width: 100vw;
     height: 100vh;
