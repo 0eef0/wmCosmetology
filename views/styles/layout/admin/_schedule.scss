@@ -64,6 +64,14 @@ $schedule-filters-spacing: .75rem;
     max-width: 65rem;
 }
 
+.blanktext{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: auto 0;
+    width: 100%;
+}
+
 @media screen and (max-width: 425px) {
     .appointment-card {
         flex-direction: column;

@@ -1,4 +1,5 @@
 const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+var newAppts = [];
 
 let apptsDOM = document.getElementById('appts-container');
 let acc = document.getElementsByClassName('title-row');
@@ -9,7 +10,14 @@ let modalsYes = document.getElementsByClassName('confirm-btn');
 let modalsNo = document.getElementsByClassName('deny-btn');
 let addNotes = document.getElementsByClassName('add-notes');
 
-// Makes Times readable
+let dayFilter = document.getElementById('day-filter');
+let weekFilter = document.getElementById('week-filter');
+let monthFilter = document.getElementById('month-filter');
+let dateFilter = document.getElementById('date-filter');
+let allFilter = document.getElementById('all-filter');
+
+let filteredAppts = [];
+
 function readableTime(time) {
     time = time.split(':');
     time.push('AM');
@@ -37,6 +45,214 @@ async function getAppts() {
     appts = appts.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.time > b.time) ? 1 : -1) : -1)
     let newAppts = [];
 
+    let datet = new Date()
+
+    dayFilter.addEventListener('click', function() {
+        dayFilter.style.backgroundColor = "purple";
+        dayFilter.style.color = "white";
+        dayFilter.style.border = "purple 2px solid";
+        weekFilter.style.backgroundColor = "white";
+        weekFilter.style.color = "black";
+        weekFilter.style.border = "black 2px solid";
+        monthFilter.style.backgroundColor = "white";
+        monthFilter.style.color = "black";
+        monthFilter.style.border = "black 2px solid";
+        allFilter.style.backgroundColor = "white";
+        allFilter.style.color = "black";
+        allFilter.style.border = "black 2px solid";
+
+        newAppts = [];
+        filteredAppts = appts;
+        appts = appts.filter((appt) => (parseInt(appt.date.split('-')[2],10) == (datet.getDate()))),"today";
+        if(!appts.length){
+            newAppts = [];
+            newAppts.push(`<div class="appointment-card"><p class="blanktext">There are currently no appointments today</p></div>`);
+        } else {
+            for (let i = 0; i < appts.length; i++) {
+            newAppts.push(`
+                <div class="appointment-card">
+                    <div class="col">
+                        <h1 class="service-names">${formatter.format(appts[i].services)}</h1>
+    
+                        <p class="date">${readableDate(appts[i].date)} @ ${readableTime(appts[i].time)}</p>
+                        <h1 class="name">${appts[i].name}</h1>
+                    </div>
+                    <div class="col right">
+                        <p class="estimated-price">Estimated Price: $${appts[i].price}</p>
+    
+                        <button class="cancel-appointment btn btn-3">Cancel</button>
+                    </div>
+                </div>
+            `);
+            }
+        }
+        
+        apptsDOM.innerHTML = newAppts.join('');
+        appts = filteredAppts;
+        
+    })
+
+    weekFilter.addEventListener('click', function() {
+        dayFilter.style.backgroundColor = "white";
+        dayFilter.style.color = "black";
+        dayFilter.style.border = "black 2px solid";
+        weekFilter.style.backgroundColor = "purple";
+        weekFilter.style.color = "white";
+        weekFilter.style.border = "purple 2px solid";
+        monthFilter.style.backgroundColor = "white";
+        monthFilter.style.color = "black";
+        monthFilter.style.border = "black 2px solid";
+        allFilter.style.backgroundColor = "white";
+        allFilter.style.color = "black";
+        allFilter.style.border = "black 2px solid";
+
+        newAppts = [];
+        filteredAppts = appts;
+        appts = appts.filter((appt) => (parseInt(appt.date.split('-')[2],10) == (datet.getDate()) || parseInt(appt.date.split('-')[2],10) == (datet.getDate()+1) || parseInt(appt.date.split('-')[2],10) == (datet.getDate()+2) || parseInt(appt.date.split('-')[2],10) == (datet.getDate()+3) || parseInt(appt.date.split('-')[2],10) == (datet.getDate()+4) || parseInt(appt.date.split('-')[2],10) == (datet.getDate()+5) ||parseInt(appt.date.split('-')[2],10) == (datet.getDate()+6) || parseInt(appt.date.split('-')[2],10) == (datet.getDate()+7)));
+        if(!appts.length){
+            newAppts = [];
+            newAppts.push(`<div class="appointment-card"><p class="blanktext">There are currently no appointments this week</p></div>`);
+        } else {
+            for (let i = 0; i < appts.length; i++) {
+            newAppts.push(`
+                <div class="appointment-card">
+                    <div class="col">
+                        <h1 class="service-names">${formatter.format(appts[i].services)}</h1>
+    
+                        <p class="date">${readableDate(appts[i].date)} @ ${readableTime(appts[i].time)}</p>
+                        <h1 class="name">${appts[i].name}</h1>
+                    </div>
+                    <div class="col right">
+                        <p class="estimated-price">Estimated Price: $${appts[i].price}</p>
+    
+                        <button class="cancel-appointment btn btn-3">Cancel</button>
+                    </div>
+                </div>
+            `);
+        }
+        }
+        apptsDOM.innerHTML = newAppts.join('');
+        appts = filteredAppts;
+    })
+    
+    monthFilter.addEventListener('click', function() {
+        dayFilter.style.backgroundColor = "white";
+        dayFilter.style.color = "black";
+        dayFilter.style.border = "black 2px solid";
+        weekFilter.style.backgroundColor = "white";
+        weekFilter.style.color = "black";
+        weekFilter.style.border = "black 2px solid";
+        monthFilter.style.backgroundColor = "purple";
+        monthFilter.style.color = "white";
+        monthFilter.style.border = "purple 2px solid";
+        allFilter.style.backgroundColor = "white";
+        allFilter.style.color = "black";
+        allFilter.style.border = "black 2px solid";
+        newAppts = [];
+        filteredAppts = appts;
+        appts = appts.filter((appt) => (parseInt(appt.date.split('-')[1],10) == (datet.getMonth()+1)));
+        if(!appts.length){
+            newAppts = [];
+            newAppts.push(`<div class="appointment-card"><p class="blanktext">There are currently no appointments this month</p></div>`);
+        } else {
+            for (let i = 0; i < appts.length; i++) {
+                newAppts.push(`
+                    <div class="appointment-card">
+                        <div class="col">
+                            <h1 class="service-names">${formatter.format(appts[i].services)}</h1>
+            
+                            <p class="date">${readableDate(appts[i].date)} @ ${readableTime(appts[i].time)}</p>
+                            <h1 class="name">${appts[i].name}</h1>
+                        </div>
+                        <div class="col right">
+                            <p class="estimated-price">Estimated Price: $${appts[i].price}</p>
+            
+                            <button class="cancel-appointment btn btn-3">Cancel</button>
+                        </div>
+                    </div>
+                `);
+                
+            }
+        }
+        apptsDOM.innerHTML = newAppts.join('');
+        appts = filteredAppts;
+    })
+
+    dateFilter.addEventListener('change', function() {
+        newAppts = [];
+        filteredAppts = appts;
+        appts = appts.filter((appt) => (appt.date) == (dateFilter.value));
+        console.log(appts.length)
+        if(!appts.length){
+            newAppts = [];
+            newAppts.push(`<div class="appointment-card"><p class="blanktext">There are no appointments with this date</p></div>`);
+        } else {
+            for (let i = 0; i < appts.length; i++) {
+            newAppts.push(`
+                <div class="appointment-card">
+                    <div class="col">
+                        <h1 class="service-names">${formatter.format(appts[i].services)}</h1>
+    
+                        <p class="date">${readableDate(appts[i].date)} @ ${readableTime(appts[i].time)}</p>
+                        <h1 class="name">${appts[i].name}</h1>
+                    </div>
+                    <div class="col right">
+                        <p class="estimated-price">Estimated Price: $${appts[i].price}</p>
+    
+                        <button class="cancel-appointment btn btn-3">Cancel</button>
+                    </div>
+                </div>
+            `);
+            
+            }
+        }
+        apptsDOM.innerHTML = newAppts.join('');
+        appts = filteredAppts;
+    })
+
+    allFilter.addEventListener('click', function(){
+        dayFilter.style.backgroundColor = "white";
+        dayFilter.style.color = "black";
+        dayFilter.style.border = "black 2px solid";
+        weekFilter.style.backgroundColor = "white";
+        weekFilter.style.color = "black";
+        weekFilter.style.border = "black 2px solid";
+        monthFilter.style.backgroundColor = "white";
+        monthFilter.style.color = "black";
+        monthFilter.style.border = "black 2px solid";
+        allFilter.style.backgroundColor = "purple";
+        allFilter.style.color = "white";
+        allFilter.style.border = "purple 2px solid";
+        newAppts = [];
+        filteredAppts = appts;
+
+        if(!appts.length){
+            newAppts = [];
+            newAppts.push(`<div class="appointment-card"><p class="blanktext">There are currently no appointments</p></div>`);
+        } else {
+            for (let i = 0; i < appts.length; i++) {
+                newAppts.push(`
+                    <div class="appointment-card">
+                        <div class="col">
+                            <h1 class="service-names">${formatter.format(appts[i].services)}</h1>
+        
+                            <p class="date">${readableDate(appts[i].date)} @ ${readableTime(appts[i].time)}</p>
+                            <h1 class="name">${appts[i].name}</h1>
+                        </div>
+                        <div class="col right">
+                            <p class="estimated-price">Estimated Price: $${appts[i].price}</p>
+        
+                            <button class="cancel-appointment btn btn-3">Cancel</button>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+        apptsDOM.innerHTML = newAppts.join('');
+        appts = filteredAppts;
+    })
+
+    console.log('Appointments', appts);
     for (let i = 0; i < appts.length; i++) {
         newAppts.push(`
             <div class="modal-container-brk">

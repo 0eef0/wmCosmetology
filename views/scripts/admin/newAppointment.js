@@ -40,10 +40,12 @@ for (let i = 0; i < checkboxes.length; i++) {
         if (this.checked) {
             priceCounter += Number(this.value);
             serviceArr.push(labels[i].innerHTML);
+            console.log(serviceArr);
             estimatedPrice.innerHTML = `Estimated Price: $${priceCounter}`;
         } else {
             priceCounter -= Number(this.value);
-            serviceArr = serviceArr.filter(service => service != labels[i].innerHTML);
+            serviceArr = serviceArr.filter(service => service == labels[i].innerHTML);
+            console.log(serviceArr);
             estimatedPrice.innerHTML = `Estimated Price: $${priceCounter}`;
         }
     });
