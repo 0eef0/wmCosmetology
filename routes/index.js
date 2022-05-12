@@ -58,9 +58,9 @@ navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
 /* ALL ADMIN PAGES HERE */
 
 // Accounts
-navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/accounts')
-})
+// navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
+//     res.render('pages/admin/accounts')
+// })
 // Create User
 navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/createUser')
@@ -69,6 +69,7 @@ navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
 navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/newAppointment')
 })
+// New Visit
 navigation.get('/newVisit', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/new-visit', { hairDescriptions: hairDescriptions })
 })

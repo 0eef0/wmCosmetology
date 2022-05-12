@@ -3,8 +3,8 @@ const accountModel = require('../models/admin');
 const createNewAccount = async (req, res) => {
     try {
         const Login = await accountModel.create(req.body);
-        res.status(201).json({Login});
-    } catch (error) { res.status(500).json({msg: error}) }
+        res.status(201).json({ Login });
+    } catch (error) { res.status(500).json({ msg: error }) }
 }
 const getAllAccounts = async (req, res) => {
     try {
@@ -21,16 +21,16 @@ const getOneAccount = async (req, res) => {
 const deleteAccount = async (req, res) => {
     try {
         const Login = await accountModel.findByIdAndRemove(req.params.id);
-        res.status(201).json({Login});
-    } catch (error) { res.status(500).json({msg: error}) }
+        res.status(201).json({ Login });
+    } catch (error) { res.status(500).json({ msg: error }) }
 }
 const updateAccount = async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const newLogin = req.body;
         const Login = await accountModel.findOneAndUpdate({ _id: id }, newLogin);
-        res.status(201).json({Login});
-    } catch (error) { res.status(500).json({msg: error}) }
+        res.status(201).json({ Login });
+    } catch (error) { res.status(500).json({ msg: error }) }
 }
 
 module.exports = {

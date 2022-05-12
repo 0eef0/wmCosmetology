@@ -9,6 +9,28 @@
 
 <body class="container">
     <% let tempUsers=allUsers %> <!-- .filter((user) => user.accountType == 'student') -->
+    <%
+        const filterByType = (type) => {
+            console.log('hi')
+            switch (type) {
+                case 'student': 
+                    tempUsers = allUsers.filter((user) => user.accountType === 'student');
+                    break;
+                case 'teacher': 
+                    tempUsers = allUsers.filter((user) => user.accountType === 'teacher');
+                    break;
+                case 'admin': 
+                    tempUsers = allUsers.filter((user) => user.accountType === 'admin');
+                    break;
+                default:
+                    tempUsers = allUsers;
+            }
+        }
+    %>
+    <script>
+        const test = '<%= filterByType %>';
+        console.log(test);
+    </script>
 
     <!-- modals go here -->
     <%- include('../../partials/accountModal'), { allUsers } %>
@@ -24,7 +46,7 @@
     <br>
 
     <div class="account-filters">
-        <input type="search" id="accountSearch" placeholder="Search...">
+        <input type="search" id="accountSearch" placeholder="Search..." oninput="searchUsers(this.value)">
         <div class="dropdown-menu">
             <select name="acctType" id="acctType" onchange="filterByType(this.value)">
                 <option value="all">All</option>
@@ -32,7 +54,7 @@
                 <option value="teacher">Teacher</option>
                 <option value="admin">Admin</option>
             </select>
-            <select name="sort" id="sort">
+            <select name="sort" id="sort" onchange="sortByUser(this.value)">
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>
             </select>
@@ -41,42 +63,13 @@
 
     <br>
 
-    <div id="allAccounts">
-        <% for(const user of tempUsers) { %>
-            <div class="account">
-                <% const { _id: id, name, email, accountType, serviceHistory }=user %>
-                <% const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined %>
-                    <h1 class="name">
-                        <%= name %>
-                    </h1>
-                    <h2 class="email">
-                        <%= email %>
-                    </h2>
-                    <h2 class="lastApptTxt">Last Appointment:</h2>
-                    <h2 class="lastAppt">
-                        <% if(date) { %>
-                        <%= `${date.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${date.getHours()> 12 ?
-                            date.getHours()-12 :
-                            date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? 'PM' : 'AM'}` %>
-                        <% } else { %>
-                            N/A
-                        <% } %>
-                    </h2>
-                    <h2 class="acctType">
-                        <%= accountType %>
-                    </h2>
-                    <% if(date) { %>
-                        <button class="moreBtn" onclick="getAppts('<%= id %>')">More...</button>
-                    <% } %>
-            </div>
-        <% } %>
-    </div>
+    <div id="allAccounts"></div>
 
-    <script>
-        const allUsers = '<%= allUsers %>';
-    </script>
-    <script src="../../scripts/accountFilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../../scripts/prevApptModal.js"></script>
+    <script src="../../scripts/accountFilter.js"></script>
 
     <%- include('../../partials/footer'); %>
 </body>
