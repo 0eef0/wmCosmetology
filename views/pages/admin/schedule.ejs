@@ -16,11 +16,13 @@
     <!-- page content here -->
 
     <h1 class="page-title">Admin Schedule Page</h1>
-    <div class="schedule-filters">
-        <button id="all-filter">All</button>
-        <button id="day-filter">Today</button>
-        <button id="week-filter">Week</button>
-        <button id="month-filter">Month</button>
+    <div class="all-schedule-filters">
+        <div class="filters-left">
+            <button class="schedule-filter active-filter" id="all-filter">All</button>
+            <button class="schedule-filter" id="day-filter">Today</button>
+            <button class="schedule-filter" id="week-filter">Week</button>
+            <button class="schedule-filter" id="month-filter">Month</button>
+        </div>
         <input id="date-filter" type="date" />
     </div>
 
