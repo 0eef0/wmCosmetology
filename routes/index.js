@@ -58,9 +58,9 @@ navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
 /* ALL ADMIN PAGES HERE */
 
 // Accounts
-navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/accounts')
-})
+// navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
+//     res.render('pages/admin/accounts')
+// })
 // Create User
 navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/createUser')
