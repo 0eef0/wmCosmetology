@@ -1,9 +1,5 @@
 $schedule-filters-spacing: .75rem;
 
-#schedule-page {
-    margin-bottom: 1rem;
-}
-
 .all-schedule-filters {
     background-color: $light-background;
     display: flex;
@@ -42,6 +38,9 @@ $schedule-filters-spacing: .75rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    div.appointment-card:last-child {
+        margin-bottom: 1rem;
+    }
     .cancel-appointment {
         font-family: Arial, Helvetica, sans-serif;
     }
