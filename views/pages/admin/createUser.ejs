@@ -9,31 +9,33 @@
 <!-- modals go here -->
 
 <!-- navbar here -->
-<%- include('../../partials/navbar'); %>
+<%- include('../../partials/admin-navbar'); %>
 <!-- use navbar spacer if you don't want things to go behind the navbar -->
 <%- include('../../partials/navbar-spacer'); %>
 
 <!-- page content here -->
 <h1 id="userCreateh1">Create User</h1>
 
-<div class="createUserColumn">
-  <input type="text" placeholder="Name"></input>
-  <input type="text" placeholder="Email"></input>
-  <input type="text" placeholder="Password"></input>
-  <input type="text" placeholder="Verify Password"></input>
+<form class="createUserColumn" action="/api/v1/admins" method="post">
+  <input name="name" type="text" placeholder="Name"></input>
+  <input name="email" type="email" placeholder="Email"></input>
+  <input name="password" type="password" placeholder="Password"></input>
+  <!-- <input type="text" placeholder="Verify Password"></input> -->
   <div>
     <label for="account-type">Account Type</label>
 
-    <select name="Account-type">
+    <select name="accountType">
       <option value="admin">Admin</option>
-      <option value="teachers">Teachers</option>
-      <option value="students">Students</option>
+      <option value="teacher">Teacher</option>
+      <option value="student">Student</option>
     </select>
   </div>
   
   
   <button type="submit">Submit</button>
-</div>
+  
+  <script src="../../scripts/navbar.js"></script>
+</form>
 
 </body>
 </html>

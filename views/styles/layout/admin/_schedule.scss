@@ -4,7 +4,7 @@ $schedule-filters-spacing: .75rem;
     margin-bottom: 1rem;
 }
 
-.schedule-filters {
+.all-schedule-filters {
     background-color: $light-background;
     display: flex;
     width: 100%;
@@ -14,14 +14,16 @@ $schedule-filters-spacing: .75rem;
     gap: $schedule-filters-spacing;
     margin-bottom: 1rem;
     button {
+        height: 100%;
         box-sizing: border-box;
         padding-inline: .5rem;
-        background-color: $light-background;
         font-size: clamp(.1rem, 1.5rem, 2rem);
         font-weight: 700;
         border-radius: .5rem;
-        border: 2px solid $font-color-dark;
         width: 6rem;
+    }
+    #date-filter {
+        border: 2px solid $clr-black;
     }
     input {
         @extend button;
@@ -64,12 +66,24 @@ $schedule-filters-spacing: .75rem;
     max-width: 65rem;
 }
 
-.blanktext{
+.blank-text{
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
     margin: auto 0;
     width: 100%;
+}
+
+.schedule-filter {
+    background-color: $clr-white;
+    color: $clr-primary-4;
+    border: 2px solid $clr-black;
+}
+
+.active-filter {
+    background-color: $clr-primary-4;
+    color: $clr-white;
+    border: 2px solid $clr-primary-4;
 }
 
 @media screen and (max-width: 425px) {
@@ -91,6 +105,36 @@ $schedule-filters-spacing: .75rem;
             button {
                 width: 45vw;
                 height: 2rem;
+            }
+        }
+        .all-schedule-filters {
+            gap: .5rem;
+            .filters-left {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: .5rem;
+            }
+            #date-filter, button {
+                width: 15rem;
+                height: 2.5rem;
+                margin: 0 auto;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 670px) {
+    #schedule-page {
+        .all-schedule-filters {
+            height: max-content;
+            flex-direction: column;
+            .filters-left {
+                margin: 0 auto;
+            }
+            #date-filter {
+                margin: 0 auto;
             }
         }
     }

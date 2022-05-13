@@ -150,11 +150,11 @@ input[type=button],
 input[type=submit],
 input[type=file],
 button,
-.schedule-filters input {
+.all-schedule-filters input {
   cursor: pointer;
 }
 
-button, .schedule-filters input,
+button, .all-schedule-filters input,
 input[type=button] {
   width: auto;
   overflow: hidden;
@@ -259,11 +259,11 @@ html {
 }
 .navbar ul div .nav-item a,
 .navbar ul div .nav-item button,
-.navbar ul div .nav-item .schedule-filters input,
-.schedule-filters .navbar ul div .nav-item input, .navbar ul ul .nav-item a,
+.navbar ul div .nav-item .all-schedule-filters input,
+.all-schedule-filters .navbar ul div .nav-item input, .navbar ul ul .nav-item a,
 .navbar ul ul .nav-item button,
-.navbar ul ul .nav-item .schedule-filters input,
-.schedule-filters .navbar ul ul .nav-item input {
+.navbar ul ul .nav-item .all-schedule-filters input,
+.all-schedule-filters .navbar ul ul .nav-item input {
   display: block;
   color: #2d3436;
   font-family: "Poppins", sans-serif;
@@ -279,31 +279,31 @@ html {
 }
 .navbar ul div .nav-item a.link:hover,
 .navbar ul div .nav-item button.link:hover,
-.navbar ul div .nav-item .schedule-filters input.link:hover,
-.schedule-filters .navbar ul div .nav-item input.link:hover, .navbar ul ul .nav-item a.link:hover,
+.navbar ul div .nav-item .all-schedule-filters input.link:hover,
+.all-schedule-filters .navbar ul div .nav-item input.link:hover, .navbar ul ul .nav-item a.link:hover,
 .navbar ul ul .nav-item button.link:hover,
-.navbar ul ul .nav-item .schedule-filters input.link:hover,
-.schedule-filters .navbar ul ul .nav-item input.link:hover {
+.navbar ul ul .nav-item .all-schedule-filters input.link:hover,
+.all-schedule-filters .navbar ul ul .nav-item input.link:hover {
   border-color: #3b0086 !important;
   filter: brightness(1.2);
   transition: border-color 100ms linear;
 }
 .navbar ul div .nav-item a.active,
 .navbar ul div .nav-item button.active,
-.navbar ul div .nav-item .schedule-filters input.active,
-.schedule-filters .navbar ul div .nav-item input.active, .navbar ul ul .nav-item a.active,
+.navbar ul div .nav-item .all-schedule-filters input.active,
+.all-schedule-filters .navbar ul div .nav-item input.active, .navbar ul ul .nav-item a.active,
 .navbar ul ul .nav-item button.active,
-.navbar ul ul .nav-item .schedule-filters input.active,
-.schedule-filters .navbar ul ul .nav-item input.active {
+.navbar ul ul .nav-item .all-schedule-filters input.active,
+.all-schedule-filters .navbar ul ul .nav-item input.active {
   border-color: #21004a !important;
 }
 .navbar ul div .nav-item a.active:hover,
 .navbar ul div .nav-item button.active:hover,
-.navbar ul div .nav-item .schedule-filters input.active:hover,
-.schedule-filters .navbar ul div .nav-item input.active:hover, .navbar ul ul .nav-item a.active:hover,
+.navbar ul div .nav-item .all-schedule-filters input.active:hover,
+.all-schedule-filters .navbar ul div .nav-item input.active:hover, .navbar ul ul .nav-item a.active:hover,
 .navbar ul ul .nav-item button.active:hover,
-.navbar ul ul .nav-item .schedule-filters input.active:hover,
-.schedule-filters .navbar ul ul .nav-item input.active:hover {
+.navbar ul ul .nav-item .all-schedule-filters input.active:hover,
+.all-schedule-filters .navbar ul ul .nav-item input.active:hover {
   border-color: #3b0086 !important;
   filter: brightness(1.2);
 }
@@ -333,7 +333,7 @@ html {
     padding: 0.5rem 1rem;
     cursor: pointer;
   }
-  .navbar ul .menu-button button, .navbar ul .menu-button .schedule-filters input, .schedule-filters .navbar ul .menu-button input {
+  .navbar ul .menu-button button, .navbar ul .menu-button .all-schedule-filters input, .all-schedule-filters .navbar ul .menu-button input {
     background: transparent;
   }
   .navbar ul .menu-button i {
@@ -455,7 +455,7 @@ footer .info-container .content .contact-form input, footer .info-container .con
   resize: none;
   border-radius: 2px;
 }
-footer .info-container .content .contact-form button, footer .info-container .content .contact-form .schedule-filters input, .schedule-filters footer .info-container .content .contact-form input {
+footer .info-container .content .contact-form button, footer .info-container .content .contact-form .all-schedule-filters input, .all-schedule-filters footer .info-container .content .contact-form input {
   color: #2d3436;
   background-color: #fff;
   width: -webkit-max-content;
@@ -530,7 +530,7 @@ footer .payment-container .copyright {
   align-items: flex-end;
   margin-top: 1rem;
 }
-.service-card .row button, .service-card .row .schedule-filters input, .schedule-filters .service-card .row input {
+.service-card .row button, .service-card .row .all-schedule-filters input, .all-schedule-filters .service-card .row input {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -906,7 +906,79 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf {
 div#prevAppt div#prevApptModal div.appt div.rightHalf h2, div#prevAppt div#prevApptModal div.appt div.rightHalf h3 {
   text-align: right;
 }
-div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#prevApptModal div.appt div.rightHalf .schedule-filters input, .schedule-filters div#prevAppt div#prevApptModal div.appt div.rightHalf input {
+div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#prevApptModal div.appt div.rightHalf .all-schedule-filters input, .all-schedule-filters div#prevAppt div#prevApptModal div.appt div.rightHalf input {
+  border-radius: 0.5rem;
+  background-color: #21004a;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+div.account-filters {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  background-color: hsl(266deg, 100%, 11%);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+div.account-filters input, div.account-filters select {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+div#prevAppt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(13, 0, 31, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+div#prevAppt div#prevApptModal {
+  background-color: #fff;
+  width: 80%;
+  padding: 1rem;
+}
+div#prevAppt div#prevApptModal h1 {
+  font-size: clamp(2.5rem, 3vw, 4rem);
+  text-align: center;
+}
+div#prevAppt div#prevApptModal div#appts {
+  overflow-y: auto;
+  height: 50vh;
+}
+div#prevAppt div#prevApptModal div.appt {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+div#prevAppt div#prevApptModal div.appt div {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+div#prevAppt div#prevApptModal div.appt div h2, div#prevAppt div#prevApptModal div.appt div h3 {
+  width: 100%;
+}
+div#prevAppt div#prevApptModal div.appt div h2 {
+  font-size: 1.5rem;
+}
+div#prevAppt div#prevApptModal div.appt div h3 {
+  font-size: 1rem;
+}
+div#prevAppt div#prevApptModal div.appt div.rightHalf {
+  align-content: flex-start;
+  justify-content: flex-end;
+}
+div#prevAppt div#prevApptModal div.appt div.rightHalf h2, div#prevAppt div#prevApptModal div.appt div.rightHalf h3 {
+  text-align: right;
+}
+div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#prevApptModal div.appt div.rightHalf .all-schedule-filters input, .all-schedule-filters div#prevAppt div#prevApptModal div.appt div.rightHalf input {
   border-radius: 0.5rem;
   background-color: #21004a;
   color: #fff;
@@ -1105,7 +1177,7 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#p
   transition-duration: 0.2s;
   transition-timing-function: ease;
 }
-.cancel-modal .modal-btns button, .cancel-modal .modal-btns .schedule-filters input, .schedule-filters .cancel-modal .modal-btns input {
+.cancel-modal .modal-btns button, .cancel-modal .modal-btns .all-schedule-filters input, .all-schedule-filters .cancel-modal .modal-btns input {
   font-size: 1.5rem;
   width: 4rem;
   box-sizing: border-box;
@@ -1427,7 +1499,7 @@ div#allAccounts {
   display: flex;
   justify-content: space-between;
 }
-.row .col .button-container button, .row .col .button-container .schedule-filters input, .schedule-filters .row .col .button-container input {
+.row .col .button-container button, .row .col .button-container .all-schedule-filters input, .all-schedule-filters .row .col .button-container input {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -1630,7 +1702,7 @@ div#allAccounts {
   margin-bottom: 1rem;
 }
 
-.schedule-filters {
+.all-schedule-filters {
   background-color: #f9f9f9;
   display: flex;
   width: 100%;
@@ -1640,17 +1712,19 @@ div#allAccounts {
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
-.schedule-filters button, .schedule-filters input {
+.all-schedule-filters button, .all-schedule-filters input {
+  height: 100%;
   box-sizing: border-box;
   padding-inline: 0.5rem;
-  background-color: #f9f9f9;
   font-size: 1.5rem;
   font-weight: 700;
   border-radius: 0.5rem;
-  border: 2px solid #17161d;
   width: 6rem;
 }
-.schedule-filters input {
+.all-schedule-filters #date-filter {
+  border: 2px solid #222;
+}
+.all-schedule-filters input {
   margin-left: auto;
   width: -webkit-min-content;
   width: -moz-min-content;
@@ -1691,12 +1765,24 @@ div#allAccounts {
   max-width: 65rem;
 }
 
-.blanktext {
+.blank-text {
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
   margin: auto 0;
   width: 100%;
+}
+
+.schedule-filter {
+  background-color: #fff;
+  color: hsl(266deg, 100%, 26%);
+  border: 2px solid #222;
+}
+
+.active-filter {
+  background-color: hsl(266deg, 100%, 26%);
+  color: #fff;
+  border: 2px solid hsl(266deg, 100%, 26%);
 }
 
 @media screen and (max-width: 425px) {
@@ -1709,13 +1795,42 @@ div#allAccounts {
   .appointment-card .col.right {
     align-items: flex-start;
   }
-  .appointment-card button, .appointment-card .schedule-filters input, .schedule-filters .appointment-card input {
+  .appointment-card button, .appointment-card .all-schedule-filters input, .all-schedule-filters .appointment-card input {
     width: 100%;
   }
 
-  #schedule-page .modal-container-brk button, #schedule-page .modal-container-brk .schedule-filters input, .schedule-filters #schedule-page .modal-container-brk input {
+  #schedule-page .modal-container-brk button, #schedule-page .modal-container-brk .all-schedule-filters input, .all-schedule-filters #schedule-page .modal-container-brk input {
     width: 45vw;
     height: 2rem;
+  }
+  #schedule-page .all-schedule-filters {
+    gap: 0.5rem;
+  }
+  #schedule-page .all-schedule-filters .filters-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  #schedule-page .all-schedule-filters #date-filter, #schedule-page .all-schedule-filters button, #schedule-page .all-schedule-filters input {
+    width: 15rem;
+    height: 2.5rem;
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 670px) {
+  #schedule-page .all-schedule-filters {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    flex-direction: column;
+  }
+  #schedule-page .all-schedule-filters .filters-left {
+    margin: 0 auto;
+  }
+  #schedule-page .all-schedule-filters #date-filter {
+    margin: 0 auto;
   }
 }
 .container {
@@ -1751,7 +1866,7 @@ div#allAccounts {
 .createUserColumn div select {
   float: right;
 }
-.createUserColumn button, .createUserColumn .schedule-filters input, .schedule-filters .createUserColumn input {
+.createUserColumn button, .createUserColumn .all-schedule-filters input, .all-schedule-filters .createUserColumn input {
   margin-top: 1rem;
   margin-left: auto;
   margin-right: 0;
@@ -1764,12 +1879,12 @@ div#allAccounts {
   font-size: clamp(1.15rem, 1.5vw, 1.5rem);
 }
 @media screen and (max-width: 1000px) {
-  .createUserColumn button, .createUserColumn .schedule-filters input, .schedule-filters .createUserColumn input {
+  .createUserColumn button, .createUserColumn .all-schedule-filters input, .all-schedule-filters .createUserColumn input {
     font-size: 2vw;
   }
 }
 @media screen and (max-width: 600px) {
-  .createUserColumn button, .createUserColumn .schedule-filters input, .schedule-filters .createUserColumn input {
+  .createUserColumn button, .createUserColumn .all-schedule-filters input, .all-schedule-filters .createUserColumn input {
     font-size: 1rem;
     width: 55%;
   }

@@ -9,23 +9,26 @@
     <!-- modals go here -->
     <%- include('../../partials/modals/acknowledgmentModal', { title: "Error", text: "Could not delete" }); %>
     <!-- navbar here -->
-    <%- include('../../partials/navbar'); %>
+    <%- include('../../partials/admin-navbar'); %>
     <!-- use navbar spacer if you don't want things to go behind the navbar -->
     <%- include('../../partials/navbar-spacer'); %>
 
     <!-- page content here -->
 
     <h1 class="page-title">Admin Schedule Page</h1>
-    <div class="schedule-filters">
-        <button id="all-filter">All</button>
-        <button id="day-filter">Today</button>
-        <button id="week-filter">Week</button>
-        <button id="month-filter">Month</button>
+    <div class="all-schedule-filters">
+        <div class="filters-left">
+            <button class="schedule-filter active-filter" id="all-filter">All</button>
+            <button class="schedule-filter" id="day-filter">Today</button>
+            <button class="schedule-filter" id="week-filter">Week</button>
+            <button class="schedule-filter" id="month-filter">Month</button>
+        </div>
         <input id="date-filter" type="date" />
     </div>
 
     <div id="appts-container"></div>
 
     <script src="../../scripts/admin/schedule.js"></script>
+    <script src="../../scripts/navbar.js"></script>
 </body>
 </html>
