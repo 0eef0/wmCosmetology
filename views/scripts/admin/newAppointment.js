@@ -11,7 +11,7 @@ let displayDate = document.getElementById('display-date');
 let displayTime = document.getElementById('display-time');
 let noDate = document.getElementById('no-date');
 let formDOM = document.getElementById('new-appt-form');
-let modals = document.getElementsByClassName('ack-modal-container');
+let modals = document.getElementsByClassName('modal-container-brk');
 let modalTitles = document.getElementsByClassName('modal-title');
 let modalBtns = document.getElementsByClassName('modal-close-btn');
 
@@ -40,10 +40,12 @@ for (let i = 0; i < checkboxes.length; i++) {
         if (this.checked) {
             priceCounter += Number(this.value);
             serviceArr.push(labels[i].innerHTML);
+            console.log(serviceArr);
             estimatedPrice.innerHTML = `Estimated Price: $${priceCounter}`;
         } else {
             priceCounter -= Number(this.value);
-            serviceArr = serviceArr.filter(service => service != labels[i].innerHTML);
+            serviceArr = serviceArr.filter(service => service == labels[i].innerHTML);
+            console.log(serviceArr);
             estimatedPrice.innerHTML = `Estimated Price: $${priceCounter}`;
         }
     });
@@ -87,6 +89,7 @@ formDOM.addEventListener('submit', async function (e) {
         date: document.getElementById('date-input').value,
         time: document.getElementById('time-input').value,
         services: serviceArr,
+        price: priceCounter,
         notes: document.getElementById('add-notes').value
     }
 

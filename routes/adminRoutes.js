@@ -75,6 +75,7 @@ app.post('/', async (req, res) => { //create user
                                 .then((value) => {
                                     console.log(value)
                                     res.sendStatus(200)
+                                    res.render('pages/admin/schedule')
                                 })
                                 .catch(value => console.log(value))
                         }

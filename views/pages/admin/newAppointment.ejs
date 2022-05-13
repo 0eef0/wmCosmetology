@@ -7,7 +7,9 @@
     <%- include('../../partials/modals/acknowledgmentModal', { title: "Success!", text: "You successfully submitted a new appointment" }); %>
     <%- include('../../partials/modals/acknowledgmentModal', { title: "Error" ,text: "Not all parameters were filled" }); %>
 
-    <%- include('../../partials/navbar'); %>
+    <%- include('../../partials/admin-navbar'); %>
+    <!-- use navbar spacer if you don't want things to go behind the navbar -->
+    <%- include('../../partials/navbar-spacer'); %>
     
     <div class="newApptContainer">
         <h1 class="page-title" id="newApptTitle">Schedule Appointment</h1>
@@ -217,7 +219,7 @@
             </div>
         
             <h2>Additional Information</h2>
-            <textarea name="notes" id="add-notes" placeholder="Notes" cols="30" rows="10"></textarea>
+            <textarea name="notes" id="add-notes" placeholder="Notes" cols="30" rows="10" maxlength="1000"></textarea>
         
             <div id="price-calculator">
                 <div class="appt-time">
@@ -234,5 +236,6 @@
     </div>
 
     <script src="../../scripts/admin/newAppointment.js"></script>
+    <script src="../../scripts/navbar.js"></script>
 </body>
 </html>
