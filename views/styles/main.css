@@ -550,6 +550,11 @@ footer .payment-container .copyright {
   font-size: 2rem;
 }
 
+@media screen and (max-width: 395px) {
+  .homeTitle {
+    font-size: 1.5rem;
+  }
+}
 .homeAbout {
   width: 80%;
   margin-left: 10%;
@@ -562,7 +567,7 @@ footer .payment-container .copyright {
   font-family: "Poppins", sans-serif;
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 515px) {
   .homeAbout {
     padding-left: 0px;
     padding-right: 0px;
@@ -577,7 +582,7 @@ footer .payment-container .copyright {
 
 .slideshow-container {
   max-width: 40rem;
-  min-height: 15rem;
+  max-height: 25rem;
   position: relative;
   margin: auto;
   justify-content: center;
@@ -586,11 +591,6 @@ footer .payment-container .copyright {
   overflow: hidden;
 }
 
-@media screen and (max-width: 370px) {
-  .slideshow-container {
-    height: 25rem;
-  }
-}
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -707,6 +707,7 @@ footer .payment-container .copyright {
   text-align: center;
   background-color: #bbb;
   display: flex;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .phonetext {
@@ -716,12 +717,36 @@ footer .payment-container .copyright {
   text-align: center;
 }
 
+@media screen and (max-width: 487px) {
+  .phonetext {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 395px) {
+  .phonetext {
+    font-size: 2rem;
+  }
+}
 .phonenumber {
   font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
 }
 
-.phonenumber:hover {
-  color: rgb(255, 0, 255);
+.phonebutton {
+  border-radius: 0.5rem;
+  padding: 0.33rem 0.75rem;
+  margin-top: 1rem;
+}
+
+.phonenumber:hover span {
+  display: none;
+}
+
+.phonenumber:hover:before {
+  content: "Call Us";
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .homeleft {
@@ -759,6 +784,11 @@ footer .payment-container .copyright {
 
   .phonestuff {
     margin-top: 0rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .schedule {
+    padding: 2rem 1rem 2rem 1rem;
   }
 }
 .appointment-card {
