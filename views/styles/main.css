@@ -1847,24 +1847,36 @@ div#allAccounts {
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 45%;
 }
 .createUserColumn input {
   border: gray solid 1px;
   border-radius: 5px;
   margin: 5px 0 5px 0;
   padding: 5px;
+  height: 2rem;
+  font-size: 1.15rem;
 }
 .createUserColumn div {
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   color: gray;
   border: gray solid 1px;
   border-radius: 5px;
   margin-top: 5px;
   padding: 5px;
+  height: 2rem;
+  font-size: 1.15rem;
 }
-.createUserColumn div select {
-  float: right;
+@media screen and (max-width: 450px) {
+  .createUserColumn div {
+    flex-direction: column;
+    height: 3.7rem;
+  }
+  .createUserColumn div select {
+    padding-top: 6px;
+  }
 }
 .createUserColumn button, .createUserColumn .all-schedule-filters input, .all-schedule-filters .createUserColumn input {
   margin-top: 1rem;
@@ -1883,9 +1895,9 @@ div#allAccounts {
     font-size: 2vw;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
   .createUserColumn button, .createUserColumn .all-schedule-filters input, .all-schedule-filters .createUserColumn input {
     font-size: 1rem;
-    width: 55%;
+    width: 100%;
   }
 }/*# sourceMappingURL=main.css.map */
