@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <%- include('../partials/head'); %>
-
-  <script type="module" src="../scripts/main.js"></script>
+    <%- include('../partials/head'); %>
 </head>
+
 <body class="container">
-<!-- modals go here -->
+    <!-- modals go here -->
 
-<!-- navbar here -->
-<%- include('../partials/navbar'); %>
-<%- include('../partials/navbar-spacer'); %>
+    <!-- navbar here -->
+    <%- include('../partials/navbar'); %>
+    <%- include('../partials/navbarSpacer'); %>
 
-<!-- page content here -->
-<h1 class="appointments-title">Appointments</h1>
-<div class="appointments-container">
-  <%- include('../partials/appointment-card'); %>
-  <%- include('../partials/appointment-card'); %>
-</div>
+    <!-- page content here -->
+    <h1 class="appointments-title">Appointments</h1>
+    <div class="appointments-container">
+        <%- include('../partials/appointmentCard'); %>
+        <%- include('../partials/appointmentCard'); %>
+    </div>
 
-<script src="../../scripts/navbar.js"></script>
+    <%- include('../partials/footer'); %>
 
-
-<%- include('../partials/footer'); %>
+    <script src="../../scripts/navbar.js"></script>
 </body>
+
 </html>

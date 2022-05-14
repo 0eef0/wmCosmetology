@@ -2,98 +2,97 @@
 <html lang="en">
 
 <head>
-  <%- include('../partials/head'); %>
-
-  <script type="module" src="../scripts/main.js"></script>
-  <script type="module" src="../scripts/navbar.js"></script>
+    <%- include('../partials/head'); %>
+        <script type="module" src="../scripts/navbar.js"></script>
 </head>
 
 <body class="container">
-<!-- modal comes first so other components can call showModal() and hideModal() -->
-<%- include('../partials/modals/cardModals/service-modal'); %>
-<%- include('../partials/modals/cardModals/service-modal2'); %>
-<%- include('../partials/modals/cardModals/service-modal3'); %>
-<%- include('../partials/modals/cardModals/service-modal4'); %>
+    <!-- modal comes first so other components can call showModal() and hideModal() -->
+    <%- include('../partials/modals/cardModals/serviceModal'); %>
+    <%- include('../partials/modals/cardModals/serviceModal2'); %>
+    <%- include('../partials/modals/cardModals/serviceModal3'); %>
+    <%- include('../partials/modals/cardModals/serviceModal4'); %>
 
     <%- include('../partials/navbar'); %>
 
-      <div class="banner-container">
-        <img src="../assets/360_F_421546924_ier1so1zCu2uENgFzGUMilGo3LDqs6gQ.jpg" alt="Beauty Salon Banner">
+    <div class="banner-container">
+        <img src="../assets/360_F_421546924_ier1so1zCu2uENgFzGUMilGo3LDqs6gQ.jpg"
+            alt="Beauty Salon Banner">
         <h1 class="title">West-MEC Cosmetology Program</h1>
-      </div>
+    </div>
 
-<div class="service-container">
-  <h1 class="container-title">Available Services</h1>
-  <div class="service-card-container">
-    <%- include('../partials/serviceCards/service-card'); %>
-    <%- include('../partials/serviceCards/service-card2'); %>
-    <%- include('../partials/serviceCards/service-card3'); %>
-    <%- include('../partials/serviceCards/service-card4'); %>
-  </div>
-  <div class="schedule" id="schedule">
-    <div class="homeleft"></div>
-    <div class="phonestuff">
-      <p class="phonetext">Schedule your appointment today</p>
-      <a href="tel:" class="phonenumber">123-456-7890</a>
-    </div>
-    <div class="homeright"></div>
-  </div>
-  <div class="slideshow-container">
-    <div class="mySlides fade">
-      <img class="slideimg" src="../assets/slide1.png">
-    </div>
-    
-    <div class="mySlides fade">
-      <img class="slideimg" src="../assets/slide2.png">
-    </div>
-    
-    <div class="mySlides fade">
-      <img class="slideimg" src="../assets/slide3.png">
-    </div>
-    
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
-    
-    </div>
-    <br>
-    
-    <div class="slideBoxs">
-      <span class="slideBox" onclick="currentSlide(1)"></span> 
-      <span class="slideBox" onclick="currentSlide(2)"></span> 
-      <span class="slideBox" onclick="currentSlide(3)"></span> 
-    </div>
-  <div>
-    <div class="homeTitle">West-MEC Cosmetology Program</div>
-    <div class="homeAbout">
-      <!-- <div class="block"><hr></div> -->
-      <pre class="homeAboutText">
-        Program Description
-        —
-        The interactive Hairstyling Program teaches students the latest techniques in hairstyling, haircutting, and coloring from experienced cosmetology professionals in a state-of-the-art salon setting.
-        
-        During the program, accommodations and modifications are provided to high school students based on the IEP/504. In addition, along with Maricopa Colleges, it provides Prior Learning Assessment (PLA). PLA helps students pursue specific AAS degrees. They can earn college credit through the Hairstyling program and transfer these credits to a community college or university, towards a specific degree.
-        
-        After completion of the two-year program, successful candidates will be prepared to seek one or more certifications like the Arizona Board of Cosmetology License in Hairstyling or OSHA 10 among others. Moreover, West-MEC offers industry credential tests at no additional cost.
-        
-        CAREER PATHWAYS
-        —
-        Careers that a student could pursue after receiving their certification(s) are: Hairstylist, color technician, salon owner*, salon manager*
-        
-        Certified Hairstylists work long hours and interact with clients to help them understand procedures and make them feel at ease. After sufficient experience, they often start their own business like a stylist for special occasions like weddings or opening a full fledged salon.
-        
-        Hairstyling entry-level salary: $12.00 – $15.00 per hour**
-      </pre>
-      <!-- <div class="block"><hr></div> -->
-    </div>
-  </div>
-</div>
+    <div class="service-container">
+        <h1 class="container-title">Available Services</h1>
+        <div class="service-card-container">
+            <%- include('../partials/serviceCards/service-card'); %>
+            <%- include('../partials/serviceCards/service-card2'); %>
+            <%- include('../partials/serviceCards/service-card3'); %>
+            <%- include('../partials/serviceCards/service-card4'); %>
+        </div>
+        <div class="schedule" id="schedule">
+            <div class="homeleft"></div>
+            <div class="phonestuff">
+                <p class="phonetext">Schedule your appointment today</p>
+                <a href="tel:" class="phonenumber">123-456-7890</a>
+            </div>
+            <div class="homeright"></div>
+        </div>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img class="slideimg" src="../assets/slide1.png">
+            </div>
 
+            <div class="mySlides fade">
+                <img class="slideimg" src="../assets/slide2.png">
+            </div>
 
-      <%- include('../partials/footer'); %>
+            <div class="mySlides fade">
+                <img class="slideimg" src="../assets/slide3.png">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+        <br>
+
+        <div class="slideBoxs">
+            <span class="slideBox" onclick="currentSlide(1)"></span>
+            <span class="slideBox" onclick="currentSlide(2)"></span>
+            <span class="slideBox" onclick="currentSlide(3)"></span>
+        </div>
+        <div>
+            <div class="homeTitle">West-MEC Cosmetology Program</div>
+            <div class="homeAbout">
+                <!-- <div class="block"><hr></div> -->
+                <pre class="homeAboutText">
+                    Program Description
+                    —
+                    The interactive Hairstyling Program teaches students the latest techniques in hairstyling, haircutting, and coloring from experienced cosmetology professionals in a state-of-the-art salon setting.
+
+                    During the program, accommodations and modifications are provided to high school students based on the IEP/504. In addition, along with Maricopa Colleges, it provides Prior Learning Assessment (PLA). PLA helps students pursue specific AAS degrees. They can earn college credit through the Hairstyling program and transfer these credits to a community college or university, towards a specific degree.
+
+                    After completion of the two-year program, successful candidates will be prepared to seek one or more certifications like the Arizona Board of Cosmetology License in Hairstyling or OSHA 10 among others. Moreover, West-MEC offers industry credential tests at no additional cost.
+
+                    CAREER PATHWAYS
+                    —
+                    Careers that a student could pursue after receiving their certification(s) are: Hairstylist, color technician, salon owner*, salon manager*
+
+                    Certified Hairstylists work long hours and interact with clients to help them understand procedures and make them feel at ease. After sufficient experience, they often start their own business like a stylist for special occasions like weddings or opening a full fledged salon.
+
+                    Hairstyling entry-level salary: $12.00 – $15.00 per hour**
+                </pre>
+                <!-- <div class="block"><hr></div> -->
+            </div>
+        </div>
+    </div>
 
 
-<script type="text/javascript" src="../scripts/slide.js"></script>
-<script type="text/javascript" src="../scripts/navbar.js"></script>
+    <%- include('../partials/footer'); %>
+
+
+    <script type="text/javascript" src="../scripts/slide.js"></script>
+    <script type="text/javascript" src="../scripts/navbar.js"></script>
 </body>
 
 </html>

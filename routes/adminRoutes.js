@@ -45,7 +45,7 @@ app.post('/', async (req, res) => { //create user
     console.log(req.body)
     let errors = [];
     try {
-        UserSchema.findOne({ email: email }).exec((err, user) => {
+        await UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
                 console.log('username already in use')
