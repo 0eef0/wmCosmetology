@@ -3,8 +3,6 @@
 
 <head>
     <%- include('../../partials/head'); %>
-
-    <script type="module" src="../../scripts/main.js"></script>
 </head>
 
 <body class="container">
@@ -14,7 +12,7 @@
     <!-- navbar here -->
     <%- include('../../partials/navbar'); %>
     <!-- use navbar spacer if you don't want things to go behind the navbar -->
-    <%- include('../../partials/navbar-spacer'); %>
+    <%- include('../../partials/navbarSpacer'); %>
 
     <!-- page content here -->
     <h1 class="page-title" style="margin: 0">Accounts</h1>
@@ -22,7 +20,8 @@
     <br>
 
     <div class="account-filters">
-        <input type="search" id="accountSearch" placeholder="Search..." oninput="searchUsers(this.value)">
+        <input type="search" id="accountSearch" placeholder="Search..."
+            oninput="searchUsers(this.value)">
         <div class="dropdown-menu">
             <select name="acctType" id="acctType" onchange="filterByType(this.value)">
                 <option value="all">All</option>

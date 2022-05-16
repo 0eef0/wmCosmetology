@@ -89,6 +89,20 @@ footer {
 			text-align: center;
 			color: $font-color-light;
 		}
+		.fab {
+			transition: color 0.3s ease;
+			&:hover {
+				color: $clr-light-1;
+			}
+		}
+		span {
+			a {
+				transition: color 0.3s ease;
+				&:hover {
+					color: darkgray;
+				}
+			}
+		}
 	}
 	@media screen and (max-width: 768px) {
 		.sections {

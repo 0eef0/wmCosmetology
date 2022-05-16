@@ -70,6 +70,7 @@
 			}
 			.nav-item a,
 			.nav-item button {
+                background: none;
 				display: block;
 				color: $font-dark;
 				font-family: 'Poppins', sans-serif;
@@ -79,7 +80,7 @@
 				height: 100%;
 				border-top: 4px solid;
 				border-color: transparent;
-
+                
 				display: grid;
 				place-items: center;
 
@@ -103,9 +104,11 @@
 		}
 	}
 }
+
 .navbar-spacer {
 	margin-top: 56px;
 }
+
 @media screen and (max-width: 1000px) {
 	.navbar ul {
 		flex-direction: column;
@@ -149,16 +152,21 @@
 			flex-direction: column;
 			.nav-item {
 				background-color: $clr-light-transparent-3;
+                justify-content: center;
 				&:hover {
 					background-color: $clr-white;
 				}
 			}
 			.link {
-				// background-color: $light-background-translucent;
 				width: 100%;
 				padding: 1rem;
 				border: none;
 			}
+            #createUser {
+                visibility: hidden;
+                display: none;
+                text-align: center;
+            }
 		}
 
 		.links {
@@ -170,6 +178,7 @@
 				transition: opacity 100ms linear;
 				transition-delay: 100ms;
 				text-align: start;
+                width: 100vw;
 			}
 		}
 		.links.closed {
@@ -185,6 +194,7 @@
 		max-width: 100vw;
 	}
 }
+
 @media screen and (max-width: 450px) {
 	.navbar li.title {
 		display: none !important;
