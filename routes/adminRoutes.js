@@ -32,7 +32,7 @@ cloudinary.config({
 
 
 const { updateAdminCutsByID } = require('../controllers/adminController');
-const { createVisit } = require('../controllers/visitController');
+const { createVisit, getAllVisits } = require('../controllers/visitController');
 
 const UserSchema = require('../models/admin');
 
