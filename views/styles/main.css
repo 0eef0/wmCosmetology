@@ -264,6 +264,7 @@ html {
 .navbar ul ul .nav-item button,
 .navbar ul ul .nav-item .all-schedule-filters input,
 .all-schedule-filters .navbar ul ul .nav-item input {
+  background: none;
   display: block;
   color: #2d3436;
   font-family: "Poppins", sans-serif;
@@ -352,6 +353,7 @@ html {
   }
   .navbar ul .links .nav-item {
     background-color: rgba(255, 255, 255, 0.75);
+    justify-content: center;
   }
   .navbar ul .links .nav-item:hover {
     background-color: #fff;
@@ -360,6 +362,11 @@ html {
     width: 100%;
     padding: 1rem;
     border: none;
+  }
+  .navbar ul .links #createUser {
+    visibility: hidden;
+    display: none;
+    text-align: center;
   }
   .navbar ul .links {
     transform: scaleY(1);
@@ -370,6 +377,7 @@ html {
     transition: opacity 100ms linear;
     transition-delay: 100ms;
     text-align: start;
+    width: 100vw;
   }
   .navbar ul .links.closed {
     transform: scaleY(0);

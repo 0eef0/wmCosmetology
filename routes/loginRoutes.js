@@ -1,15 +1,14 @@
 // const passport = require("passport")
-// const express = require("express")
-// const Router = express.Router()
-const express = require('express')
-const app = express.Router()
-const bcrypt = require('bcrypt')
+const express = require('express');
+// const Router = express.Router();
+const app = express.Router();
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 const UserSchema = require('../models/admin');
 
 app.use(express.json())
-// Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
+// Router.post('/login', passport.authenticate('local', { successRedirect: '/schedule', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
     const { username, name, password, confirmPassword } = req.body;

@@ -23,18 +23,18 @@ module.exports = function (passport) {
             User.findOne({ email: email })
                 .then((user) => {
 
-                    if(!user){
-                        return done(null,false,{message: 'User not found'});
+                    if (!user) {
+                        return done(null, false, { message: 'User not found' });
                     }
-                    
+
                     //match pass
                     console.log(user._id)
-                    bcrypt.compare(password,user.password,(err,isMatch)=>{
+                    bcrypt.compare(password, user.password, (err, isMatch) => {
                         if (err) throw err;
-                        if (isMatch){
-                            return done(null,user);
-                        }else{
-                            return done(null, false, { message: 'password Incorrect'})
+                        if (isMatch) {
+                            return done(null, user);
+                        } else {
+                            return done(null, false, { message: 'password Incorrect' })
                         }
                     })
                 })
