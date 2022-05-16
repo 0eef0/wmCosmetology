@@ -32,14 +32,12 @@
     <%- include('../../partials/modals/accountModal'), { allUsers } %>
 
     <!-- navbar here -->
-    <%- include('../../partials/navbar'); %>
+    <%- include('../../partials/adminNavbar'); %>
     <!-- use navbar spacer if you don't want things to go behind the navbar -->
     <%- include('../../partials/navbarSpacer'); %>
 
     <!-- page content here -->
-    <h1 class="page-title">Accounts</h1>
-
-    <br>
+    <h1 class="page-title">Accounts</h1><br>
 
     <div class="account-filters">
         <input type="search" id="accountSearch" placeholder="Search..."
@@ -60,7 +58,7 @@
 
     <br>
 
-    <div id="allAccounts"></div>
+    <div id="all-accounts"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
@@ -69,7 +67,7 @@
     <script src="../../scripts/accountFilter.js"></script>
     <script src="../../scripts/navbar.js"></script>
 
-    <%- include('../../partials/footer'); %>
+    <%- include('../../partials/adminFooter'); %>
 </body>
 
 </html>

@@ -14,8 +14,6 @@ const getAppts = async (id) => {
             for(info in clientHairInfo) temp += `${info}: ${clientHairInfo[info]}\n`;
             return temp;
         }
-
-        console.log(service);
         apptsDOM.innerHTML += `
             <div class="appt">
                 <div class="leftHalf">
