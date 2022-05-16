@@ -5,15 +5,15 @@ const User = require('../models/admin')
 module.exports = function (passport) {
     //Serialization + deserialization for simultaneous logins
     passport.serializeUser(function (user, done) {
-        console.log("Serialize is running");
+        // console.log("Serialize is running");
         done(null, user.id)
     })
 
     passport.deserializeUser(function (id, done) {
-        console.log("Deserialize is running");
-        console.log(User)
+        // console.log("Deserialize is running");
+        // console.log(User)
         User.findById(id, function (err, user) {
-            console.log("User.findById is running");
+            // console.log("User.findById is running");
             done(err, user)
         })
     })
