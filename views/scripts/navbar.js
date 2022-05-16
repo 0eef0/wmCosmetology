@@ -17,7 +17,14 @@ for (let i = 0; i < navLinks.length; i++) {
 }
 
 // Adds active class based on where you're scrolled to
-if (window.location.pathname == "/") {
+if (window.location.pathname == '/') {
+    let scrollPos = window.scrollY;
+    let scheduleOffset = scheduleDOM.offsetTop - navbarDOM.clientHeight;
+    if (scrollPos >= scheduleOffset) { 
+        navLinks[0].classList.remove('active');
+        navLinks[1].classList.add('active');
+    }
+
     window.addEventListener('scroll', function () {
         let scrollPos = window.scrollY;
         let scheduleOffset = scheduleDOM.offsetTop - navbarDOM.clientHeight;
