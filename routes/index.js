@@ -46,7 +46,7 @@ navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/accounts')
 })
 // Create User
-navigation.get('/create-user', /* ensureAuthenticated, */(req, res) => {
+navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
     res.render('pages/admin/create-user')
 })
 // New Appointment

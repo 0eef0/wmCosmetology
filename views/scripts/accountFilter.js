@@ -1,4 +1,4 @@
-const accountsDOM = document.getElementById('allAccounts');
+const accountsDOM = document.getElementById('all-accounts');
 
 let users = [];
 let tempUsers = [];
