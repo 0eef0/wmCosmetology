@@ -5,58 +5,48 @@
 #userCreateh1 {
     font-size: $title-font-size;
     padding: 2rem 0 .5rem 0;
+    text-align: center;
 }
 
-.createUserColumn {
+#create-user-form {
     display: flex;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    width: 45%;
-    input {
-        border: gray solid 1px;
-        border-radius: 5px;
-        margin: 5px 0 5px 0;
-        padding: 5px;
-        height: 2rem;
+    width: 30rem;
+    max-width: 90vw;
+    gap: .5rem;
+    width: clamp(30rem, 50vw, 40rem);
+    input, select, button {
+        border: none;
+        border-radius: .5rem;
+        box-sizing: border-box;
+        padding: .5rem;
         font-size: 1.15rem;
-    }
-    div {
-        display: flex;
-        justify-content: space-between;
-        background-color: white;
-        color: gray;
-        border: gray solid 1px;
-        border-radius: 5px;
-        margin-top: 5px;
-        padding: 5px;
-        height: 2rem;
-        font-size: 1.15rem;
-        @media screen and (max-width: 450px) {
-            flex-direction: column;
-            height: 3.7rem;
-            select {
-                padding-top: 6px;
-            }
+        background-color: $clr-white;
+        font-size: clamp(1.5rem, 1.5vw, 2rem);
+        width: 100%;
+        option {
+            color: $clr-black;
         }
     }
 
+    select {
+        color: gray;
+    }
+
     button {
-        margin-top: 1rem;
         margin-left: auto;
-        margin-right: 0;
-        width: 20%;
-        padding: 4px;
-        border: gray solid 1px;
-        border-radius: 5px;
-        background-color: white;
-        font-weight: 600;
-        font-size: $main-font-size;
-        @media screen and (max-width: 1000px) {
-            font-size: 2vw;
+        width: max-content;
+        background-color: $clr-green-dark;
+        transition: 0.3s ease background-color;
+        color: $clr-white;
+        padding: .5rem 2rem;
+        &:hover {
+            background-color: $clr-green-light;
         }
-        @media screen and (max-width: 670px) {
-            font-size: 1rem;
+        font-weight: 600;
+        @media screen and (max-width: 530px) {
             width: 100%;
         }
     }
