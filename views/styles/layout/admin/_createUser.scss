@@ -1,0 +1,53 @@
+.container{
+    justify-content: unset;
+}
+
+#userCreateh1 {
+    font-size: $title-font-size;
+    padding: 2rem 0 .5rem 0;
+    text-align: center;
+}
+
+#create-user-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30rem;
+    max-width: 90vw;
+    gap: .5rem;
+    width: clamp(30rem, 50vw, 40rem);
+    input, select, button {
+        border: none;
+        border-radius: .5rem;
+        box-sizing: border-box;
+        padding: .5rem;
+        font-size: 1.15rem;
+        background-color: $clr-white;
+        font-size: clamp(1.5rem, 1.5vw, 2rem);
+        width: 100%;
+        option {
+            color: $clr-black;
+        }
+    }
+
+    select {
+        color: gray;
+    }
+
+    button {
+        margin-left: auto;
+        width: max-content;
+        background-color: $clr-green-dark;
+        transition: 0.3s ease background-color;
+        color: $clr-white;
+        padding: .5rem 2rem;
+        &:hover {
+            background-color: $clr-green-light;
+        }
+        font-weight: 600;
+        @media screen and (max-width: 530px) {
+            width: 100%;
+        }
+    }
+}

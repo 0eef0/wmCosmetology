@@ -1,9 +1,9 @@
 @import './navbar';
 @import './footer';
-@import './service-card';
-@import './service-modal';
+@import './serviceCard';
 @import './homepage';
-@import './appointment-card';
+@import './appointmentCard';
 @import './account';
-@import './account-modal';
-@import './accounts-filter';
+@import './modals/accountModal';
+@import './accountsFilter';
+@import './modals/index';

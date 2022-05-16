@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+
+<body class="container">
+    <!-- modals go here -->
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Success!", text: "You successfully added a new user" }); %>
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Error", text: "Not a valid West MEC email"}); %>
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Error", text: "Account already exists"}); %>
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Error", text: "Account type not specified" }); %>
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Error", text: "Passwords don't match" }); %>
+
+    <!-- navbar here -->
+    <%- include('../../partials/adminNavbar'); %>
+    <!-- use navbar spacer if you don't want things to go behind the navbar -->
+    <%- include('../../partials/navbarSpacer'); %>
+
+    <!-- page content here -->
+    <h1 id="userCreateh1">Create User</h1>
+    <form id="create-user-form">
+        <input id="name-input" name="name" type="text" placeholder="Name"
+            autocomplete="name" required></input>
+        <input id="email-input" name="email" type="email" placeholder="Email"
+            autocomplete="email" required></input>
+        <input id="password-input" name="password" type="password" placeholder="Password"
+            autocomplete="new-password" required></input>
+        <input id="password-check-input" name="password-check" type="password"
+            placeholder="Confirm Password" autocomplete="off" required></input>
+        <select id="account-input" name="accountType" required>
+            <option value="default" selected disabled hidden>Account Type</option>
+            <option value="admin">Admin</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+        </select>
+
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="../../scripts/admin/createUser.js"></script>
+    <script src="../../scripts/navbar.js"></script>
+</body>
+
+</html>

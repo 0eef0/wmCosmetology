@@ -8,10 +8,12 @@ const passport = require('passport');
 const cloudinary = require('cloudinary').v2;
 const stream = require('stream');
 const { ensureAuthenticated } = require('../middleware/auth');
+const multer = require('multer');
+const upload = multer();
 require('dotenv').config();
 
 // Cloudinary account info
-const apiSecret = process.env.CLOUDINARY_SECRET;
+const apiSecret = process.env.CLOUDINARY_SECRET; //GET FROM CLOUDINARY ACCOUNT
 const cloudName = 'west-mec-coding';
 const apiKey = '416953374243466';
 
@@ -22,34 +24,34 @@ cloudinary.config({
     secure: true
 });
 
-(async () => {
-    try {
-        console.log((await cloudinary.api.resources({
-            type: 'upload',
-            prefix: 'test2' // add your folder
-        })).resources);
-    } catch (error) { console.log(error) }
-})()
-//
 
-const { updateAdminCutsByID } = require('../controllers/adminController');
+// (await cloudinary.api.resources({
+//     type: 'upload',
+//     prefix: 'asdf' // add your folder          /* <-----------USE FOR GETTING IMAGES FOR VISITS. REPLACE PREFIX WITH THE NAME OF THE PERSON */
+// })).resources
 
-const UserSchema = require('../models/admin');
+
+const { updateAdminCutsByID, updateAdminByID } = require('../controllers/adminController');
+// const { createVisit, getAllVisits } = require('../controllers/visitController');
+
+const UserSchema = require('../models/admin')
 
 app.use(express.json());
 
-app.patch('/:id', updateAdminCutsByID);
+app.patch('/cuts/:id', updateAdminCutsByID);
+app.patch('/:id', updateAdminByID);
 
 app.post('/', async (req, res) => { //create user
     const { name, email, password, accountType, serviceHistory } = req.body;
     console.log(req.body)
     let errors = [];
     try {
-        UserSchema.findOne({ email: email }).exec((err, user) => {
+        await UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
+                res.sendStatus(403)
             } else if (!/@west-mec.org\s*$/.test(email)) {
                 console.log('not a west-mec user')
                 errors.push({ msg: 'user not from west-mec' })
@@ -74,6 +76,7 @@ app.post('/', async (req, res) => { //create user
                                 .then((value) => {
                                     console.log(value)
                                     res.sendStatus(200)
+                                    res.render('pages/admin/schedule')
                                 })
                                 .catch(value => console.log(value))
                         }
@@ -141,20 +144,49 @@ app.delete('/', async (req, res) => {
     } catch (error) { res.status(500).json({ msg: error }) }
 })
 
-app.post("/newVisit", (req, res) => {
-    if (!req.files.images.length) {
-        const cloudinaryStream = cloudinary.uploader.upload_stream({
-            folder: req.body.name
+app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
+    req.body.imageUrls = [];
+    console.log(req.user)
+
+    const upload = (img) => {
+        return new Promise((resolve, reject) => {
+            const cloudinaryStream = cloudinary.uploader.upload_stream({
+                folder: 'cosmetology',
+            },
+                (error, result) => {
+                    if (result) {
+                        req.body.imageUrls.push(result.url);
+                        resolve(result);
+                    } else {
+                        reject(error);
+                    }
+                });
+            stream.Readable.from(img.buffer).pipe(cloudinaryStream);
         });
-        stream.Readable.from(req.files.images.data).pipe(cloudinaryStream);
-    } else {
-        const cloudinaryStream = cloudinary.uploader.upload_stream({
-            folder: req.body.name
-        });
-        req.files.images.forEach(img => {
-            stream.Readable.from(img.data).pipe(cloudinaryStream);
-        })
     }
+
+    req.files.forEach(async (img, i) => {
+        await upload(img)
+            .then(async () => {
+                if (req.user) {
+                    var { _id: userId } = req.user;
+                    userId = userId.toString();
+
+                    let { serviceHistory } = await UserSchema.findById(userId).exec();
+                    const newAdmin = req.body;
+
+                    await serviceHistory.push(newAdmin);
+                    await UserSchema.findOneAndUpdate({ _id: userId }, { serviceHistory });
+                } else {
+                    console.log('Log In please | or stop hacking')
+                }
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    })
+
+    // const user = await UserSchema.find({ _id: req.params.id });
     res.redirect('/newVisit');
 })
 

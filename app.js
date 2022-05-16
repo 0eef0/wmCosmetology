@@ -1,9 +1,7 @@
 const express = require('express');
 const app = express();
-const upload = require('express-fileupload');
 
 //middleware
-app.use(upload());
 app.use(express.json())
 require('dotenv').config()
 const session = require('express-session');
@@ -39,7 +37,7 @@ const port = process.env.PORT || 5000;
 
 //navigation routing
 
-app.use('/', [require('./routes/index'), require('./routes/cloudinary')]);
+app.use('/', require('./routes/index'));
 app.use('/api/v1/admins', require('./routes/adminRoutes'));
 app.use('/api/v1/appointments', require('./routes/appointmentRoutes'));
 //api routing
@@ -52,7 +50,7 @@ const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
         // await populateProducts()
-        app.listen(port, console.log(`server is listening on port ${port}, http://localhost:5000`));
+        app.listen(port, console.log(`server is listening on port ${port}, http://localhost:${port}`));
     } catch (error) { console.log(error) }
 }
 start();

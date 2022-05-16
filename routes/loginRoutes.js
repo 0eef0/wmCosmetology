@@ -1,15 +1,14 @@
 // const passport = require("passport")
-// const express = require("express")
-// const Router = express.Router()
-const express = require('express')
-const app = express.Router()
-const bcrypt = require('bcrypt')
+const express = require('express');
+// const Router = express.Router();
+const app = express.Router();
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 const UserSchema = require('../models/admin');
 
 app.use(express.json())
-// Router.post('/login', passport.authenticate('local', { successRedirect: '/adminHome', failureRedirect: '/adminLogin' }));
+// Router.post('/login', passport.authenticate('local', { successRedirect: '/schedule', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
     const { username, name, password, confirmPassword } = req.body;
@@ -32,11 +31,11 @@ app.post('/', async (req, res) => { //create user
                     password: password,
                     confirmPassword: confirmPassword
                 })
-                if(password.length < 8){
+                if (password.length < 8) {
                     console.log('password too short, requires at least 8 characters')
                     errors.push({ msg: 'password to short, requires at least 8 characters' })
                 }
-                if(password != confirmPassword) {
+                if (password != confirmPassword) {
                     console.log('passwords do not match')
                     errors.push({ msg: 'passwords do not match' })
                 }
@@ -71,7 +70,7 @@ app.post('/login', async (req, res, next) => { //login
     })(req, res, next)
 })
 
-app.get('/current', async(req, res) => {
+app.get('/current', async (req, res) => {
     if (req.user === undefined) {
         // The user is not logged in
         res.json({});
@@ -88,16 +87,16 @@ app.post('/logout', (req, res, next) => {
 })
 
 app.get('/', async (req, res) => {
-  try {
-      const allUsers = await UserSchema.find({});
-      res.status(201).json({ allUsers });
-  } catch (error) { res.status(500).json({ msg: error }) }
+    try {
+        const allUsers = await UserSchema.find({});
+        res.status(201).json({ allUsers });
+    } catch (error) { res.status(500).json({ msg: error }) }
 })
 app.delete('/', async (req, res) => {
-  try {
-      await UserSchema.deleteMany({});
-      res.status(201).json({ success: true, msg: "all users deleted" });
-  } catch (error) { res.status(500).json({ msg: error }) }
+    try {
+        await UserSchema.deleteMany({});
+        res.status(201).json({ success: true, msg: "all users deleted" });
+    } catch (error) { res.status(500).json({ msg: error }) }
 })
 
 module.exports = app;

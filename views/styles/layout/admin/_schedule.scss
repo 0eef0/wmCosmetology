@@ -1,25 +1,140 @@
 $schedule-filters-spacing: .75rem;
 
-.schedule-filters {
-    background-color: $dark-background;
+.all-schedule-filters {
+    background-color: $light-background;
     display: flex;
-    width: clamp(10rem, 60rem, 100%);
+    width: 100%;
     height: 4rem;
     box-sizing: border-box;
     padding: $schedule-filters-spacing;
     gap: $schedule-filters-spacing;
+    margin-bottom: 1rem;
     button {
+        height: 100%;
         box-sizing: border-box;
         padding-inline: .5rem;
-        background-color: $light-background;
         font-size: clamp(.1rem, 1.5rem, 2rem);
         font-weight: 700;
         border-radius: .5rem;
         width: 6rem;
     }
+    #date-filter {
+        border: 2px solid $clr-black;
+    }
     input {
         @extend button;
         margin-left: auto;
         width: min-content;
+    }
+}
+
+.page-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+#appts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    div.appointment-card:last-child {
+        margin-bottom: 1rem;
+    }
+    .cancel-appointment {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.appt-card-title-row {
+    justify-content: flex-start;
+    i {
+        position: relative;
+        left: .25rem;
+        color: #707070;
+    }
+}
+
+.more-notes-title {
+    font-weight: 300;
+    color: #707070;
+}
+
+.add-notes {
+    margin: 0 0 1rem 1rem;
+    max-width: 65rem;
+}
+
+.blank-text{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: auto 0;
+    width: 100%;
+}
+
+.schedule-filter {
+    background-color: $clr-white;
+    color: $clr-primary-4;
+    border: 2px solid $clr-black;
+}
+
+.active-filter {
+    background-color: $clr-primary-4;
+    color: $clr-white;
+    border: 2px solid $clr-primary-4;
+}
+
+@media screen and (max-width: 425px) {
+    .appointment-card {
+        flex-direction: column;
+        .date, .estimated-price {
+            margin-bottom: .75rem;
+        }
+        .col.right {
+            align-items: flex-start;
+        }
+        button {
+            width: 100%;
+        }
+    }
+
+    #schedule-page {
+        .modal-container-brk {
+            button {
+                width: 45vw;
+                height: 2rem;
+            }
+        }
+        .all-schedule-filters {
+            gap: .5rem;
+            .filters-left {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: .5rem;
+            }
+            #date-filter, button {
+                width: 15rem;
+                height: 2.5rem;
+                margin: 0 auto;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 670px) {
+    #schedule-page {
+        .all-schedule-filters {
+            height: max-content;
+            flex-direction: column;
+            .filters-left {
+                margin: 0 auto;
+            }
+            #date-filter {
+                margin: 0 auto;
+            }
+        }
     }
 }

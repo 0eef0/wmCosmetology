@@ -20,44 +20,57 @@ POST http://localhost:5000/api/v1/admins HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Luca Graves",
-  "email": "lgrave123@west-mec.org",
+  "name": "JD",
+  "email": "JBlack262@west-mec.org",
   "password": "password",
-  "accountType": "student"
+  "accountType": "admin"
 }
 ################# LOGIN
 POST http://localhost:5000/api/v1/admins/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "erolda266@west-mec.org",
+  "email": "JBlack262@west-mec.org",
   "password": "password"
 }
 #################
 
-PATCH http://localhost:5000/api/v1/admins/6272f567a245f42789c9fb52 HTTP/1.1
+PATCH http://localhost:5000/api/v1/admins/6282d14d83e301d81734d675 HTTP/1.1
+Content-Type: application/json
+
+{
+  "serviceHistory": []
+}
+################################################################
+PATCH http://localhost:5000/api/v1/admins/cuts/6282d14d83e301d81734d675 HTTP/1.1
 Content-Type: application/json
 
   {
-    "apptDate": "Wed May 04 2022 13:55:27 GMT-0700 (Mountain Standard Time)",
-    "clientName": "JD Blackman",
-    "clientEmail": "email@domain.com",
-    "clientPhone": "1234567890",
-    "clientHairInfo": {
-      "hairLength": "short"
-    },
-    "clientServices": [
-      "Haircut",
-      "Hair Shampoo"
-    ],
-    "clientPictures": [
-      "Pretend this is a picture"
-    ],
-    "additionalNotes": "these are notes"
+    "name": "name",
+    "appointmentDate": "Mon May 02 2023 15:06:48 GMT-0700 (Mountain Standard Time",
+    "address": "123456",
+    "city": "city",
+    "state": "state",
+    "zipCode": "85055",
+    "phone": "1234567890",
+    "email": "email@email.com",
+    "dateOfBirth": "Mon May 02 2020 15:06:48 GMT-0700 (Mountain Standard Time",
+    "serviceRequest": "haircut",
+    "hairCondition": "bad",
+    "hairClassification": "worse",
+    "scalpCondition": "terrible",
+    "hairTexture": "eww",
+    "growthPattern": "time to go home",
+    "hairDensity": "thicc",
+    "hairPorosity": "porous",
+    "hairElasticity": "stretchy",
+    "hairLength": "extra long",
+    "additionalInformation": "n/a",
+    "imageUrls": []
   }
 #################
 
-DELETE http://localhost:5000/api/v1/user HTTP/1.1
+DELETE http://localhost:5000/api/v1/admins HTTP/1.1
 Content-Type: application/json
 #################################
 GET http://localhost:5000/api/v1/users HTTP/1.1

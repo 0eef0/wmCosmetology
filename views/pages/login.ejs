@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../partials/head'); %>
+  <%- include('../partials/head', { title: "Login" }); %>
 </head>
-<body class="container">
+<body id="login-page" class="container">
 
   <div class="forms-container">
     <form id="loginForm" action="/api/v1/admins/login" method="post">

@@ -5,27 +5,31 @@
     <%- include('../../partials/head'); %>
 </head>
 
-<body class="container">
-    <%- include('../../partials/admin-navbar'); %>
+<body class="container" id="schedule-page">
+    <!-- modals go here -->
+    <%- include('../../partials/modals/acknowledgmentModal', { title: "Error" , text: "Could not delete" }); %>
+    <!-- navbar here -->
+    <%- include('../../partials/adminNavbar'); %>
+    <!-- use navbar spacer if you don't want things to go behind the navbar -->
+    <%- include('../../partials/navbarSpacer'); %>
 
-        <div class="schedule-filters">
-            <button>Today</button>
-            <button>Week</button>
-            <button>Month</button>
-            <!-- <button>Day</button> -->
-            <input type="date" name="day" id="day-input">
+    <!-- page content here -->
+
+    <h1 class="page-title">Admin Schedule Page</h1>
+    <div class="all-schedule-filters">
+        <div class="filters-left">
+            <button class="schedule-filter active-filter" id="all-filter">All</button>
+            <button class="schedule-filter" id="day-filter">Today</button>
+            <button class="schedule-filter" id="week-filter">Week</button>
+            <button class="schedule-filter" id="month-filter">Month</button>
         </div>
+        <input id="date-filter" type="date" />
+    </div>
 
-        <h1 class="page-title">Appointments</h1>
+    <div id="appts-container"></div>
 
-        <!-- Full Appointment -->
-        <%- include('../../partials/admin/fullAppt'); %>
-            <!-- Partial Appointment -->
-            <%- include('../../partials/admin/partialAppt'); %>
-                <%- include('../../partials/admin-footer'); %>
+    <script src="../../scripts/admin/schedule.js"></script>
+    <script src="../../scripts/navbar.js"></script>
 </body>
 
 </html>
-
-
-<script type="module" src="../../scripts/main.js"></script>
