@@ -45,7 +45,7 @@ app.post('/', async (req, res) => { //create user
     console.log(req.body)
     let errors = [];
     try {
-        UserSchema.findOne({ email: email }).exec((err, user) => {
+        await UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
                 console.log('username already in use')
@@ -146,11 +146,12 @@ app.delete('/', async (req, res) => {
 app.post("/newVisit", upload.array('images'), (req, res) => {
     req.files.forEach(img => {
         const cloudinaryStream = cloudinary.uploader.upload_stream({
-            folder: req.body.name
+            folder: 'cosmetology',
+            name: img.name
         });
-        stream.Readable.from(img.data).pipe(cloudinaryStream);
+        stream.Readable.from(img.buffer).pipe(cloudinaryStream);
     })
-    createVisit();
+    // createVisit();
     res.redirect('/newVisit');
 })
 

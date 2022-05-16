@@ -16,7 +16,7 @@
     <%- include('../../partials/navbar-spacer'); %>
 
       <!-- page content here -->
-      <form action="/api/v1/admins/newVisit" method="post" enctype="multipart/form-data" class="form-container">
+      <form action="/api/v1/admins/newVisit" method="post" enctype="multipart/form-data" onsubmit="handleSubmit(event)" class="form-container">
         <div class="row">
           <div class="col">
             <h1>Client Information</h1>
@@ -118,6 +118,10 @@
           const removeImage = () => {
             const imageInputsLength = document.getElementsByClassName('image-input').length;
             return imageInputsLength > 0 ? imageUploadContainerDOM.removeChild(imageUploadContainerDOM.lastChild) : null;
+          }
+
+          const handleSubmit = (e) => {
+            e.preventDefault();
           }
         </script>
         <script src="../../scripts/navbar.js"></script>
