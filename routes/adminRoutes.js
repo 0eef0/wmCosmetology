@@ -146,11 +146,12 @@ app.delete('/', async (req, res) => {
 app.post("/newVisit", upload.array('images'), (req, res) => {
     req.files.forEach(img => {
         const cloudinaryStream = cloudinary.uploader.upload_stream({
-            folder: req.body.name
+            folder: 'cosmetology',
+            name: img.name
         });
-        stream.Readable.from(img.data).pipe(cloudinaryStream);
+        stream.Readable.from(img.buffer).pipe(cloudinaryStream);
     })
-    createVisit();
+    // createVisit();
     res.redirect('/newVisit');
 })
 
