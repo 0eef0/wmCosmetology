@@ -37,7 +37,7 @@ const port = process.env.PORT || 5000;
 
 //navigation routing
 
-app.use('/', [require('./routes/index'), require('./routes/cloudinary')]);
+app.use('/', require('./routes/index'));
 app.use('/api/v1/admins', require('./routes/adminRoutes'));
 app.use('/api/v1/appointments', require('./routes/appointmentRoutes'));
 //api routing
