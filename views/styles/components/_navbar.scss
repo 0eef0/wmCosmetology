@@ -79,6 +79,7 @@
 				height: 100%;
 				border-top: 4px solid;
 				border-color: transparent;
+                white-space: nowrap;
 
 				display: grid;
 				place-items: center;
@@ -106,7 +107,7 @@
 .navbar-spacer {
 	margin-top: 56px;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
 	.navbar ul {
 		flex-direction: column;
 		background-color: $clr-light-transparent-2;

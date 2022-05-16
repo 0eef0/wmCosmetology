@@ -32,7 +32,7 @@
     <%- include('../../partials/modals/accountModal'), { allUsers } %>
 
     <!-- navbar here -->
-    <%- include('../../partials/navbar'); %>
+    <%- include('../../partials/adminNavbar'); %>
     <!-- use navbar spacer if you don't want things to go behind the navbar -->
     <%- include('../../partials/navbarSpacer'); %>
 
@@ -56,20 +56,16 @@
                 <option value="z-a">Z-A</option>
             </select>
         </div>
-    </div>
-
-    <br>
+    </div><br>
 
     <div id="allAccounts"></div>
+
+    <%- include('../../partials/adminFooter'); %>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../../scripts/prevApptModal.js"></script>
     <script src="../../scripts/accountFilter.js"></script>
-    <script src="../../scripts/navbar.js"></script>
-
-    <%- include('../../partials/footer'); %>
 </body>
-
 </html>

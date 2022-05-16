@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include('../../partials/head'); %>
 </head>
-
 <body class="container" id="schedule-page">
     <!-- modals go here -->
     <%- include('../../partials/modals/acknowledgmentModal', { title: "Error" , text: "Could not delete" }); %>
@@ -12,8 +10,6 @@
     <%- include('../../partials/adminNavbar'); %>
     <!-- use navbar spacer if you don't want things to go behind the navbar -->
     <%- include('../../partials/navbarSpacer'); %>
-
-    <!-- page content here -->
 
     <h1 class="page-title">Admin Schedule Page</h1>
     <div class="all-schedule-filters">
@@ -28,8 +24,8 @@
 
     <div id="appts-container"></div>
 
-    <script src="../../scripts/admin/schedule.js"></script>
-    <script src="../../scripts/navbar.js"></script>
-</body>
+    <%- include('../../partials/adminFooter'); %>
 
+    <script src="../../scripts/admin/schedule.js"></script>
+</body>
 </html>

@@ -77,6 +77,10 @@ $schedule-filters-spacing: .75rem;
     background-color: $clr-white;
     color: $clr-primary-4;
     border: 2px solid $clr-black;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: $light-gray-background;
+    }
 }
 
 .active-filter {
