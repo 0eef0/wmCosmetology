@@ -81,7 +81,10 @@ function html(appts, dayFilter) {
                     <div class="col right">
                         <p class="estimated-price">Estimated Price: $${appts[i].price}</p>
 
-                        <button class="cancel-appointment btn btn-3">Cancel</button>
+                        <div class="btn-container">
+                            <button class="complete-appointment btn btn-3" onClick="handleComplete(${i})">Complete</button>
+                            <button class="cancel-appointment btn btn-3">Cancel</button>
+                        </div>
                     </div>
                 </div>
             `);
@@ -144,7 +147,6 @@ async function getAppts() {
         weekFilter.classList.remove('active-filter');
         monthFilter.classList.remove('active-filter');
         dateFilter.value = '';
-
         filteredAppts = appts.filter((appt) => (parseInt(appt.date.split('-')[2], 10) == (newDate.getDate()))), "today";
         html(filteredAppts, 'today');
     })
@@ -198,6 +200,24 @@ async function getAppts() {
     html(appts);
 }
 getAppts();
+
+
+const handleComplete = async (index) => {
+    const appointment = filteredAppts[index];
+    appointment.walkIn = false;
+    console.log(appointment)
+
+    let currentUser = await axios.get('/api/v1/admins/current');
+    currentUser = currentUser.data.user;
+    
+    await axios.patch(`/api/v1/admins/cuts/${currentUser._id}`, appointment)
+    .then(async () => {
+        await axios.delete(`api/v1/appointments/${appointment._id}`)
+        .then(() => getAppts())
+    })
+
+    //then delete /api/v1/appointments/:id
+}
 
 // Closes the Modal
 for (let i = 0; i < modals.length; i++) {

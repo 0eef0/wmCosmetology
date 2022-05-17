@@ -20,9 +20,17 @@
     &.right {
       align-items: flex-end;
 
-      .cancel-appointment {
-        margin-top: auto;
-        // background-color: red;
+      .btn-container {
+        margin-top: auto !important;
+        flex-wrap: wrap;
+      }
+      .complete-appointment {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: $clr-green-dark;
+        transition: background-color 100ms ease;
+        &:hover {
+          background-color: $clr-green-light;
+        }
       }
       .cancel-warning {
         font-size: 80%;

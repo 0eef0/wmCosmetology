@@ -2,7 +2,7 @@ const express = require('express');
 const navigation = express.Router();
 const axios = require('axios');
 //authentication middleware
-const { ensureAuthenticated } = require('../middleware/auth.js');
+const { ensureAuthenticated, ensureAdminAuthenticated } = require('../middleware/auth.js');
 
 const hairDescriptions = require('../hair-descriptions.json');
 
@@ -20,33 +20,15 @@ navigation.get('/login', (req, res) => {
 })
 
 //admin schedule page
-navigation.get('/schedule', (req, res) => {
+navigation.get('/schedule', ensureAuthenticated, (req, res) => {
     res.render('pages/admin/schedule', { title: "Admin Schedule" })
 })
 
 /* ALL ADMIN PAGES HERE */
 // Accounts
-navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
+navigation.get('/accounts', ensureAuthenticated, async (req, res) => {
     try {
         const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
-
-        // const filterByType = async (type) => {
-        //     console.log('hi')
-        //     switch (type) {
-        //         case 'student': 
-        //             allUsers = allUsers.filter((user) => {user.accountType === 'student'});
-        //             break;
-        //         case 'teacher': 
-        //             allUsers = allUsers.filter((user) => {user.accountType === 'teacher'});
-        //             break;
-        //         case 'admin': 
-        //             allUsers = allUsers.filter((user) => {user.accountType === 'admin'});
-        //             break;
-        //         default:
-        //             allUsers = allUsers;
-        //     }
-        // }
-
         await res.render('pages/admin/accounts', {
             allUsers,
             title: "Admin Accounts"
@@ -57,26 +39,17 @@ navigation.get('/accounts',/* ensureAuthenticated, */ async (req, res) => {
 })
 
 /* ALL ADMIN PAGES HERE */
-
-// Accounts
-// navigation.get('/accounts', /* ensureAuthenticated, */(req, res) => {
-//     res.render('pages/admin/accounts')
-// })
 // Create User
-navigation.get('/createUser', /* ensureAuthenticated, */(req, res) => {
+navigation.get('/createUser', ensureAdminAuthenticated,(req, res) => {
     res.render('pages/admin/createUser', { title: "Create User" })
 })
 // New Appointment
-navigation.get('/newAppointment', /* ensureAuthenticated, */(req, res) => {
+navigation.get('/newAppointment', ensureAuthenticated, (req, res) => {
     res.render('pages/admin/newAppointment', { title: "New Appointment" })
 })
 // New Visit
-navigation.get('/newVisit', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/new-visit', { hairDescriptions: hairDescriptions, title: "New Visit" })
-})
-// Schedule
-navigation.get('/schedule', /* ensureAuthenticated, */(req, res) => {
-    res.render('pages/admin/schedule', { title: "Admin Schedule" })
+navigation.get('/newVisit', ensureAuthenticated, (req, res) => {
+    res.render('pages/admin/newVisit', { hairDescriptions: hairDescriptions, title: "New Visit" })
 })
 
 module.exports = navigation;

@@ -1,0 +1,35 @@
+div.account-filters {
+    background-color: $clr-primary-1;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 4rem;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    
+    input, select {
+        border-radius: 1rem;
+        font-size: 1.5rem;
+        height: 100%;
+        background-color: transparent;
+        border: 2px solid $clr-white;
+        color: $clr-white;
+        padding: 0 0.3rem;
+
+        &::placeholder {
+            color: inherit;
+        }
+    }
+    div.dropdown-menu {
+        width: 30%;
+        justify-content: flex-end;
+    }
+    select {
+        width: 45%;
+
+        option {
+            background-color: $clr-primary-1;
+        }
+    }
+}

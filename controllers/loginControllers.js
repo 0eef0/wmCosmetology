@@ -2,6 +2,12 @@ const accountModel = require('../models/admin');
 
 const createNewAccount = async (req, res) => {
     try {
+        const account = {
+            name: req.body.name,
+            email: req.body.email.toLowerCase(),
+            password: req.body.password,
+            accountType: req.body.accountType
+        }
         const Login = await accountModel.create(req.body);
         res.status(201).json({ Login });
     } catch (error) { res.status(500).json({ msg: error }) }

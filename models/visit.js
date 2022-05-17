@@ -57,7 +57,7 @@ const adminSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Must provide a hair texture']
 	},
-	growthPatterns: {
+	growthPattern: {
 		type: String,
 		required: [true, 'Must provide a growth pattern']
 	},
@@ -81,6 +81,10 @@ const adminSchema = new mongoose.Schema({
 		type: String,
 		required: [false, '']
 	},
+	imageUrls: {
+		type: Array,
+		required: [false, '']
+	}
 });
 
 module.exports = mongoose.model('visit', adminSchema);
