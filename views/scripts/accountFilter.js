@@ -6,9 +6,19 @@ let tempUsers = [];
     const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
     users = allUsers.sort((a, b) => { return (a.name > b.name) ? 1 : -1; });
     tempUsers = users;
+    console.log(users);
     for(user of tempUsers) {
         const { _id: id, name, email, accountType, serviceHistory } = user;
-        const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined;
+        console.log(user)
+        let date;
+        // const date = (!(serviceHistory.length || serviceHistory[serviceHistory.length-1].date)) ? new Date(Number(serviceHistory[serviceHistory.length-1].date.split('-')[0]), Number(serviceHistory[serviceHistory.length-1].date.split('-')[1]), Number(serviceHistory[serviceHistory.length-1].date.split('-')[2]), Number(serviceHistory[serviceHistory.length-1].time.split(':')[0]), Number(serviceHistory[serviceHistory.length-1].time.split(':')[1])) : new Date(Number(serviceHistory[serviceHistory.length-1].appointmentDate.split('-')[0]), Number(serviceHistory[serviceHistory.length-1].appointmentDate.split('-')[1]), Number(serviceHistory[serviceHistory.length-1].appointmentDate.split('-')[2]));
+        if(serviceHistory.length && serviceHistory[serviceHistory.length-1].date) {
+            date = new Date(Number(serviceHistory[serviceHistory.length-1].date.split('-')[0]), Number(serviceHistory[serviceHistory.length-1].date.split('-')[1]), Number(serviceHistory[serviceHistory.length-1].date.split('-')[2]), Number(serviceHistory[serviceHistory.length-1].time.split(':')[0]), Number(serviceHistory[serviceHistory.length-1].time.split(':')[1]));
+        } else if(serviceHistory.length && serviceHistory[serviceHistory.length-1].appointmentDate) {
+            date = new Date(Number(serviceHistory[serviceHistory.length-1].appointmentDate.split('-')[0]), Number(serviceHistory[serviceHistory.length-1].appointmentDate.split('-')[1]), Number(serviceHistory[serviceHistory.length-1].appointmentDate.split('-')[2]));
+        } else {
+            date = false;
+        }
         accountsDOM.innerHTML += `
             <div class="account flex-grid-item">
                 <h1 class="name">
@@ -36,7 +46,7 @@ const updateAccounts = () => {
     accountsDOM.innerHTML = '';
     for(user of tempUsers) {
         const { _id: id, name, email, accountType, serviceHistory } = user;
-        const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined;
+        const date = (serviceHistory[serviceHistory.length-1]) ? new Date(Number(serviceHistory[serviceHistory.length-1].date.split('-')[0]), Number(serviceHistory[serviceHistory.length-1].date.split('-')[1]), Number(serviceHistory[serviceHistory.length-1].date.split('-')[2]), Number(serviceHistory[serviceHistory.length-1].time.split(':')[0]), Number(serviceHistory[serviceHistory.length-1].time.split(':')[1])) : undefined;
         accountsDOM.innerHTML += `
             <div class="account flex-grid-item">
                 <h1 class="name">

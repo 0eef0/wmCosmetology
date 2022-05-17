@@ -12,8 +12,6 @@ app.use(express.json())
 
 app.post('/', async (req, res) => { //create user
     const { username, name, password, confirmPassword } = req.body;
-    console.log(req.body)
-    console.log(username, name, password, confirmPassword)
     let errors = [];
     try {
         // const salt = await bcrypt.genSalt(10)

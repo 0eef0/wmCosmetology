@@ -56,7 +56,7 @@ const getCurrentUser = async () => {
         currentUser = currentUser.data.user;
         if (currentUser.accountType == 'admin') {
             newUserBtn.style.visibility = 'visible';
-            newUserBtn.style.display = 'block';
+            newUserBtn.style.display = 'grid';
         }
     }
 }

@@ -6,6 +6,7 @@
 </head>
 
 <body class="container">
+  <!--
     <% let tempUsers=allUsers %>
     <!-- .filter((user) => user.accountType == 'student') -->
     <% const filterByType=(type)=> {
@@ -23,7 +24,7 @@
                 tempUsers = allUsers;
         }
     }%>
-
+  -->
     <!-- modals go here -->
     <%- include('../../partials/modals/accountModal'), { allUsers } %>
 
@@ -33,7 +34,9 @@
     <%- include('../../partials/navbarSpacer'); %>
 
     <!-- page content here -->
-    <h1 class="page-title">Accounts</h1><br>
+    <h1 class="page-title" style="margin: 0">Accounts</h1>
+
+    <br>
 
     <div class="account-filters">
         <input type="search" id="accountSearch" placeholder="Search..."

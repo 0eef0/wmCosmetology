@@ -34,7 +34,8 @@ cloudinary.config({
 const { updateAdminCutsByID, updateAdminByID } = require('../controllers/adminController');
 // const { createVisit, getAllVisits } = require('../controllers/visitController');
 
-const UserSchema = require('../models/admin')
+const UserSchema = require('../models/admin');
+const { default: axios } = require('axios');
 
 app.use(express.json());
 
@@ -43,22 +44,22 @@ app.patch('/:id', updateAdminByID);
 
 app.post('/', async (req, res) => { //create user
     const { name, email, password, accountType, serviceHistory } = req.body;
-    console.log(req.body)
+    const lowercaseEmail = email.toLowerCase();
+    // console.log(req.body)
     let errors = [];
     try {
         await UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
-                console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
                 res.sendStatus(403)
             } else if (!/@west-mec.org\s*$/.test(email)) {
-                console.log('not a west-mec user')
+                // console.log('not a west-mec user')
                 errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
                     name,
-                    email,
+                    email: lowercaseEmail,
                     password,
                     accountType,
                     serviceHistory
@@ -74,9 +75,8 @@ app.post('/', async (req, res) => { //create user
                             //save user
                             newUser.save()
                                 .then((value) => {
-                                    console.log(value)
-                                    res.sendStatus(200)
-                                    res.render('pages/admin/schedule')
+                                    // console.log(value)
+                                    res.render('pages/admin/schedule', { title: "Admin Schedule" })
                                 })
                                 .catch(value => console.log(value))
                         }
@@ -146,7 +146,9 @@ app.delete('/', async (req, res) => {
 
 app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
     req.body.imageUrls = [];
-    console.log(req.user)
+    req.body.completedBy = undefined;
+    req.body.walkIn = true;
+    // console.log(req.user)
 
     const upload = (img) => {
         return new Promise((resolve, reject) => {
@@ -164,27 +166,47 @@ app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
             stream.Readable.from(img.buffer).pipe(cloudinaryStream);
         });
     }
+    if (req.files) {
+        req.files.forEach(async (img, i) => {
+            await upload(img)
+                .then(async () => {
+                    if (req.user) {
+                        console.log(req.user)
+                        const { _id: userId } = req.user;
+                        const userIdString = userId.toString();
+                        console.log(userIdString)
 
-    req.files.forEach(async (img, i) => {
-        await upload(img)
-            .then(async () => {
-                if (req.user) {
-                    var { _id: userId } = req.user;
-                    userId = userId.toString();
+                        let { serviceHistory } = await UserSchema.findById(userIdString).exec();
+                        const newAdmin = req.body;
 
-                    let { serviceHistory } = await UserSchema.findById(userId).exec();
-                    const newAdmin = req.body;
+                        await serviceHistory.push(newAdmin);
+                        await UserSchema.findOneAndUpdate({ _id: userIdString }, { serviceHistory });
+                        // axios.patch(`/api/v1/admins/cuts/${userId}`, newAdmin)
+                    } else {
+                        console.log('Log In please | or stop hacking')
+                    }
+                })
+                .catch(err => {
+                    console.error(err)
+                })
+        })
+    } else {
+        if (req.user) {
+            console.log(req.user)
+            const { _id: userId } = req.user;
+            const userIdString = userId.toString();
+            console.log(userIdString)
 
-                    await serviceHistory.push(newAdmin);
-                    await UserSchema.findOneAndUpdate({ _id: userId }, { serviceHistory });
-                } else {
-                    console.log('Log In please | or stop hacking')
-                }
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    })
+            let { serviceHistory } = await UserSchema.findById(userIdString).exec();
+            const newAdmin = req.body;
+
+            await serviceHistory.push(newAdmin);
+            await UserSchema.findOneAndUpdate({ _id: userIdString }, { serviceHistory });
+            // axios.patch(`/api/v1/admins/cuts/${userId}`, newAdmin)
+        } else {
+            console.log('Log In please | or stop hacking')
+        }
+    }
 
     // const user = await UserSchema.find({ _id: req.params.id });
     res.redirect('/newVisit');

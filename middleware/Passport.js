@@ -20,7 +20,8 @@ module.exports = function (passport) {
 
     passport.use(
         new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-            User.findOne({ email: email })
+            const lowercaseEmail = email.toLowerCase();
+            User.findOne({ email: lowercaseEmail })
                 .then((user) => {
 
                     if (!user) {
