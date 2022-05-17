@@ -6,29 +6,21 @@ const getAppts = async (id) => {
     modalDOM.style.display = 'flex';
     apptsDOM.innerHTML = '';
     await user[0].serviceHistory.forEach((service) => {
-        const { clientName, clientEmail, clientPhone, clientServices, apptDate, additionalNotes, clientHairInfo } = service;
-        const date = new Date(apptDate);
-
-        const getHairInfo = () => {
-            let temp = '';
-            for(info in clientHairInfo) temp += `${info}: ${clientHairInfo[info]}\n`;
-            return temp;
-        }
+        const { name, email, services, date, time, notes } = service;
+        const apptDate = (date && time) ? new Date(Number(date.split('-')[0]), Number(date.split('-')[1]), Number(date.split('-')[2]), Number(time.split(':')[0]), Number(time.split(':')[1])) : undefined;
 
         apptsDOM.innerHTML += `
             <div class="appt">
                 <div class="leftHalf">
-                    <h2>${ clientName }</h2>
-                    <h3>${ clientEmail }</h3>
-                    <h3>${ clientPhone }</h3>
-                    <h3>${ getHairInfo() }</h3>
+                    <h2>${ name }</h2>
+                    <h3>${ email }</h3>
                 </div>
                 <div class="rightHalf">
-                    <h2>${ date.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${date.getHours()> 12 ?
-                                date.getHours()-12 :
-                                date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? 'PM' : 'AM' }</h2>
-                    <h3>${ clientServices.join(', ') }</h3>
-                    <h3>${additionalNotes}</h3>
+                    <h2>${ apptDate.toLocaleString('en-US', {dateStyle: 'medium' })} @ ${apptDate.getHours()> 12 ?
+                                apptDate.getHours()-12 :
+                                apptDate.getHours()}:${apptDate.getMinutes()} ${apptDate.getHours() > 12 ? 'PM' : 'AM' }</h2>
+                    <h3>${ services.join(', ') }</h3>
+                    <h3>${notes}</h3>
                 </div>
             </div>
         `;
