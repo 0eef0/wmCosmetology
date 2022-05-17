@@ -1532,6 +1532,17 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#p
   }
 }
 
+.flex-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (25%)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 25%);
+  row-gap: 1.1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .banner-container {
   background-color: #2d3436;
   min-width: 100%;
@@ -1818,56 +1829,6 @@ div#prevAppt div#prevApptModal div.appt div.rightHalf button, div#prevAppt div#p
 
 div#all-accounts {
   width: 70%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (25%)[auto-fill];
-      grid-template-columns: repeat(auto-fill, 25%);
-  row-gap: 1.1rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-@media screen and (max-width: 2750px) {
-  div#all-accounts {
-    -ms-grid-columns: (16.6%)[auto-fill];
-        grid-template-columns: repeat(auto-fill, 16.6%);
-  }
-}
-
-@media screen and (max-width: 2350px) {
-  div#all-accounts {
-    -ms-grid-columns: (20%)[auto-fill];
-        grid-template-columns: repeat(auto-fill, 20%);
-  }
-}
-
-@media screen and (max-width: 1950px) {
-  div#all-accounts {
-    -ms-grid-columns: (25%)[auto-fill];
-        grid-template-columns: repeat(auto-fill, 25%);
-  }
-}
-
-@media screen and (max-width: 1550px) {
-  div#all-accounts {
-    -ms-grid-columns: (33.3%)[auto-fill];
-        grid-template-columns: repeat(auto-fill, 33.3%);
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  div#all-accounts {
-    -ms-grid-columns: (50%)[auto-fill];
-        grid-template-columns: repeat(auto-fill, 50%);
-  }
-}
-
-@media screen and (max-width: 750px) {
-  div#all-accounts {
-    -ms-grid-columns: (100%)[auto-fill];
-        grid-template-columns: repeat(auto-fill, 100%);
-  }
 }
 
 .form-container {

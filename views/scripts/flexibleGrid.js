@@ -1,6 +1,20 @@
-const flexGridDOM = document.getElementById('flex-grid');
-const flexGridItems = document.getElementsByClassName('flex-grid-item');
+const flexGrids = document.getElementsByClassName('flex-grid');
+let columnCount;
 
-let gridWidth = flexGridDOM.offsetWidth;
-let itemWidth = flexGridItems[0].offsetWidth;
+function columns() {
+    for (let i = 0; i < flexGrids.length; i++) {
+        const flexGridItems = flexGrids[i].getElementsByClassName('flex-grid-item');
+        console.log(flexGridItems);
+        const gridWidth = flexGrids[i].offsetWidth;
+        const itemWidth = flexGridItems[0].offsetWidth;
+        if (condition) {
+            console.log(gridWidth, itemWidth);
+        }
+    }
+}
 
+columns();
+
+window.addEventListener('resize', function() {
+    columns();
+})

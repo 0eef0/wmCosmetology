@@ -23,10 +23,6 @@
                 tempUsers = allUsers;
         }
     }%>
-    <script>
-        const test = '<%= filterByType %>';
-        console.log(test);
-    </script>
 
     <!-- modals go here -->
     <%- include('../../partials/modals/accountModal'), { allUsers } %>
@@ -65,6 +61,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../../scripts/prevApptModal.js"></script>
     <script src="../../scripts/accountFilter.js"></script>
+    <script src="../../scripts/flexibleGrid.js"></script>
     <script src="../../scripts/navbar.js"></script>
 
     <%- include('../../partials/adminFooter'); %>
