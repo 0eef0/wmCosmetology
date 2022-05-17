@@ -29,24 +29,6 @@ navigation.get('/schedule', ensureAuthenticated, (req, res) => {
 navigation.get('/accounts', ensureAuthenticated, async (req, res) => {
     try {
         const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
-
-        // const filterByType = async (type) => {
-        //     console.log('hi')
-        //     switch (type) {
-        //         case 'student': 
-        //             allUsers = allUsers.filter((user) => {user.accountType === 'student'});
-        //             break;
-        //         case 'teacher': 
-        //             allUsers = allUsers.filter((user) => {user.accountType === 'teacher'});
-        //             break;
-        //         case 'admin': 
-        //             allUsers = allUsers.filter((user) => {user.accountType === 'admin'});
-        //             break;
-        //         default:
-        //             allUsers = allUsers;
-        //     }
-        // }
-
         await res.render('pages/admin/accounts', {
             allUsers,
             title: "Admin Accounts"
