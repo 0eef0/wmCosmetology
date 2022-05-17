@@ -43,13 +43,14 @@ app.patch('/:id', updateAdminByID);
 
 app.post('/', async (req, res) => { //create user
     const { name, email, password, accountType, serviceHistory } = req.body;
+    const lowercaseEmail = email.toLowerCase();
     console.log(req.body)
     let errors = [];
     try {
         await UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
-                console.log('username already in use')
+                console.log(' please kil me')
                 errors.push({ msg: 'user already registered' })
                 res.sendStatus(403)
             } else if (!/@west-mec.org\s*$/.test(email)) {
@@ -58,7 +59,7 @@ app.post('/', async (req, res) => { //create user
             } else {
                 const newUser = new UserSchema({
                     name,
-                    email,
+                    email: lowercaseEmail,
                     password,
                     accountType,
                     serviceHistory
@@ -75,8 +76,7 @@ app.post('/', async (req, res) => { //create user
                             newUser.save()
                                 .then((value) => {
                                     console.log(value)
-                                    res.sendStatus(200)
-                                    res.render('pages/admin/schedule')
+                                    res.render('pages/admin/schedule', { title: "Admin Schedule" })
                                 })
                                 .catch(value => console.log(value))
                         }
