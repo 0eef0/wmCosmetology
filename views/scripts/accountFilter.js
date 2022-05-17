@@ -10,7 +10,7 @@ let tempUsers = [];
         const { _id: id, name, email, accountType, serviceHistory } = user;
         const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined;
         accountsDOM.innerHTML += `
-            <div class="account">
+            <div class="account flex-grid-item">
                 <h1 class="name">
                     ${ name }
                 </h1>
@@ -38,7 +38,7 @@ const updateAccounts = () => {
         const { _id: id, name, email, accountType, serviceHistory } = user;
         const date = (serviceHistory[serviceHistory.length-1]) ? new Date(serviceHistory[serviceHistory.length-1].apptDate) : undefined;
         accountsDOM.innerHTML += `
-            <div class="account">
+            <div class="account flex-grid-item">
                 <h1 class="name">
                     ${ name }
                 </h1>

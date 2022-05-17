@@ -60,7 +60,7 @@ for (let i = 0; i < modals.length; i++) {
     modals[i].addEventListener('click', function() {
         modals[i].style.display = 'none';
         if (i === 0) {
-            location.reload();
+            // location.reload();
         }
     });
 }

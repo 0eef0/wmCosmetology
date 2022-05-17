@@ -50,9 +50,12 @@ logoutBtn && logoutBtn.addEventListener('click', async () => {
 // Gets current user and all their information
 const getCurrentUser = async () => {
     let currentUser = await axios.get('/api/v1/admins/current');
-    currentUser = currentUser.data.user;
-    console.log(currentUser, currentUser.accountType);
-    if (currentUser) {
+    if (!currentUser.data.length) {
+        console.log('No one is logged in');
+        return;
+    } else {
+        console.log('Someone is logged in');
+        currentUser = currentUser.data.user;
         if (currentUser.accountType == 'admin') {
             newUserBtn.style.visibility = 'visible';
             newUserBtn.style.display = 'block';
