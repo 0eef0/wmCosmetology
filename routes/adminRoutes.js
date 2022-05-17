@@ -146,6 +146,8 @@ app.delete('/', async (req, res) => {
 
 app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
     req.body.imageUrls = [];
+    req.body.completedBy = undefined;
+    req.body.walkIn = true;
     console.log(req.user)
 
     const upload = (img) => {
