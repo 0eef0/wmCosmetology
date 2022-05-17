@@ -31,14 +31,15 @@ cloudinary.config({
 // })).resources
 
 
-const { updateAdminCutsByID } = require('../controllers/adminController');
-const { createVisit, getAllVisits } = require('../controllers/visitController');
+const { updateAdminCutsByID, updateAdminByID } = require('../controllers/adminController');
+// const { createVisit, getAllVisits } = require('../controllers/visitController');
 
-const UserSchema = require('../models/admin');
+const UserSchema = require('../models/admin')
 
 app.use(express.json());
 
-app.patch('/:id', updateAdminCutsByID);
+app.patch('/cuts/:id', updateAdminCutsByID);
+app.patch('/:id', updateAdminByID);
 
 app.post('/', async (req, res) => { //create user
     const { name, email, password, accountType, serviceHistory } = req.body;
@@ -143,15 +144,51 @@ app.delete('/', async (req, res) => {
     } catch (error) { res.status(500).json({ msg: error }) }
 })
 
-app.post("/newVisit", upload.array('images'), (req, res) => {
-    req.files.forEach(img => {
-        const cloudinaryStream = cloudinary.uploader.upload_stream({
-            folder: 'cosmetology',
-            name: img.name
+app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
+    req.body.imageUrls = [];
+    req.body.completedBy = undefined;
+    req.body.walkIn = true;
+    console.log(req.user)
+
+    const upload = (img) => {
+        return new Promise((resolve, reject) => {
+            const cloudinaryStream = cloudinary.uploader.upload_stream({
+                folder: 'cosmetology',
+            },
+                (error, result) => {
+                    if (result) {
+                        req.body.imageUrls.push(result.url);
+                        resolve(result);
+                    } else {
+                        reject(error);
+                    }
+                });
+            stream.Readable.from(img.buffer).pipe(cloudinaryStream);
         });
-        stream.Readable.from(img.buffer).pipe(cloudinaryStream);
+    }
+
+    req.files.forEach(async (img, i) => {
+        await upload(img)
+            .then(async () => {
+                if (req.user) {
+                    var { _id: userId } = req.user;
+                    userId = userId.toString();
+
+                    let { serviceHistory } = await UserSchema.findById(userId).exec();
+                    const newAdmin = req.body;
+
+                    await serviceHistory.push(newAdmin);
+                    await UserSchema.findOneAndUpdate({ _id: userId }, { serviceHistory });
+                } else {
+                    console.log('Log In please | or stop hacking')
+                }
+            })
+            .catch(err => {
+                console.error(err)
+            })
     })
-    // createVisit();
+
+    // const user = await UserSchema.find({ _id: req.params.id });
     res.redirect('/newVisit');
 })
 
