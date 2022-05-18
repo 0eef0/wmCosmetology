@@ -74,10 +74,10 @@ date.addEventListener('change', function () {
 })
 
 // Changes the time in the price calculator
-time.addEventListener('change', function () {
-    displayTime.innerHTML = readableDate(time.value);
-    noDate.style.display = 'none';
-})
+// time.addEventListener('change', function () {
+//     displayTime.innerHTML = readableDate(time.value);
+//     noDate.style.display = 'none';
+// })
 
 // Submits appointment to the API
 formDOM.addEventListener('submit', async function (e) {
@@ -85,16 +85,17 @@ formDOM.addEventListener('submit', async function (e) {
 
     const newAppt = {
         name: document.getElementById('name-input').value,
+        appointmentDateTime: document.getElementById('date-input').value,
         email: document.getElementById('email-input').value,
-        date: document.getElementById('date-input').value,
-        time: document.getElementById('time-input').value,
         services: serviceArr,
         price: priceCounter,
-        notes: document.getElementById('add-notes').value
+        notes: document.getElementById('add-notes').value,
+        completedBy: "N/A",
+        walkIn: false
     }
 
     try {
-        await axios.post('/api/v1/appointments', newAppt);
+        await axios.post('/api/v1/admins/newVisit', newAppt);
         modals[0].style.display = "flex";
         modalTitles[0].style.color = "green";
     } catch (error) {

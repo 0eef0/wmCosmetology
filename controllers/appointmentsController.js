@@ -11,14 +11,15 @@ const createAppointment = async (req, res) => {
     // console.log(req.body)
     try {
         const appointments = await appointmentModel.create(req.body);
-        // console.log(application)
+        console.log(appointments)
         res.status(201).json({appointments});
     } catch (error) { res.status(500).json({msg: error}) }
 }
 
 const getAppointment = async (req, res) => {
     try {
-        const appointments = await appointmentModel.findById(req.params.id).exec();
+        const {id} = req.params;
+        const appointments = await appointmentModel.find({completedBy: id})
         res.status(201).json({appointments});
     } catch (error) { res.status(500).json({msg: error}) }
 }
