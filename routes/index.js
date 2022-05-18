@@ -20,7 +20,7 @@ navigation.get('/login', (req, res) => {
 })
 
 //admin schedule page
-navigation.get('/schedule', ensureAuthenticated, (req, res) => {
+navigation.get('/schedule', /*ensureAuthenticated,*/ (req, res) => {
     res.render('pages/admin/schedule', { title: "Admin Schedule" })
 })
 

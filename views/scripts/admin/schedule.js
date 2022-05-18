@@ -19,6 +19,7 @@ let dateFilter = document.getElementById('date-filter');
 
 // Makes times readable
 function readableTime(time) {
+    return '';
     time = time.split(':');
     time.push('AM');
     if (time[0] == 0) {
@@ -34,58 +35,9 @@ function readableTime(time) {
 
 // Makes Dates Readable
 function readableDate(date) {
-    return date.toLocaleString();
+    let newDate = new Date(date);
+    return newDate.toLocaleString();
 }
-
-const showAppointments = async () => {
-    let appts = await axios.get('/api/v1/appointments');
-    appts = appts.data.appointments.filter(appointment => appointment.walkIn == false).sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.time > b.time) ? 1 : -1) : -1);
-
-    const appointmentsHTML = appts.length ? appts.map(appointment => {
-        const {name, services, notes, appointmentDateTime, price, _id: id} = appointment;
-        return `
-            <div class="modal-container-brk">
-                <div class="cancel-modal">
-                    <h1 class="modal-title">Warning!</h1>
-                    <p>Are you sure you want to cancel ${name}'s appointment?</p>
-                    <div class="modal-btns">
-                        <button class="confirm-btn">Yes</button>
-                        <button class="deny-btn">No</button>
-                    </div>
-                </div>
-            </div>
-            <div class="appointment-card">
-                <div class="col">
-                    <h1 class="service-names">${formatter.format(services)}</h1>
-                    ${notes != '' ? `
-                        <div class="accordion">
-                            <div class="title-row appt-card-title-row">
-                                <p class="more-notes-title">Additional Notes</p>
-                                <i class="fas fa-angle-down"></i>
-                            </div>
-                            <div class="panel">
-                                <p class="add-notes">${notes}</p>
-                            </div>
-                        </div>
-                    ` : ''}
-
-                    <p class="date">${appointmentDateTime}</p>
-                    <h1 class="name">${name}</h1>
-                </div>
-                <div class="col right">
-                    <p class="estimated-price">Estimated Price: $${price}</p>
-
-                    <div class="btn-container">
-                        <button class="complete-appointment btn btn-3" onClick="handleComplete(${id})">Complete</button>
-                        <button class="cancel-appointment btn btn-3">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        `
-    }).join('') : '<div class="appointment-card"><p class="blank-text">There are currently no appointments</p></div>';
-    apptsDOM.innerHTML = appointmentsHTML;
-}
-showAppointments();
 
 // Adds div using inputted appointments
 function html(appts, dayFilter) {
@@ -123,7 +75,7 @@ function html(appts, dayFilter) {
                             </div>
                         ` : ''}
 
-                        <p class="date">${readableDate(appts[i].date)} @ ${readableTime(appts[i].time)}</p>
+                        <p class="date">${readableDate(appts[i].appointmentDateTime)}</p>
                         <h1 class="name">${appts[i].name}</h1>
                     </div>
                     <div class="col right">
@@ -185,7 +137,7 @@ function html(appts, dayFilter) {
 
 async function getAppts() {
     let appts = await axios.get('/api/v1/appointments');
-    appts = appts.data.appointments.sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.time > b.time) ? 1 : -1) : -1);
+    appts = appts.data.appointments.filter(appointment => appointment.walkIn == false).sort((a, b) => (a.appointmentDateTime > b.appointmentDateTime) ? 1 : -1);
     let newDate = new Date()
 
     // Today Filter Logic
@@ -195,7 +147,7 @@ async function getAppts() {
         weekFilter.classList.remove('active-filter');
         monthFilter.classList.remove('active-filter');
         dateFilter.value = '';
-        filteredAppts = appts.filter((appt) => (parseInt(appt.date.split('-')[2], 10) == (newDate.getDate()))), "today";
+        filteredAppts = appts.filter((appt) => (parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate()))), "today";
         html(filteredAppts, 'today');
     })
 
@@ -207,7 +159,7 @@ async function getAppts() {
         monthFilter.classList.remove('active-filter');
         dateFilter.value = '';
 
-        filteredAppts = appts.filter((appt) => (parseInt(appt.date.split('-')[2], 10) == (newDate.getDate()) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 1) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 2) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 3) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 4) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 5) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 6) || parseInt(appt.date.split('-')[2], 10) == (newDate.getDate() + 7)));
+        filteredAppts = appts.filter((appt) => (parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate()) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 1) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 2) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 3) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 4) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 5) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 6) || parseInt(appt.appointmentDateTime.split('-')[2], 10) == (newDate.getDate() + 7)));
         html(filteredAppts, 'this week');
     })
 
@@ -219,7 +171,7 @@ async function getAppts() {
         monthFilter.classList.add('active-filter');
         dateFilter.value = '';
 
-        filteredAppts = appts.filter((appt) => (parseInt(appt.date.split('-')[1], 10) == (newDate.getMonth() + 1)));
+        filteredAppts = appts.filter((appt) => (parseInt(appt.appointmentDateTime.split('-')[1], 10) == (newDate.getMonth() + 1)));
         html(filteredAppts, 'this month');
     })
 
@@ -229,9 +181,11 @@ async function getAppts() {
         dayFilter.classList.remove('active-filter');
         weekFilter.classList.remove('active-filter');
         monthFilter.classList.remove('active-filter');
+        const newDate = new Date(dateFilter.value);
+        const formattedDate = new Date( newDate.getTime() - newDate.getTimezoneOffset() * -60000 ).toLocaleDateString();
 
-        filteredAppts = appts.filter((appt) => (appt.date) == (dateFilter.value));
-        html(filteredAppts, `on ${readableDate(dateFilter.value)}`);
+        filteredAppts = appts.filter((appt) => appt.appointmentDateTime.split('T')[0] == (dateFilter.value));
+        html(filteredAppts, `on ${formattedDate}`);
     })
 
     // All Appointments Logic
@@ -247,7 +201,7 @@ async function getAppts() {
 
     html(appts);
 }
-// getAppts();
+getAppts();
 
 
 const handleComplete = async (index) => {
