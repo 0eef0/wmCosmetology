@@ -114,7 +114,7 @@ const adminSchema = new mongoose.Schema({
     },
     completedBy: {
       type: String,
-      required: [true, 'Must provide the id of employee']
+      required: [false, 'Must provide the id of employee']
     },
     walkIn: {
       type: Boolean,

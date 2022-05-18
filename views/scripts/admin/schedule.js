@@ -17,22 +17,6 @@ let weekFilter = document.getElementById('week-filter');
 let monthFilter = document.getElementById('month-filter');
 let dateFilter = document.getElementById('date-filter');
 
-// Makes times readable
-function readableTime(time) {
-    return '';
-    time = time.split(':');
-    time.push('AM');
-    if (time[0] == 0) {
-        time[0] = 12;
-    } else if (time[0] == 12) {
-        time[2] = 'PM';
-    } else if (time[0] > 12) {
-        time[0] -= 12;
-        time[2] = 'PM';
-    }
-    return `${time.slice(0, 2).join(':')} ${time[2]}`;
-}
-
 // Makes Dates Readable
 function readableDate(date) {
     let newDate = new Date(date);
@@ -137,7 +121,7 @@ function html(appts, dayFilter) {
 
 async function getAppts() {
     let appts = await axios.get('/api/v1/appointments');
-    appts = appts.data.appointments.filter(appointment => appointment.walkIn == false).sort((a, b) => (a.appointmentDateTime > b.appointmentDateTime) ? 1 : -1);
+    appts = appts.data.appointments.filter(appointment => appointment.walkIn == false && appointment.completedBy == "N/A").sort((a, b) => (a.appointmentDateTime > b.appointmentDateTime) ? 1 : -1);
     let newDate = new Date()
 
     // Today Filter Logic
@@ -212,10 +196,12 @@ const handleComplete = async (index) => {
     let currentUser = await axios.get('/api/v1/admins/current');
     currentUser = currentUser.data.user;
     
-    await axios.patch(`/api/v1/admins/cuts/${currentUser._id}`, appointment)
-    .then(async () => {
-        await axios.delete(`api/v1/appointments/${appointment._id}`)
-        .then(() => getAppts())
+    await axios.patch(`/api/v1/appointments/${appointment._id}`, {
+        "completedBy": currentUser._id
+    })
+    .then(() => {
+        console.log('appointment updated')
+        getAppts()
     })
 
     //then delete /api/v1/appointments/:id

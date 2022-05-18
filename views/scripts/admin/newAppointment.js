@@ -90,6 +90,7 @@ formDOM.addEventListener('submit', async function (e) {
         services: serviceArr,
         price: priceCounter,
         notes: document.getElementById('add-notes').value,
+        completedBy: "N/A",
         walkIn: false
     }
 

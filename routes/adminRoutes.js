@@ -146,7 +146,10 @@ app.delete('/', async (req, res) => {
 
 app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
     req.body.imageUrls = [];
-    req.body.completedBy = req.user._id;
+    // req.body.completedBy = req.user._id;
+    if (req.body.completedBy !== "N/A") {
+        req.body.completedBy = req.user._id;
+    }
     console.log(req.body.walkIn)
     // console.log(req.user)
     if (req.body.walkIn !== false) {

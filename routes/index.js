@@ -20,13 +20,13 @@ navigation.get('/login', (req, res) => {
 })
 
 //admin schedule page
-navigation.get('/schedule', /*ensureAuthenticated,*/ (req, res) => {
+navigation.get('/schedule', ensureAuthenticated, (req, res) => {
     res.render('pages/admin/schedule', { title: "Admin Schedule" })
 })
 
 /* ALL ADMIN PAGES HERE */
 // Accounts
-navigation.get('/accounts', /* ensureAuthenticated, */ async (req, res) => {
+navigation.get('/accounts', ensureAuthenticated, async (req, res) => {
     try {
         const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
         await res.render('pages/admin/accounts', {
