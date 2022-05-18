@@ -46,7 +46,6 @@ newUserForm.addEventListener('submit', async function(e) {
         password: passwordInput.value,
         accountType: accountInput.value
     }
-    console.log(newUser);
 
     try {
         await axios.post('/api/v1/admins', newUser);

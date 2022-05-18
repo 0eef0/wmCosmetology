@@ -45,7 +45,6 @@ const updateAdminCutsByID = async (req, res) => {
         const { id } = req.params;
         const newAdmin = req.body;
         await serviceHistory.push(newAdmin);
-        console.log(serviceHistory);
         await adminSchema.findOneAndUpdate({ _id: id }, { serviceHistory });
         res.status(201).json({ newAdmin });
     } catch (error) { res.status(500).json({ msg: error }) }

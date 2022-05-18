@@ -8,10 +8,8 @@ const getAllAppointments = async (req, res) => {
 }
 
 const createAppointment = async (req, res) => {
-    // console.log(req.body)
     try {
         const appointments = await appointmentModel.create(req.body);
-        console.log(appointments)
         res.status(201).json({appointments});
     } catch (error) { res.status(500).json({msg: error}) }
 }

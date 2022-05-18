@@ -40,7 +40,7 @@ navigation.get('/accounts', ensureAuthenticated, async (req, res) => {
 
 /* ALL ADMIN PAGES HERE */
 // Create User
-navigation.get('/createUser', /* ensureAdminAuthenticated, */(req, res) => {
+navigation.get('/createUser', ensureAdminAuthenticated,(req, res) => {
     res.render('pages/admin/createUser', { title: "Create User" })
 })
 // New Appointment

@@ -191,7 +191,6 @@ getAppts();
 const handleComplete = async (index) => {
     const appointment = filteredAppts[index];
     appointment.walkIn = false;
-    console.log(appointment)
 
     let currentUser = await axios.get('/api/v1/admins/current');
     currentUser = currentUser.data.user;
@@ -200,7 +199,6 @@ const handleComplete = async (index) => {
         "completedBy": currentUser._id
     })
     .then(() => {
-        console.log('appointment updated')
         getAppts()
     })
 

@@ -1,6 +1,4 @@
-// const passport = require("passport")
 const express = require('express');
-// const Router = express.Router();
 const app = express.Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
@@ -8,17 +6,12 @@ const passport = require('passport');
 const UserSchema = require('../models/admin');
 
 app.use(express.json())
-// Router.post('/login', passport.authenticate('local', { successRedirect: '/schedule', failureRedirect: '/adminLogin' }));
 
 app.post('/', async (req, res) => { //create user
     const { username, name, password, confirmPassword } = req.body;
     let errors = [];
     try {
-        // const salt = await bcrypt.genSalt(10)
-        // console.log(`Salt ${salt}`);
-
         UserSchema.findOne({ username: username }).exec((err, user) => {
-            console.log(username);
             if (user) {
                 console.log('username already in use')
                 errors.push({ msg: 'user already registered' })
@@ -46,8 +39,6 @@ app.post('/', async (req, res) => { //create user
                             //save user
                             newUser.save()
                                 .then((value) => {
-                                    console.log(value)
-                                    // req.flash('success_msg', 'You have now registered')
                                     res.sendStatus(200)
                                 })
                                 .catch(value => console.log(value))

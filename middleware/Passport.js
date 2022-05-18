@@ -5,15 +5,11 @@ const User = require('../models/admin')
 module.exports = function (passport) {
     //Serialization + deserialization for simultaneous logins
     passport.serializeUser(function (user, done) {
-        // console.log("Serialize is running");
         done(null, user.id)
     })
 
     passport.deserializeUser(function (id, done) {
-        // console.log("Deserialize is running");
-        // console.log(User)
         User.findById(id, function (err, user) {
-            // console.log("User.findById is running");
             done(err, user)
         })
     })
@@ -29,7 +25,6 @@ module.exports = function (passport) {
                     }
 
                     //match pass
-                    console.log(user._id)
                     bcrypt.compare(password, user.password, (err, isMatch) => {
                         if (err) throw err;
                         if (isMatch) {

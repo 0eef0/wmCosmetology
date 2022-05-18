@@ -112,8 +112,6 @@
   position: relative;
   background-color: $color;
 
-  // width: 100vw;
-
   margin: 1rem 0.5rem;
 
   &:first-of-type {
@@ -562,16 +560,6 @@
   @include position(relative, $args);
 }
 
-// .meni li {
-//   @include absolute(top 100% left 0);
-// }
-// .sticky-bar {
-//   @include fixed(top 0 left 0)
-// }
-// .submenu {
-//   @include relative(())
-// }
-
 $phone-wide: 480px;
 $phablet: 560px;
 $tablet-small: 640px;
@@ -607,7 +595,6 @@ $desktop-wide: 1440px;
     visibility: hidden;
     opacity: 0;
     transition: $transition;
-    // transition: visibility 1s opacity 1s;
   } @else if $type == "show" {
     visibility: visible;
     opacity: 1;
@@ -656,12 +643,7 @@ $desktop-wide: 1440px;
       transition-delay: $delay * $i;
     }
   }
-} //adds delay to children n stuff (;
-
-// @include font-face("MyFont", './base/typography/myfont.ttf', $style: underline)
-// div{
-//   font-family: "MyFont";
-// }
+} //adds delay to children n stuff (
 
 @mixin text-shorten {
   overflow: hidden;
@@ -707,7 +689,6 @@ $desktop-wide: 1440px;
 }
 
 @mixin gradientBorder($angle, $color1, $color2, $width) {
-  // margin: $width !important;
   position: relative;
   isolation: isolate;
   &::after {

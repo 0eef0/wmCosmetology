@@ -43,7 +43,6 @@ if (window.location.pathname == '/') {
 
 // Logout Functionality
 logoutBtn && logoutBtn.addEventListener('click', async () => {
-    console.log('AddEventListener works');
     await axios.post('/admins/logout');
 })
 

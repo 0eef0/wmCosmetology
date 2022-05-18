@@ -1,6 +1,3 @@
-// const passport = require("passport")
-// const express = require("express")
-// const Router = express.Router()
 const express = require('express')
 const app = express.Router()
 const bcrypt = require('bcrypt')
@@ -32,7 +29,6 @@ cloudinary.config({
 
 
 const { updateAdminCutsByID, updateAdminByID } = require('../controllers/adminController');
-// const { createVisit, getAllVisits } = require('../controllers/visitController');
 
 const UserSchema = require('../models/admin');
 const appointmentSchema = require('../models/appointment');
@@ -45,16 +41,13 @@ app.patch('/:id', updateAdminByID);
 app.post('/', async (req, res) => { //create user
     const { name, email, password, accountType, serviceHistory } = req.body;
     const lowercaseEmail = email.toLowerCase();
-    // console.log(req.body)
     let errors = [];
     try {
         UserSchema.findOne({ email: email }).exec((err, user) => {
-            //console.log(username);
             if (user) {
                 errors.push({ msg: 'user already registered' })
                 res.sendStatus(403)
             } else if (!/@west-mec.org\s*$/.test(email)) {
-                // console.log('not a west-mec user')
                 errors.push({ msg: 'user not from west-mec' })
             } else {
                 const newUser = new UserSchema({
@@ -75,7 +68,6 @@ app.post('/', async (req, res) => { //create user
                             //save user
                             newUser.save()
                                 .then((value) => {
-                                    // console.log(value)
                                     res.render('pages/admin/schedule', { title: "Admin Schedule" })
                                 })
                                 .catch(value => console.log(value))
@@ -146,12 +138,9 @@ app.delete('/', async (req, res) => {
 
 app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
     req.body.imageUrls = [];
-    // req.body.completedBy = req.user._id;
     if (req.body.completedBy !== "N/A") {
         req.body.completedBy = req.user._id;
     }
-    console.log(req.body.walkIn)
-    // console.log(req.user)
     if (req.body.walkIn !== false) {
         req.body.walkIn = true;
     }
@@ -187,12 +176,9 @@ app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
                 })
         })
     } else {
-        console.log('no files uploaded')
-        console.log(req.body)
         await appointmentSchema.create(req.body);
     }
 
-    // const user = await UserSchema.find({ _id: req.params.id });
     res.redirect('/newVisit');
 })
 

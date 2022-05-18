@@ -5,26 +5,24 @@ const getAppts = async (id) => {
     const {data: {appointments}} = await axios.get(`/api/v1/appointments/${id}`);
     modalDOM.style.display = 'flex';
     apptsDOM.innerHTML = '';
-    console.log(appointments)
     await appointments.forEach((service) => {
         if(!(service.walkIn == undefined)) {
-            console.log(service)
-        const { name, email, services, serviceRequest, appointmentDateTime: date, notes } = service;
-        const newDate = new Date(date).toLocaleString();
+            const { name, email, services, serviceRequest, appointmentDateTime: date, notes } = service;
+            const newDate = new Date(date).toLocaleString();
 
-        apptsDOM.innerHTML += `
-            <div class="appt">
-                <div class="leftHalf">
-                    <h2>${ name }</h2>
-                    <h3>${ email }</h3>
+            apptsDOM.innerHTML += `
+                <div class="appt">
+                    <div class="leftHalf">
+                        <h2>${ name }</h2>
+                        <h3>${ email }</h3>
+                    </div>
+                    <div class="rightHalf">
+                        <h2>${ newDate }</h2>
+                        <h3>Services: ${ services.join(',') == "N/A" ? serviceRequest : services.join(',') }</h3>
+                        <h3>Additional Notes: ${notes}</h3>
+                    </div>
                 </div>
-                <div class="rightHalf">
-                    <h2>${ newDate }</h2>
-                    <h3>Services: ${ services.join(',') == "N/A" ? serviceRequest : services.join(',') }</h3>
-                    <h3>Additional Notes: ${notes}</h3>
-                </div>
-            </div>
-        `;
+            `;
         } else {
             const { name, email, serviceRequest, appointmentDate, additionalInformation, city, state, dateOfBirth, address, growthPattern, hairClassification, hairCondition, hairDensity, hairElasticity, hairLength, hairPorosity, hairTexture, scalpCondition, imageUrls } = service;
             const apptDate = (appointmentDate) ? new Date(Number(appointmentDate.split('-')[0]), Number(appointmentDate.split('-')[1]), Number(appointmentDate.split('-')[2])) : undefined;
