@@ -1,13 +1,46 @@
 div.account-filters {
+    background-color: $clr-white;
     display: flex;
     justify-content: space-between;
-    width: 70%;
-    background-color: $clr-primary-1;
+    width: 100vw;
+    height: max-content;
+    box-sizing: border-box;
     padding: 0.5rem;
-    border-radius: 0.5rem;
-
+    
     input, select {
+        justify-content: center;
+        border-radius: 1rem;
+        font-size: 1.5rem;
         border-radius: 0.5rem;
-        padding: 0.5rem;
+        height: 100%;
+        width: max-content;
+        padding: 0 0.3rem;
+        background-color: transparent;
+        font-weight: 700;
+        border: 2px solid $clr-black;
+        color: $clr-primary-4;
+        margin: 0 auto;
+
+        &::placeholder {
+            color: inherit;
+        }
+    }
+    div.dropdown-menu {
+        justify-content: flex-end;
+        margin: 0 auto;
+    }
+    select {
+        width: max-content;
+        font-size: 1.5rem;
+        option {
+            color: $clr-white;
+            background-color: $clr-primary-4;
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .account-filters {
+        flex-direction: column;
     }
 }
