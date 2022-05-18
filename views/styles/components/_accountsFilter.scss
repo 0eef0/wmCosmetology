@@ -14,12 +14,12 @@ div.account-filters {
         border-radius: 0.5rem;
         height: 100%;
         width: max-content;
+        max-width: 90vw;
         padding: 0 0.3rem;
-        background-color: transparent;
         font-weight: 700;
-        border: 2px solid $clr-black;
-        color: $clr-primary-4;
-        margin: 0 auto;
+        background-color: $clr-primary-4;
+        border: 2px solid $clr-primary-4;
+        color: $clr-white;
 
         &::placeholder {
             color: inherit;
@@ -27,11 +27,9 @@ div.account-filters {
     }
     div.dropdown-menu {
         justify-content: flex-end;
-        margin: 0 auto;
     }
     select {
         width: max-content;
-        font-size: 1.5rem;
         option {
             color: $clr-white;
             background-color: $clr-primary-4;
@@ -39,8 +37,12 @@ div.account-filters {
     }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 560px) {
     .account-filters {
         flex-direction: column;
+        gap: 0.5rem;
+        input, .dropdown-menu {
+            margin: 0 auto;
+        }
     }
 }

@@ -28,8 +28,17 @@ function filterAccts() {
 
     if (acctOrderDOM.value == 'a-z') {
         tempUsers = tempUsers.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : (a.name.toLowerCase() == b.name.toLowerCase()) ? ((a.email.toLowerCase() > b.email.toLowerCase()) ? 1 : -1) : -1);
-    } else {
+    } else if (acctOrderDOM.value == 'z-a') {
         tempUsers = tempUsers.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : (a.name.toLowerCase() == b.name.toLowerCase()) ? ((a.email.toLowerCase() < b.email.toLowerCase()) ? 1 : -1) : -1);
+    }
+
+    if (!tempUsers.length) {
+        accountsDOM.innerHTML = `
+            <div class="no-accts-card">
+                <p class="blank-text">There are no ${(acctFilterDOM.value == 'admin' || acctFilterDOM.value == 'teacher' || acctFilterDOM.value == 'student') ? acctFilterDOM.value : ''} accounts ${acctSearchDOM.value != '' ? `with "${acctSearchDOM.value}" in it` : ''}</p>
+            </div>
+        `;
+        return;
     }
 
     updateAccounts();
