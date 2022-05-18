@@ -51,7 +51,7 @@ logoutBtn && logoutBtn.addEventListener('click', async () => {
 const getCurrentUser = async () => {
     let currentUser = await axios.get('/api/v1/admins/current');
     currentUser = currentUser.data.user;
-    console.log(currentUser, currentUser.accountType);
+    // console.log(currentUser, currentUser.accountType);
     if (currentUser) {
         if (currentUser.accountType == 'admin') {
             newUserBtn.style.visibility = 'visible';

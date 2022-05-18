@@ -5,31 +5,121 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Must provide a name']
     },
+    appointmentDateTime: {
+      type: Date,
+      required: [true, 'Must provide appointment date']
+    },
+    address: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide an address']
+    },
+    city: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a city']
+    },
+    state: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a state']
+    },
+    zipCode: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a zip code']
+    },
+    phone: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a phone number']
+    },
     email: {
         type: String,
-        required: [true, 'Must provide a email']
+        default: "N/A",
+        required: [false, 'Must provide a email']
     },
-    date: {
+    dateOfBirth: {
+      type: Date,
+      required: [false, 'Must provide a date of birth']
+    },
+    serviceRequest: {
       type: String,
-      required: [true, 'Must provide a date']
+      default: "N/A",
+      required: [false, 'Must provide a service request']
     },
-    time: {
+    hairCondition: {
       type: String,
-      required: [true, 'Must provide a time']
+      default: "N/A",
+      required: [false, 'Must provide a hair condition']
     },
-    services: {
-      type: Array,
-      required: [true, 'Must provide a time']
+    hairClassification: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a hair classification']
     },
-    price: {
-        type: Number,
-        required: [true, 'Must provide an estimated price']
+    scalpCondition: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a scalp condition']
+    },
+    hairTexture: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a hair texture']
+    },
+    growthPattern: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a growth pattern']
+    },
+    hairDensity: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a hair density']
+    },
+    hairPorosity: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a hair porosity']
+    },
+    hairElasticity: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a hair elasticity']
+    },
+    hairLength: {
+      type: String,
+      default: "N/A",
+      required: [false, 'Must provide a hair length']
     },
     notes: {
       type: String,
-      maxLength: 1000,
-      default: null
+      default: "N/A",
+      required: [false, '']
+    },
+    imageUrls: {
+      type: Array,
+      default: "N/A",
+      required: [false, '']
+    },
+    services: {
+      type: Array,
+      default: "N/A",
+      required: [false, 'Must provide a time']
+    },
+    price: {
+      type: Number,
+      required: [false, '']
+    },
+    completedBy: {
+      type: String,
+      required: [true, 'Must provide the id of employee']
+    },
+    walkIn: {
+      type: Boolean,
+      required: [true, 'Must specify if service was walk-in']
     }
 });
 
-module.exports = mongoose.model('appointmentSchema', adminSchema);
+module.exports = mongoose.model('appointments', adminSchema);

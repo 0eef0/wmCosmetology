@@ -1,7 +1,7 @@
 GET http://localhost:5000/api/v1/appointments HTTP/1.1
 Content-Type: application/json
 ########################################################################
-GET http://localhost:5000/api/v1/appointments/62797ed409d25e2b156e414a HTTP/1.1
+GET http://localhost:5000/api/v1/appointments/6284037944d86c954cb887d1 HTTP/1.1
 Content-Type: application/json
 ########################################################################
 POST http://localhost:5000/api/v1/appointments HTTP/1.1

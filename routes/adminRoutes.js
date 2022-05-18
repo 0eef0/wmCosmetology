@@ -35,7 +35,7 @@ const { updateAdminCutsByID, updateAdminByID } = require('../controllers/adminCo
 // const { createVisit, getAllVisits } = require('../controllers/visitController');
 
 const UserSchema = require('../models/admin');
-const { default: axios } = require('axios');
+const appointmentSchema = require('../models/appointment');
 
 app.use(express.json());
 
@@ -48,7 +48,7 @@ app.post('/', async (req, res) => { //create user
     // console.log(req.body)
     let errors = [];
     try {
-        await UserSchema.findOne({ email: email }).exec((err, user) => {
+        UserSchema.findOne({ email: email }).exec((err, user) => {
             //console.log(username);
             if (user) {
                 errors.push({ msg: 'user already registered' })
@@ -146,9 +146,12 @@ app.delete('/', async (req, res) => {
 
 app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
     req.body.imageUrls = [];
-    req.body.completedBy = undefined;
-    req.body.walkIn = true;
+    req.body.completedBy = req.user._id;
+    console.log(req.body.walkIn)
     // console.log(req.user)
+    if (req.body.walkIn !== false) {
+        req.body.walkIn = true;
+    }
 
     const upload = (img) => {
         return new Promise((resolve, reject) => {
@@ -166,22 +169,12 @@ app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
             stream.Readable.from(img.buffer).pipe(cloudinaryStream);
         });
     }
-    if (req.files) {
+    if (req.files && req.files.length) {
         req.files.forEach(async (img, i) => {
             await upload(img)
                 .then(async () => {
                     if (req.user) {
-                        console.log(req.user)
-                        const { _id: userId } = req.user;
-                        const userIdString = userId.toString();
-                        console.log(userIdString)
-
-                        let { serviceHistory } = await UserSchema.findById(userIdString).exec();
-                        const newAdmin = req.body;
-
-                        await serviceHistory.push(newAdmin);
-                        await UserSchema.findOneAndUpdate({ _id: userIdString }, { serviceHistory });
-                        // axios.patch(`/api/v1/admins/cuts/${userId}`, newAdmin)
+                        await appointmentSchema.create(req.body);
                     } else {
                         console.log('Log In please | or stop hacking')
                     }
@@ -191,21 +184,9 @@ app.post("/newVisit", upload.array('images'), async  (req, res, next) => {
                 })
         })
     } else {
-        if (req.user) {
-            console.log(req.user)
-            const { _id: userId } = req.user;
-            const userIdString = userId.toString();
-            console.log(userIdString)
-
-            let { serviceHistory } = await UserSchema.findById(userIdString).exec();
-            const newAdmin = req.body;
-
-            await serviceHistory.push(newAdmin);
-            await UserSchema.findOneAndUpdate({ _id: userIdString }, { serviceHistory });
-            // axios.patch(`/api/v1/admins/cuts/${userId}`, newAdmin)
-        } else {
-            console.log('Log In please | or stop hacking')
-        }
+        console.log('no files uploaded')
+        console.log(req.body)
+        await appointmentSchema.create(req.body);
     }
 
     // const user = await UserSchema.find({ _id: req.params.id });

@@ -34,10 +34,58 @@ function readableTime(time) {
 
 // Makes Dates Readable
 function readableDate(date) {
-    let newDate = date.split('-');
-    newDate = new Date([Number(newDate[0]), Number(newDate[1]), Number(newDate[2])]).toLocaleString('en-US', { dateStyle: 'medium' });
-    return newDate;
+    return date.toLocaleString();
 }
+
+const showAppointments = async () => {
+    let appts = await axios.get('/api/v1/appointments');
+    appts = appts.data.appointments.filter(appointment => appointment.walkIn == false).sort((a, b) => (a.date > b.date) ? 1 : (a.date === b.date) ? ((a.time > b.time) ? 1 : -1) : -1);
+
+    const appointmentsHTML = appts.length ? appts.map(appointment => {
+        const {name, services, notes, appointmentDateTime, price, _id: id} = appointment;
+        return `
+            <div class="modal-container-brk">
+                <div class="cancel-modal">
+                    <h1 class="modal-title">Warning!</h1>
+                    <p>Are you sure you want to cancel ${name}'s appointment?</p>
+                    <div class="modal-btns">
+                        <button class="confirm-btn">Yes</button>
+                        <button class="deny-btn">No</button>
+                    </div>
+                </div>
+            </div>
+            <div class="appointment-card">
+                <div class="col">
+                    <h1 class="service-names">${formatter.format(services)}</h1>
+                    ${notes != '' ? `
+                        <div class="accordion">
+                            <div class="title-row appt-card-title-row">
+                                <p class="more-notes-title">Additional Notes</p>
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                            <div class="panel">
+                                <p class="add-notes">${notes}</p>
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <p class="date">${appointmentDateTime}</p>
+                    <h1 class="name">${name}</h1>
+                </div>
+                <div class="col right">
+                    <p class="estimated-price">Estimated Price: $${price}</p>
+
+                    <div class="btn-container">
+                        <button class="complete-appointment btn btn-3" onClick="handleComplete(${id})">Complete</button>
+                        <button class="cancel-appointment btn btn-3">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        `
+    }).join('') : '<div class="appointment-card"><p class="blank-text">There are currently no appointments</p></div>';
+    apptsDOM.innerHTML = appointmentsHTML;
+}
+showAppointments();
 
 // Adds div using inputted appointments
 function html(appts, dayFilter) {
@@ -199,7 +247,7 @@ async function getAppts() {
 
     html(appts);
 }
-getAppts();
+// getAppts();
 
 
 const handleComplete = async (index) => {

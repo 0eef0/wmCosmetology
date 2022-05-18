@@ -63,6 +63,9 @@ Content-Type: application/json
 GET http://localhost:5000/api/v1/users HTTP/1.1
 Content-Type: application/json
 #################################
+GET http://localhost:5000/api/v1/admins HTTP/1.1
+Content-Type: application/json
+#################################
 
 GET http://localhost:5000/api/v1/visits HTTP/1.1
 Content-Type: application/json
