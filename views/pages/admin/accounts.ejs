@@ -5,26 +5,7 @@
     <%- include('../../partials/head'); %>
 </head>
 
-<body class="container">
-  <!--
-    <% let tempUsers=allUsers %>
-    <!-- .filter((user) => user.accountType == 'student') -->
-    <% const filterByType=(type)=> {
-        switch (type) {
-            case 'student':
-                tempUsers = allUsers.filter((user) => user.accountType === 'student');
-                break;
-            case 'teacher':
-                tempUsers = allUsers.filter((user) => user.accountType === 'teacher');
-                break;
-            case 'admin':
-                tempUsers = allUsers.filter((user) => user.accountType === 'admin');
-                break;
-            default:
-                tempUsers = allUsers;
-        }
-    }%>
-  
+<body id="accts-page" class="container">
     <!-- modals go here -->
     <%- include('../../partials/modals/accountModal'), { allUsers } %>
 
@@ -34,21 +15,20 @@
     <%- include('../../partials/navbarSpacer'); %>
 
     <!-- page content here -->
-    <h1 class="page-title" style="margin: 0">Accounts</h1>
+    <h1 class="page-title">Accounts</h1>
 
     <br>
 
     <div class="account-filters">
-        <input type="search" id="accountSearch" placeholder="Search..."
-            oninput="searchUsers(this.value)">
+        <input type="search" id="account-search" placeholder="Search...">
         <div class="dropdown-menu">
-            <select name="acctType" id="acctType" onchange="filterByType(this.value)">
+            <select name="acctType" id="acctType">
                 <option value="all">All</option>
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
                 <option value="admin">Admin</option>
             </select>
-            <select name="sort" id="sort" onchange="sortByUser(this.value)">
+            <select name="sort" id="sort">
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>
             </select>
@@ -59,6 +39,8 @@
 
     <div id="all-accounts" class="flex-grid"></div>
 
+    <%- include('../../partials/adminFooter'); %>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -66,8 +48,6 @@
     <script src="../../scripts/accountFilter.js"></script>
     <script src="../../scripts/flexibleGrid.js"></script>
     <script src="../../scripts/navbar.js"></script>
-
-    <%- include('../../partials/adminFooter'); %>
 </body>
 
 </html>

@@ -1,13 +1,53 @@
 div.account-filters {
+    background-color: $clr-white;
     display: flex;
     justify-content: space-between;
-    width: 70%;
-    background-color: $clr-primary-1;
+    width: 100vw;
+    height: max-content;
+    box-sizing: border-box;
     padding: 0.5rem;
-    border-radius: 0.5rem;
-
+    
     input, select {
+        justify-content: center;
+        border-radius: 1rem;
+        font-size: 1.5rem;
         border-radius: 0.5rem;
-        padding: 0.5rem;
+        height: 100%;
+        width: max-content;
+        max-width: 90vw;
+        padding: 0 0.3rem;
+        font-weight: 700;
+        background-color: $clr-primary-4;
+        border: 2px solid $clr-primary-4;
+        color: $clr-white;
+
+        &::placeholder {
+            color: inherit;
+        }
+    }
+    div.dropdown-menu {
+        justify-content: flex-end;
+    }
+    select {
+        width: max-content;
+        option {
+            color: $clr-white;
+            background-color: $clr-primary-4;
+        }
+    }
+    #account-search::-webkit-search-cancel-button{
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    div.account-filters {
+        flex-direction: column;
+        gap: 0.5rem;
+        input, .dropdown-menu {
+            margin: 0 auto;
+        }
     }
 }

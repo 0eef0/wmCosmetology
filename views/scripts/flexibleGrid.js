@@ -13,13 +13,20 @@ function gridColumnWidth(flexGrid, flexGridItems) {
 function columns() {
     for (let i = 0; i < flexGrids.length; i++) {
         let flexGridItems = flexGrids[i].getElementsByClassName('flex-grid-item');
+
+        // Tries to find gridItems every 50ms, and sets the column width if it does
         const checkItems = setInterval(() => {
             flexGridItems = flexGrids[i].getElementsByClassName('flex-grid-item');
             if (flexGridItems.length > 0) {
                 clearInterval(checkItems);
                 gridColumnWidth(flexGrids[i], flexGridItems);
             }
-        }, 50)
+        }, 50);
+
+        // If it can't find the gridItems in 5 seconds, it stops running
+        setInterval(() => {
+            clearInterval(checkItems);
+        }, 5000);
     }
 }
 

@@ -1,9 +1,25 @@
-.page-title {
-    font-size: $title-font-size;
-    max-width: 100vw;
-    text-align: center;
+#accts-page {
+    .page-title {
+        font-size: $title-font-size;
+        max-width: 100vw;
+        text-align: center;
+        margin: 0;
+        margin-top: 2rem;
+    }
 }
 
 div#all-accounts {
-    width: 70%;
+    width: 90vw;
+}
+
+.appointments-title {
+    font-size: $title-font-size;
+    margin-block: 2rem;
+}
+  .appointments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem;
+    margin-top: 0;
 }

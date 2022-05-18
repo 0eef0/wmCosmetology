@@ -2,10 +2,13 @@ div.account {
     box-shadow: $dark-shadow;
     padding: 1rem;
     width: 250px;
+    height: 10rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: auto;
+    margin: auto; 
+    background-color: $light-background;
+    border-radius: .25rem;
 
     h1{
         font-size: 1.5rem;
@@ -27,4 +30,13 @@ div.account {
         background-color: $clr-accent-0;
         color: $clr-white;
     }
+    .email, .lastApptTxt, .lastAppt {
+        color: #606060;
+    }
+}
+
+div.no-accts-card {
+    @extend .account;
+    width: 100%;
+    grid-column: 1 / 999999;
 }
