@@ -198,6 +198,11 @@ html {
   z-index: 1;
   top: 0;
 }
+.navbar #createUser {
+  visibility: hidden;
+  display: none;
+  text-align: center;
+}
 .navbar .user-info {
   position: absolute;
   padding: 0.25rem 0.5rem;
@@ -356,18 +361,13 @@ html {
     background-color: rgba(255, 255, 255, 0.75);
     justify-content: center;
   }
-  .navbar ul .links .nav-item:hover {
-    background-color: #fff;
-  }
-  .navbar ul .links .link {
+  .navbar ul .links .nav-item .link {
     width: 100%;
     padding: 1rem;
     border: none;
   }
-  .navbar ul .links #createUser {
-    visibility: hidden;
-    display: none;
-    text-align: center;
+  .navbar ul .links .nav-item:hover {
+    background-color: #fff;
   }
   .navbar ul .links {
     transform: scaleY(1);

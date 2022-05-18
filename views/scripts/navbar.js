@@ -22,7 +22,7 @@ for (let i = 0; i < navLinks.length; i++) {
 if (window.location.pathname == '/') {
     let scrollPos = window.scrollY;
     let scheduleOffset = scheduleDOM.offsetTop - navbarDOM.clientHeight;
-    if (scrollPos >= scheduleOffset) { 
+    if (scrollPos >= scheduleOffset) {
         navLinks[0].classList.remove('active');
         navLinks[1].classList.add('active');
     }
@@ -31,10 +31,10 @@ if (window.location.pathname == '/') {
         let scrollPos = window.scrollY;
         let scheduleOffset = scheduleDOM.offsetTop - navbarDOM.clientHeight;
 
-        if (scrollPos >= scheduleOffset) { 
+        if (scrollPos >= scheduleOffset) {
             navLinks[0].classList.remove('active');
             navLinks[1].classList.add('active');
-        } else { 
+        } else {
             navLinks[0].classList.add('active');
             navLinks[1].classList.remove('active');
         }
@@ -48,15 +48,20 @@ logoutBtn && logoutBtn.addEventListener('click', async () => {
 
 // Gets current user and all their information
 const getCurrentUser = async () => {
-    let currentUser = await axios.get('/api/v1/admins/current');
-    if (!currentUser.data.length) {
-        return;
-    } else {
-        currentUser = currentUser.data.user;
-        if (currentUser.accountType == 'admin') {
-            newUserBtn.style.visibility = 'visible';
-            newUserBtn.style.display = 'grid';
-        }
-    }
+    await axios.get('/api/v1/admins/current')
+        // .then(response => response.json())
+        .then((response) => {
+            const { data } = response;
+            const { user } = data;
+            console.log(response);
+            if (!user) {
+                return;
+            } else {
+                if (user.accountType == 'admin') {
+                    newUserBtn.style.visibility = 'visible';
+                    newUserBtn.style.display = 'grid';
+                }
+            }
+        })
 }
 getCurrentUser();

@@ -7,6 +7,12 @@
 	z-index: 1;
 	top: 0;
 
+    #createUser {
+        visibility: hidden;
+        display: none;
+        text-align: center;
+    }
+
 	.user-info {
 		position: absolute;
 		padding: 0.25rem 0.5rem;
@@ -148,20 +154,15 @@
 			.nav-item {
 				background-color: $clr-light-transparent-3;
                 justify-content: center;
+                .link {
+                    width: 100%;
+                    padding: 1rem;
+                    border: none;
+                }
 				&:hover {
 					background-color: $clr-white;
 				}
 			}
-			.link {
-				width: 100%;
-				padding: 1rem;
-				border: none;
-			}
-            #createUser {
-                visibility: hidden;
-                display: none;
-                text-align: center;
-            }
 		}
 
 		.links {
