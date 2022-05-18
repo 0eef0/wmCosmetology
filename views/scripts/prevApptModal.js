@@ -8,7 +8,9 @@ const getAppts = async (id) => {
     console.log(appointments)
     await appointments.forEach((service) => {
         if(!(service.walkIn == undefined)) {
-        const { name, email, services, appointmentDateTime: date, notes } = service;
+            console.log(service)
+        const { name, email, services, serviceRequest, appointmentDateTime: date, notes } = service;
+        const newDate = new Date(date).toLocaleString();
 
         apptsDOM.innerHTML += `
             <div class="appt">
@@ -17,8 +19,8 @@ const getAppts = async (id) => {
                     <h3>${ email }</h3>
                 </div>
                 <div class="rightHalf">
-                    <h2>${ date.toLocaleString() }</h2>
-                    <h3>Services: ${ services.join(', ') }</h3>
+                    <h2>${ newDate }</h2>
+                    <h3>Services: ${ services.join(',') == "N/A" ? serviceRequest : services.join(',') }</h3>
                     <h3>Additional Notes: ${notes}</h3>
                 </div>
             </div>
