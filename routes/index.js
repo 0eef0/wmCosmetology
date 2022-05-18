@@ -26,7 +26,7 @@ navigation.get('/schedule', ensureAuthenticated, (req, res) => {
 
 /* ALL ADMIN PAGES HERE */
 // Accounts
-navigation.get('/accounts', /*ensureAuthenticated,*/ async (req, res) => {
+navigation.get('/accounts', /* ensureAuthenticated, */ async (req, res) => {
     try {
         const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
         await res.render('pages/admin/accounts', {
@@ -40,7 +40,7 @@ navigation.get('/accounts', /*ensureAuthenticated,*/ async (req, res) => {
 
 /* ALL ADMIN PAGES HERE */
 // Create User
-navigation.get('/createUser', ensureAdminAuthenticated,(req, res) => {
+navigation.get('/createUser', /* ensureAdminAuthenticated, */(req, res) => {
     res.render('pages/admin/createUser', { title: "Create User" })
 })
 // New Appointment
