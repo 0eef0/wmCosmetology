@@ -10,10 +10,12 @@ let tempUsers = [];
 function filterAccts() {
     tempUsers = users;
 
+    // Filters accounts based on the text input
     if (acctSearchDOM.value !== '') {
         tempUsers = tempUsers.filter(user => JSON.stringify(user).toLowerCase().includes(acctSearchDOM.value.toLowerCase()));
     }
 
+    // Filters accounts based on the account type
     switch (acctFilterDOM.value) {
         case 'student':
             tempUsers = tempUsers.filter((user) => user.accountType === 'student');
@@ -26,6 +28,7 @@ function filterAccts() {
             break;
     }
 
+    // Sorts accounts based on the 
     if (acctOrderDOM.value == 'a-z') {
         tempUsers = tempUsers.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : (a.name.toLowerCase() == b.name.toLowerCase()) ? ((a.email.toLowerCase() > b.email.toLowerCase()) ? 1 : -1) : -1);
     } else if (acctOrderDOM.value == 'z-a') {
@@ -35,7 +38,7 @@ function filterAccts() {
     if (!tempUsers.length) {
         accountsDOM.innerHTML = `
             <div class="no-accts-card">
-                <p class="blank-text">There are no ${(acctFilterDOM.value == 'admin' || acctFilterDOM.value == 'teacher' || acctFilterDOM.value == 'student') ? acctFilterDOM.value : ''} accounts ${acctSearchDOM.value != '' ? `with "${acctSearchDOM.value}" in it` : ''}</p>
+                <p class="blank-text">There are no ${acctFilterDOM.value != 'all' ? acctFilterDOM.value : ''} accounts ${acctSearchDOM.value != '' ? `with "${acctSearchDOM.value}" in it` : ''}</p>
             </div>
         `;
         return;
@@ -57,9 +60,18 @@ acctOrderDOM.addEventListener('change', function () {
 
 (async () => {
     const { data: { allUsers } } = await axios.get('http://localhost:5000/api/v1/admins');
-    users = allUsers.sort((a, b) => { return (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1; });
+    users = allUsers.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : (a.name.toLowerCase() == b.name.toLowerCase()) ? ((a.email.toLowerCase() > b.email.toLowerCase()) ? 1 : -1) : -1);
     tempUsers = users;
-    // console.log(users);
+
+    if (!tempUsers.length) {
+        accountsDOM.innerHTML = `
+            <div class="no-accts-card">
+                <p class="blank-text">There are no ${acctFilterDOM.value != 'all' ? acctFilterDOM.value : ''} accounts ${acctSearchDOM.value != '' ? `with "${acctSearchDOM.value}" in it` : ''}</p>
+            </div>
+        `;
+        return;
+    }
+    
     for (user of tempUsers) {
         const { _id: id, name, email, accountType, serviceHistory } = user;
         // console.log(user);

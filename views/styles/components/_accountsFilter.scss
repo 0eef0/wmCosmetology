@@ -35,10 +35,15 @@ div.account-filters {
             background-color: $clr-primary-4;
         }
     }
+    #account-search::-webkit-search-cancel-button{
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
 
 @media screen and (max-width: 560px) {
-    .account-filters {
+    div.account-filters {
         flex-direction: column;
         gap: 0.5rem;
         input, .dropdown-menu {
